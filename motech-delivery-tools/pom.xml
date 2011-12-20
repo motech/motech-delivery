@@ -8,6 +8,18 @@
         <version>0.3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>motech-delivery-config</artifactId>
-    <name>Motech Delivery Config</name>
+    <packaging>pom</packaging>
+    <name>Motech Delivery Tools</name>
+    <artifactId>motech-delivery-tools</artifactId>
+
+
+    <modules>
+        <module>motech-datetime-simulator</module>
+        <module>motech-deliverytools-common</module>
+        <module>motech-job-handler-invoker</module>
+        <module>motech-kookoo-automation</module>
+        <module>motech-outbound-endpoint</module>
+    </modules>
+
+
 </project>

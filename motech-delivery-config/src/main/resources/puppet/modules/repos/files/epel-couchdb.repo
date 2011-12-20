@@ -1,0 +1,8 @@
+# Place this file in your /etc/yum.repos.d/ directory
+
+[epel-couchdb]
+name=CouchDB 1.x.x
+baseurl=http://repos.fedorapeople.org/repos/peter/couchdb/epel-5/x86_64/
+enabled=1
+skip_if_unavailable=1
+gpgcheck=0

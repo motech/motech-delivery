@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.motechproject.deliverytools.datetimesimulator.domain.TimeMachine;
 import org.motechproject.util.DateTimeSourceUtil;
 import org.motechproject.util.DateUtil;
-import org.motechproject.util.datetime.DefaultDateTimeSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

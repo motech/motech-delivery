@@ -2,8 +2,10 @@ package org.motechproject.deliverytools.jobhandlerinvoker;
 
 import org.motechproject.deliverytools.jobhandlerinvoker.domain.ScheduledJob;
 import org.motechproject.scheduler.MotechSchedulerServiceImpl;
-import org.quartz.*;
-import org.quartz.impl.StdSchedulerFactory;
+import org.quartz.JobDetail;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.Trigger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;

@@ -1,0 +1,17 @@
+[
+    {
+        "name":"users",
+        "config":{
+            "userName":"motechsuper"
+        }
+    },
+    {
+        "name":"mysql",
+        "config":{
+            "rootPassword":"password"
+        }
+    },
+    { "name":"activemq" },
+    { "name":"couchdb" },
+    { "name":"httpd" }
+]

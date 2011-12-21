@@ -6,9 +6,9 @@ class ant {
 	
   exec { "ant_untar":
     command => "tar xfz /tmp/ant.tar.gz",
-    user => "tamasuper",
-    cwd     => "/home/tamasuper",
-    creates => "/home/tamasuper/apache-ant-1.8.2",
+    user => "@motech_user",
+    cwd     => "/home/@motech_user",
+    creates => "/home/@motech_user/apache-ant-1.8.2",
     path    => ["/bin",],
     require => File["/tmp/ant.tar.gz"],
   }

@@ -4,7 +4,6 @@ import org.apache.commons.lang.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.StringTokenizer;
 
 public class QueryParams {
     private Map<String, Object> params = new HashMap<String, Object>();

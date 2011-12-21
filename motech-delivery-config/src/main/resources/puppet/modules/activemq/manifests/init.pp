@@ -7,9 +7,9 @@ class activemq {
 
   exec { "activemq_untar":
     command => "tar xfz /tmp/activemq.tar.gz",
-    user => "tamasuper",
-    cwd     => "/home/tamasuper",
-    creates => "/home/tamasuper/apache-activemq-5.5.1",
+    user => "@motech_user",
+    cwd     => "/home/@motech_user",
+    creates => "/home/@motech_user/apache-activemq-5.5.1",
     path    => ["/bin",],
   }
   
@@ -28,9 +28,8 @@ class activemq {
   	require => File["/etc/init.d/activemq"],
   }
 
-
   service { "activemq":
-    path       => "/home/tamasuper/apache-activemq-5.5.1/bin/activemq",
+    path       => "/home/@motech_user/apache-activemq-5.5.1/bin/activemq",
     ensure     => running,
     enable     => true,
     require => Exec["installservice"],

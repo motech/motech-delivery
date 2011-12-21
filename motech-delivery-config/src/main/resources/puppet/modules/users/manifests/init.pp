@@ -1,9 +1,9 @@
 
 class users {
-  user { 'tamasuper':
+  user { '@motech_user':
       ensure     => present,
       shell      => '/bin/bash',
-      home       => '/home/tamasuper',
+      home       => '/home/@motech_user',
   }
    
   file {"/etc/sudoers" :

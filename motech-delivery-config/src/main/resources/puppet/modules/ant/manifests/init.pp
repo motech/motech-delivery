@@ -1,5 +1,6 @@
 
 class ant {
+
   file {"/tmp/ant.tar.gz":
     source => "puppet:///modules/ant/apache-ant-1.8.2-bin.tar.gz",
   }
@@ -7,7 +8,7 @@ class ant {
   exec { "ant_untar":
     command => "tar xfz /tmp/ant.tar.gz",
     user => "@motech_user",
-    cwd     => "/home/@motech_user",
+    cwd     => "/home/${motech_user}",
     creates => "/home/@motech_user/apache-ant-1.8.2",
     path    => ["/bin",],
     require => File["/tmp/ant.tar.gz"],

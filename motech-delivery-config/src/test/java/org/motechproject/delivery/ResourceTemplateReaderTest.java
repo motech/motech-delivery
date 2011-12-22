@@ -1,11 +1,7 @@
 package org.motechproject.delivery;
 
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
-import org.motechproject.MotechException;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 

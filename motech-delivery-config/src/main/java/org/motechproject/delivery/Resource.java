@@ -6,6 +6,14 @@ public class Resource {
     private String name;
     private Map<String, String> config;
 
+    protected Resource() {
+    }
+
+    public Resource(String name, Map config) {
+        this.name = name;
+        this.config = config;
+    }
+
     public String name() {
         return name;
     }

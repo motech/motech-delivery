@@ -11,7 +11,7 @@ public class ResourceTemplateReaderTest {
 
     @Test
     public void shouldReadFromConfigJsonAndGiveResourcesList() {
-        ResourceTemplateReader reader = new ResourceTemplateReader();
+        ResourceTemplateReader reader = new ResourceTemplateReader("/delivery-config.json");
         List<Resource> resources = reader.resources();
 
         Resource usersResource = resources.get(0);

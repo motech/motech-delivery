@@ -17,6 +17,7 @@ public class PuppetManifest {
         setupVariables(writer);
         setupNodes(writer);
         footer(writer);
+        writer.close();
     }
 
     private void footer(Writer writer) throws IOException {
@@ -25,7 +26,7 @@ public class PuppetManifest {
 
     private void setupVariables(Writer writer) throws IOException {
         for (Resource resource : resources) {
-            if (!resource.config().isEmpty()) {
+            if (resource.config() != null && !resource.config().isEmpty()) {
                 setupVariablesForResource(writer, resource);
                 writer.write("\n");
             }

@@ -38,7 +38,6 @@ public class PuppetManifestTest {
 
         public ResourceBuilder(String nameOfResource) {
             this.nameOfResource = nameOfResource;
-            this.configs = new HashMap<String, String>();
         }
 
         public static ResourceBuilder of(String nameOfResource) {
@@ -46,6 +45,9 @@ public class PuppetManifestTest {
         }
 
         public ResourceBuilder with(String key, String value) {
+            if (configs == null) {
+                this.configs = new HashMap<String, String>();
+            }
             configs.put(key, value);
             return this;
         }

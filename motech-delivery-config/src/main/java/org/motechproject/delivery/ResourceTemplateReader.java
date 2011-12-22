@@ -6,10 +6,13 @@ import org.motechproject.dao.MotechJsonReader;
 import java.util.List;
 
 public class ResourceTemplateReader {
+    private String jsonFilePath;
 
-    private static final String filename = "/delivery-config.json" ;
+    public ResourceTemplateReader(String jsonFilePath) {
+        this.jsonFilePath = jsonFilePath;
+    }
 
     public List<Resource> resources() {
-        return (List<Resource>) new MotechJsonReader().readFromFile(filename, new TypeToken<List<Resource>>(){}.getType());
+        return (List<Resource>) new MotechJsonReader().readFromFile(jsonFilePath, new TypeToken<List<Resource>>(){}.getType());
     }
 }

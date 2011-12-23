@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="motech-delivery-config">
+
+    <macrodef name="setup.resources">
+        <attribute name="jsonPath"/>
+        <attribute name="jarPath"/>
+        <attribute name="manifestPath"/>
+        <sequential>
+            <java jar="@{jarPath}" failonerror="true">
+                <arg value="@{jsonPath}"/>
+                <arg value="@{manifestPath}"/>
+            </java>
+        </sequential>
+    </macrodef>
+
+</project>

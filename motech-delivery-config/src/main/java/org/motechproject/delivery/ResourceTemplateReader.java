@@ -1,7 +1,6 @@
 package org.motechproject.delivery;
 
 import com.google.gson.reflect.TypeToken;
-import org.motechproject.dao.MotechJsonReader;
 
 import java.util.List;
 

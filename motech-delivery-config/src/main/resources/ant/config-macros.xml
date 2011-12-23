@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="motech-delivery-config">
+<antlib>
 
     <macrodef name="setup.resources">
         <attribute name="jsonPath"/>
         <attribute name="jarPath"/>
-        <attribute name="manifestPath"/>
         <sequential>
+            <tempfile property="temp.file" suffix=".pp" deleteonexit="true"/>
             <java jar="@{jarPath}" failonerror="true">
                 <arg value="@{jsonPath}"/>
-                <arg value="@{manifestPath}"/>
+                <arg value="${temp.file}"/>
             </java>
+            <exec executable="puppet">
+                <arg value="apply"/>
+                <arg value="${temp.file}"/>
+                <arg value="-modulepath=../modules"/>
+            </exec>
         </sequential>
     </macrodef>
 
-</project>
+</antlib>

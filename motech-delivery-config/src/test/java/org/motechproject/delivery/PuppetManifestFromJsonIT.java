@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,7 +15,7 @@ public class PuppetManifestFromJsonIT {
 
     @Test
     public void shouldGenerateManifestFromGivenJsonFile() throws IOException {
-        String jsonFilePath = "/delivery-config.json";
+        String jsonFilePath = getClass().getResource("/delivery-config.json").getPath();
         String expectedManifestPath = getClass().getResource("/expected-site.pp").getPath();
 
         PuppetManifestFromJson.main(new String[]{jsonFilePath, actualManifestPath});

@@ -1,10 +1,10 @@
 package org.motechproject.delivery;
 
 import com.google.gson.*;
-import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,13 +19,9 @@ public class MotechJsonReader {
         standardTypeAdapters.put(Date.class, new DateDeserializer());
     }
 
-    public Object readFromFile(String classpathFile, Type ofType) {
-        InputStream inputStream = getClass().getResourceAsStream(classpathFile);
-        if (inputStream == null) {
-            throw new RuntimeException("File not found in classpath: " + classpathFile);
-        }
+    public Object readFromFile(String filePath, Type ofType) {
         try {
-            String jsonText = IOUtils.toString(inputStream);
+            String jsonText = FileUtils.readFileToString(new File(filePath));
             return from(jsonText, ofType, standardTypeAdapters);
         } catch (IOException e) {
             throw new JsonIOException(e);

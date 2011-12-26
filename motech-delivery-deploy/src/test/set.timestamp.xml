@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="motech-common-test" basedir=".">
+	<typedef resource="org/motechproject/build/common-deploy.xml"/>
+	
+	<target name="test.set.timestamp">
+		<set.timestamp property.to.set="somets"/>
+		<echo message="Property set is ${somets}"/>
+	</target>
+</project>

@@ -122,4 +122,59 @@
 	        </exec>
 		</sequential>
 	</macrodef>
+	
+	<macrodef name="load.seed.data">
+		<attribute name="app.name"/>
+		<attribute name="couchdb.seed.main.class"/>
+		<attribute name="db.name"/>	
+		<sequential>
+	        <echo message="please wait ..."/>
+	        <java fork="false" classname="@{couchdb.seed.main.class}">
+	            <classpath>
+	                <path location="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes"/>
+	                <path refid="lib.path"/>
+	            </classpath>
+	        </java>
+	        <echo message="seed data loaded into @{db.name} database"/>
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="set.timestamp">
+		<attribute name="property.to.set"/>
+		<sequential>
+		    <tstamp>
+		        <format property="@{property.to.set}" pattern="yyyy-MM-dd HH:mm:ss"/>
+		    </tstamp>
+		</sequential>	
+	</macrodef>
+	
+	<macrodef name="set.hudson.version">
+		<attribute name="tomcat.home"/>
+		<attribute name="app.name"/>
+		<attribute name="hudson.release.version"/>
+		<attribute name="hudson.build.number"/>
+		<sequential>
+			<set.timestamp property.to.set="cctimestamp"/>
+	    	<echo file="@{tomcat.home}/webapps/@{app.name}/META-INF/version.txt">
+		    	hudson.release.version=@{hudson.release.version}
+		    	hudson.build.number=@{hudson.build.number}
+		    	deploy.time=${cctimestamp}
+	    	</echo>
+		</sequential>		
+	</macrodef>
+	
+	<macrodef name="set.nexus.version">
+		<attribute name="tomcat.home"/>
+		<attribute name="app.name"/>
+		<attribute name="nexus.server"/>
+		<attribute name="nexus.release.version"/>
+		<sequential>
+			<set.timestamp property.to.set="cctimestamp"/>
+	    	<echo file="@{tomcat.home}/webapps/@{app.name}/META-INF/version.txt">
+		    	nexus.server=@{nexus.server}
+		    	nexus.release.version=@{nexus.release.version}
+		    	deploy.time=${cctimestamp}
+	    	</echo>
+		</sequential>		
+	</macrodef>
 </antlib>

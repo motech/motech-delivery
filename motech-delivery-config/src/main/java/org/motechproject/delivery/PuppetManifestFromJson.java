@@ -1,5 +1,7 @@
 package org.motechproject.delivery;
 
+import com.google.gson.reflect.TypeToken;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,8 +13,8 @@ public class PuppetManifestFromJson {
         new PuppetManifestFromJson().create(args[0], args[1]);
     }
 
-    public void create(String jsonFilePathInClasspath, String manifestFileOutputPath) throws IOException {
-        List<Resource> resources = new ResourceTemplateReader(jsonFilePathInClasspath).resources();
+    public void create(String jsonFilePath, String manifestFileOutputPath) throws IOException {
+        List<Resource> resources = (List<Resource>) new MotechJsonReader().readFromFile(jsonFilePath, new TypeToken<List<Resource>>(){}.getType());
         new PuppetManifest(resources).to(new FileWriter(new File(manifestFileOutputPath)));
     }
 }

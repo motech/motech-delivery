@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<antlib>
+
+    <macrodef name="setup.resources">
+        <attribute name="jsonPath"/>
+        <sequential>
+            <tempfile property="temp.file" suffix=".pp" deleteonexit="true"/>
+            <java classname="org.motechproject.delivery.PuppetManifestFromJson" failonerror="true" fork="true">
+                <arg value="@{jsonPath}"/>
+                <arg value="${temp.file}"/>
+            </java>
+            <exec executable="puppet">
+                <arg value="apply"/>
+                <arg value="${temp.file}"/>
+                <arg value="-modulepath=../modules"/>
+            </exec>
+        </sequential>
+    </macrodef>
+
+</antlib>

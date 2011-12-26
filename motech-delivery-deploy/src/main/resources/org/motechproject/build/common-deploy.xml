@@ -18,9 +18,9 @@
 		<attribute name="app.name"/>
 		<sequential>
 	        <echo message="Deploying to tomcat with tomcat home ${tomcat.home}"/>
-	        <delete dir="${tomcat.home}/webapps/${app.name}"/>
-	        <copy file="${download.dir}/${app.name}.war" tofile="${tomcat.home}/webapps/${app.name}.war" overwrite="true"/>
-	        <delete dir="${tomcat.home}/work/Catalina/localhost/${app.name}"/>
+	        <delete dir="@{tomcat.home}/webapps/@{app.name}"/>
+	        <copy file="@{download.dir}/@{app.name}.war" tofile="@{tomcat.home}/webapps/@{app.name}.war" overwrite="true"/>
+	        <delete dir="@{tomcat.home}/work/Catalina/localhost/@{app.name}"/>
 		</sequential>
 	</macrodef>
 	
@@ -57,16 +57,16 @@
 			<set.script.interpreter/>
 			<set.script.suffix/>
 			<set.script.switch/>
-			<stop.tomcat tomcat.home="${tomcat.home}" tomcat.port="${tomcat.port}"/>
+			<stop.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
 						
 	        <echo message="Starting tomcat..."/>
-	        <echo message="Waiting for tomcat to start with tomcat home at ${tomcat.home}"/>
-	        <exec executable="${script.interpreter}" dir="${tomcat.home}">
-	            <arg line="${script.switch} ${tomcat.home}/bin/startup.${script.suffix}"/>
+	        <echo message="Waiting for tomcat to start with tomcat home at @{tomcat.home}"/>
+	        <exec executable="${script.interpreter}" dir="@{tomcat.home}">
+	            <arg line="${script.switch} @{tomcat.home}/bin/startup.${script.suffix}"/>
 	        </exec>
 	        <waitfor checkevery="100" checkeveryunit="millisecond" maxwait="2" maxwaitunit="minute"
 	                 timeoutproperty="tomcat.timeout">
-	            <http url="http://localhost:${tomcat.port}"/>
+	            <http url="http://localhost:@{tomcat.port}"/>
 	        </waitfor>
 	        <fail if="tomcat.timeout" message="Error starting up tomcat..."/>
 	        <echo message="tomcat started"/>
@@ -82,15 +82,15 @@
 			<set.script.switch/>
 
 	        <echo message="Stopping tomcat..."/>
-	        <echo message="Waiting for tomcat to stop with tomcat home at ${tomcat.home}"/>
-	        <exec executable="${script.interpreter}" dir="${tomcat.home}" spawn="true">
-	            <arg line="${script.switch} ${tomcat.home}/bin/shutdown.${script.suffix}"/>
+	        <echo message="Waiting for tomcat to stop with tomcat home at @{tomcat.home}"/>
+	        <exec executable="${script.interpreter}" dir="@{tomcat.home}" spawn="true">
+	            <arg line="${script.switch} @{tomcat.home}/bin/shutdown.${script.suffix}"/>
 	        </exec>
 	        
 	        <waitfor checkevery="100" checkeveryunit="millisecond" maxwait="2" maxwaitunit="minute"
 	                 timeoutproperty="tomcat.timeout">
 	            <not>
-	                <http url="http://localhost:${tomcat.port}"/>
+	                <http url="http://localhost:@{tomcat.port}"/>
 	            </not>
 	        </waitfor>
 	        <fail if="tomcat.timeout" message="Error shutting down tomcat..."/>
@@ -102,8 +102,8 @@
 		<attribute name="tomcat.home"/>
 		<attribute name="tomcat.port"/>
 		<sequential>
-			<stop.tomcat tomcat.home="${tomcat.home}" tomcat.port="${tomcat.port}"/>
-			<start.tomcat tomcat.home="${tomcat.home}" tomcat.port="${tomcat.port}"/>			
+			<stop.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
+			<start.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>			
 		</sequential>
 	</macrodef>
 	
@@ -112,13 +112,13 @@
 		<attribute name="couch.db.port"/>
 		<attribute name="db.name"/>
 		<sequential>
-			<echo message="Dropping database ${db.name}"/>
+			<echo message="Dropping database @{db.name}"/>
 	        <exec executable="curl">
 	            <arg value="-s"/>
 	            <arg value="-S"/>
 	            <arg value="-X"/>
 	            <arg value="DELETE"/>
-	            <arg value="http://${couch.db.server}:${couch.db.port}/${db.name}"/>
+	            <arg value="http://@{couch.db.server}:@{couch.db.port}/@{db.name}"/>
 	        </exec>
 		</sequential>
 	</macrodef>

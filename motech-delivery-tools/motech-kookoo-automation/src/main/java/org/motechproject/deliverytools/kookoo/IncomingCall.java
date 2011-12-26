@@ -28,7 +28,7 @@ public class IncomingCall {
         URL callbackURL = new URL(urlString);
         String customQuery = callbackURL.getQuery();
         QueryParams customQueryParams = QueryParams.fromQueryString(customQuery);
-        customParams = (HashMap<String, String>) jsonReader.from(customQueryParams.getString(KookooCallServiceImpl.CUSTOM_DATA_KEY), type);
+        customParams = (HashMap<String, String>) jsonReader.readFromString(customQueryParams.getString(KookooCallServiceImpl.CUSTOM_DATA_KEY), type);
     }
 
     public String apiKey() {

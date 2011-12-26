@@ -107,4 +107,19 @@
 		</sequential>
 	</macrodef>
 	
+	<macrodef name="drop.couch.db">
+		<attribute name="couch.db.server"/>
+		<attribute name="couch.db.port"/>
+		<attribute name="db.name"/>
+		<sequential>
+			<echo message="Dropping database ${db.name}"/>
+	        <exec executable="curl">
+	            <arg value="-s"/>
+	            <arg value="-S"/>
+	            <arg value="-X"/>
+	            <arg value="DELETE"/>
+	            <arg value="http://${couch.db.server}:${couch.db.port}/${db.name}"/>
+	        </exec>
+		</sequential>
+	</macrodef>
 </antlib>

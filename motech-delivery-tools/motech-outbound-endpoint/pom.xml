@@ -50,7 +50,7 @@
         <dependency>
             <groupId>org.motechproject.deliverytools</groupId>
             <artifactId>motech-deliverytools-common</artifactId>
-            <version>${motech.version}</version>
+            <version>0.3-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

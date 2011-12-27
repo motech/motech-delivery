@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>motech-seed</artifactId>
+    <name>Motech Seed</name>
 
     <properties>
         <spring.version>3.0.5.RELEASE</spring.version>

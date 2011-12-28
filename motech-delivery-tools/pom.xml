@@ -12,13 +12,13 @@
     <name>Motech Delivery Tools</name>
     <artifactId>motech-delivery-tools</artifactId>
 
-
     <modules>
         <module>motech-datetime-simulator</module>
         <module>motech-deliverytools-common</module>
         <module>motech-job-handler-invoker</module>
         <module>motech-kookoo-automation</module>
         <module>motech-outbound-endpoint</module>
+        <module>motech-seed</module>
     </modules>
 
     <dependencies>

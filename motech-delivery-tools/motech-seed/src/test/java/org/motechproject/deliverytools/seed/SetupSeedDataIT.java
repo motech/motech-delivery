@@ -41,7 +41,7 @@ public class SetupSeedDataIT {
         AllRegimens allRegimens = (AllRegimens) context.getBean("allRegimens");
         Regimen regimen = allRegimens.getAll().get(0);
         assertEquals("regimen",regimen.name());
-        assertEquals(4,regimen.getDrugs().size());
+        assertEquals(4,regimen.drugs().size());
     }
 
     @After

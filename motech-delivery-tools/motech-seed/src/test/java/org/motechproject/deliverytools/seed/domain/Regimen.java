@@ -12,7 +12,7 @@ public class Regimen extends MotechAuditableDataObject {
     private String type = "Regimen";
     @JsonProperty
     private String name;
-
+    @JsonProperty
     private List<Drug> drugs;
 
     public Regimen() {
@@ -27,11 +27,7 @@ public class Regimen extends MotechAuditableDataObject {
         return name;
     }
 
-    public List<Drug> getDrugs() {
+    public List<Drug> drugs() {
         return drugs;
-    }
-
-    public void setDrugs(List<Drug> drugs) {
-        this.drugs = drugs;
     }
 }

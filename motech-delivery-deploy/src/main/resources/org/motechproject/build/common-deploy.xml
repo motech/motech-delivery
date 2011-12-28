@@ -5,7 +5,7 @@
 		<attribute name="remote.location"/>
 		<attribute name="download.dir"/>
 		<sequential>
-			<copy todir="@{download.dir}" tofile="@{app.name}.war" flatten="true" overwrite="true">
+			<copy tofile="@{download.dir}/@{app.name}.war" flatten="true" overwrite="true">
 				<resources>
 					<url url="@{remote.location}"/>
 				</resources>
@@ -16,6 +16,7 @@
 	<macrodef name="copy.app.war.to.tomcat">
 		<attribute name="tomcat.home"/>
 		<attribute name="app.name"/>
+        <attribute name="download.dir"/>
 		<sequential>
 	        <echo message="Deploying to tomcat with tomcat home ${tomcat.home}"/>
 	        <delete dir="@{tomcat.home}/webapps/@{app.name}"/>
@@ -124,15 +125,18 @@
 	</macrodef>
 	
 	<macrodef name="load.seed.data">
+        <attribute name="tomcat.home"/>
 		<attribute name="app.name"/>
 		<attribute name="couchdb.seed.main.class"/>
 		<attribute name="db.name"/>	
 		<sequential>
-	        <echo message="please wait ..."/>
+	        <echo message="Starting to load seed data into ${db.name} for ${app.name}..."/>
 	        <java fork="false" classname="@{couchdb.seed.main.class}">
 	            <classpath>
 	                <path location="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes"/>
-	                <path refid="lib.path"/>
+                    <fileset dir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/lib">
+                        <include name="**/*.jar"/>
+                    </fileset>
 	            </classpath>
 	        </java>
 	        <echo message="seed data loaded into @{db.name} database"/>

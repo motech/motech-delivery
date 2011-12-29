@@ -36,4 +36,17 @@
             </exec>
         </sequential>
     </macrodef>
+
+    <macrodef name="restore.data.for.couch.db">
+        <attribute name="couch.source"/>
+        <attribute name="couch.destination"/>
+        <sequential>
+            <echo message="Copying Files from backup at @{couch.source} to couch database at @{couch.destination}"/>
+            <copy todir="@{couch.destination}">
+                <fileset dir="@{couch.source}" />
+            </copy>
+            <echo message="CouchDB restore successful."/>
+        </sequential>
+    </macrodef>
+
 </antlib>

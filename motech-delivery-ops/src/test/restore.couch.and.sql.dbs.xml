@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="motech-common-test" basedir=".">
+	<typedef resource="org/motechproject/build/common-deploy.xml"/>
+
+	<target name="test.restore.couch.and.sql.dbs">
+		<echo message="Trying to restore couchdb and sql DBs"/>
+		<restore.db tomcat.home="${tomcat.home}" tomcat.port="${tomcat.port}" couch.source="${couch.source}" couch.destination="${couch.destination}" mysql.source="${mysql.source}"
+                    mysql.destination="${mysql.destination}"/>
+	</target>
+</project>

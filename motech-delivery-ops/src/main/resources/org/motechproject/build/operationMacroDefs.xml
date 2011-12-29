@@ -57,4 +57,19 @@
             <stop.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
         </sequential>
     </macrodef>
+
+    <macrodef name="restore.db">
+        <attribute name="tomcat.home"/>
+        <attribute name="tomcat.port"/>
+        <attribute name="couch.source"/>
+        <attribute name="couch.destination"/>
+        <attribute name="mysql.source"/>
+        <attribute name="mysql.destination"/>
+        <sequential>
+            <stop.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
+            <restore.data.for.couch.db couch.source="@{couch.source}" couch.destination="@{couch.destination}" />
+            <restore.data.for.mysql.db.from.file.source mysql.source="@{mysql.source}" mysql.destination="@{mysql.destination}"/>
+            <start.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
+        </sequential>
+    </macrodef>
 </antlib>

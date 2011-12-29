@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<antlib>
+    <typedef resource="org/motechproject/build/common/env.xml"/>
+    <typedef resource="org/motechproject/build/common/activemq.xml"/>
+    <typedef resource="org/motechproject/build/common/couchdb.xml"/>
+    <typedef resource="org/motechproject/build/common/mysql.xml"/>
+    <typedef resource="org/motechproject/build/common/tomcat.xml"/>
+
+    <macrodef name="start.master.machine">
+        <attribute name="couch.db.port"/>
+        <attribute name="activemq.home"/>
+        <attribute name="activemq.port"/>
+        <attribute name="tomcat.home"/>
+        <attribute name="tomcat.port"/>
+        <sequential>
+            <start.node couch.db.port="@{couch.db.port}" activemq.home="@{activemq.home}" activemq.port="@{activemq.port}" tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="start.slave.machine">
+        <attribute name="couch.db.port"/>
+        <attribute name="activemq.home"/>
+        <attribute name="activemq.port"/>
+        <attribute name="tomcat.home"/>
+        <attribute name="tomcat.port"/>
+        <sequential>
+            <start.node couch.db.port="@{couch.db.port}" activemq.home="@{activemq.home}" activemq.port="@{activemq.port}" tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="stop.slave.machine">
+        <attribute name="tomcat.home"/>
+        <attribute name="tomcat.port"/>
+        <sequential>
+            <stop.node tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="start.node">
+        <attribute name="activemq.home"/>
+        <attribute name="activemq.port"/>
+        <attribute name="couch.db.port"/>
+        <attribute name="tomcat.home"/>
+        <attribute name="tomcat.port"/>
+        <sequential>
+            <start.activemq activemq.home="@{activemq.home}" activemq.port="@{activemq.port}"/>
+            <start.couch.db couch.db.port="@{couch.db.port}"/>
+            <start.mysql/>
+            <start.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="stop.node">
+        <attribute name="tomcat.home"/>
+        <attribute name="tomcat.port"/>
+        <sequential>
+            <stop.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
+        </sequential>
+    </macrodef>
+</antlib>

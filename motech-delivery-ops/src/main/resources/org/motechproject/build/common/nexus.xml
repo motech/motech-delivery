@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <antlib>
-    <typedef resource="org/motechproject/build/env.xml"/>
+    <typedef resource="org/motechproject/build/common/env.xml"/>
 
     <macrodef name="set.nexus.version">
         <attribute name="tomcat.home"/>

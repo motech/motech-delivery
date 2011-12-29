@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="motech-common-test" basedir=".">
 	<echo message="Executing the typedef import"/>	
-	<typedef resource="org/motechproject/build/common-deploy.xml"/>
+	<typedef resource="org/motechproject/build/deploy.xml"/>
 	<echo message="Done executing the typedef import"/>
 	
-	<target name="test.set.script.suffix">
-		<set.script.suffix/>
-		<echo message="Property set is ${script.suffix}"/>
+	<target name="test.set.script.interpreter">
+		<set.script.interpreter/>
+		<echo message="Property set is ${script.interpreter}"/>
 	</target>
+
 </project>

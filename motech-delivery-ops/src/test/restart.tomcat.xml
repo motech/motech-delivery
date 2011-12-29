@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="motech-common-test" basedir=".">
-	<typedef resource="org/motechproject/build/common-deploy.xml"/>
+	<typedef resource="org/motechproject/build/deploy.xml"/>
 	
 	<target name="test.restart.tomcat">
 		<echo message="Trying to restart tomcat at ${tomcat.home}"/>

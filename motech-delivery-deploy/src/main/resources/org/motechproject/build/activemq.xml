@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<antlib>
+    <typedef resource="org/motechproject/build/env.xml"/>
+
+    <macrodef name="start.activemq">
+        <attribute name="activemq.port"/>
+        <attribute name="activemq.home"/>
+        <sequential>
+            <set.script.interpreter/>
+            <set.script.switch/>
+            <set.script.suffix/>
+
+            <echo message="Waiting for ActiveMQ to start on ${os.name}"/>
+            <exec executable="${script.interpreter}" dir="@{activemq.home}" spawn="true">
+                <arg line="@{activemq.home}/bin/activemq start &amp;"/>
+            </exec>
+            <waitfor checkevery="100" checkeveryunit="millisecond" maxwait="2" maxwaitunit="minute"
+                     timeoutproperty="activemq.timeout">
+                <http url="http://localhost:@{activemq.port}"/>
+            </waitfor>
+            <fail if="activemq.timeout" message="Error starting ActiveMQ..."/>
+            <echo message="Started ActiveMQ..."/>
+        </sequential>
+    </macrodef>
+</antlib>

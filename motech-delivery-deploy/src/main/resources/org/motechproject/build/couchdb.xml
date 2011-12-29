@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<antlib>
+    <typedef resource="org/motechproject/build/env.xml"/>
+
+    <!--TODO: Assumes unix family os -->
+    <macrodef name="start.couch.db">
+        <attribute name="couch.db.port"/>
+        <sequential>
+            <set.script.interpreter/>
+            <set.service.home/>
+            <echo message="Starting Couch DB..."/>
+            <exec executable="${script.interpreter}" dir="${service.home}">
+                <arg line="service couchdb start"/>
+            </exec>
+            <waitfor checkevery="100" checkeveryunit="millisecond" maxwait="2" maxwaitunit="minute"
+                     timeoutproperty="couchdb.timeout">
+                <http url="http://localhost:@{couch.db.port}"/>
+            </waitfor>
+            <fail if="couchdb.timeout" message="Error starting up couchdb..."/>
+            <echo message="Started Couch DB..."/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="drop.couch.db">
+        <attribute name="couch.db.server"/>
+        <attribute name="couch.db.port"/>
+        <attribute name="db.name"/>
+        <sequential>
+            <echo message="Dropping database @{db.name}"/>
+            <exec executable="curl">
+                <arg value="-s"/>
+                <arg value="-S"/>
+                <arg value="-X"/>
+                <arg value="DELETE"/>
+                <arg value="http://@{couch.db.server}:@{couch.db.port}/@{db.name}"/>
+            </exec>
+        </sequential>
+    </macrodef>
+</antlib>

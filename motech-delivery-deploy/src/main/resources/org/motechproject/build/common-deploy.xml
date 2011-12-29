@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <antlib>
+
+    <typedef resource="org/motechproject/build/activemq.xml"/>
+    <typedef resource="org/motechproject/build/couchdb.xml"/>
+    <typedef resource="org/motechproject/build/env.xml"/>
+    <typedef resource="org/motechproject/build/hudson.xml"/>
+    <typedef resource="org/motechproject/build/mysql.xml"/>
+    <typedef resource="org/motechproject/build/nexus.xml"/>
+    <typedef resource="org/motechproject/build/seed.xml"/>
+    <typedef resource="org/motechproject/build/tomcat.xml"/>
+
     <macrodef name="download.app.from.remote">
         <attribute name="app.name"/>
         <attribute name="remote.location"/>
@@ -10,238 +20,6 @@
                     <url url="@{remote.location}"/>
                 </resources>
             </copy>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="copy.app.war.to.tomcat">
-        <attribute name="tomcat.home"/>
-        <attribute name="app.name"/>
-        <attribute name="download.dir"/>
-        <sequential>
-            <echo message="Deploying to tomcat with tomcat home ${tomcat.home}"/>
-            <delete dir="@{tomcat.home}/webapps/@{app.name}"/>
-            <copy file="@{download.dir}/@{app.name}.war" tofile="@{tomcat.home}/webapps/@{app.name}.war"
-                  overwrite="true"/>
-            <delete dir="@{tomcat.home}/work/Catalina/localhost/@{app.name}"/>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="set.service.home">
-        <sequential>
-            <condition property="service.home" value="/etc/init.d/" else="">
-                <os family="unix"/>
-            </condition>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="set.script.interpreter">
-        <sequential>
-            <condition property="script.interpreter" value="bash" else="cmd">
-                <os family="unix"/>
-            </condition>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="set.script.suffix">
-        <sequential>
-            <condition property="script.suffix" value="sh" else="bat">
-                <os family="unix"/>
-            </condition>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="set.script.switch">
-        <sequential>
-            <condition property="script.switch" value="/c" else="">
-                <not>
-                    <os family="unix"/>
-                </not>
-            </condition>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="start.tomcat">
-        <attribute name="tomcat.home"/>
-        <attribute name="tomcat.port"/>
-        <sequential>
-            <set.script.interpreter/>
-            <set.script.suffix/>
-            <set.script.switch/>
-            <stop.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
-
-            <echo message="Starting tomcat..."/>
-            <echo message="Waiting for tomcat to start with tomcat home at @{tomcat.home}"/>
-            <exec executable="${script.interpreter}" dir="@{tomcat.home}">
-                <arg line="${script.switch} @{tomcat.home}/bin/startup.${script.suffix}"/>
-            </exec>
-            <waitfor checkevery="100" checkeveryunit="millisecond" maxwait="2" maxwaitunit="minute"
-                     timeoutproperty="tomcat.timeout">
-                <http url="http://localhost:@{tomcat.port}"/>
-            </waitfor>
-            <fail if="tomcat.timeout" message="Error starting up tomcat..."/>
-            <echo message="tomcat started"/>
-        </sequential>
-    </macrodef>
-
-    <!--TODO: Assumes unix family os -->
-    <macrodef name="start.couch.db">
-        <attribute name="couch.db.port"/>
-        <sequential>
-            <set.script.interpreter/>
-            <set.service.home/>
-            <echo message="Starting Couch DB..."/>
-            <exec executable="${script.interpreter}" dir="${service.home}">
-                <arg line="service couchdb start"/>
-            </exec>
-            <waitfor checkevery="100" checkeveryunit="millisecond" maxwait="2" maxwaitunit="minute"
-                     timeoutproperty="couchdb.timeout">
-                <http url="http://localhost:@{couch.db.port}"/>
-            </waitfor>
-            <fail if="couchdb.timeout" message="Error starting up couchdb..."/>
-            <echo message="Started Couch DB..."/>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="start.activemq">
-        <attribute name="activemq.port"/>
-        <attribute name="activemq.home"/>
-        <sequential>
-            <set.script.interpreter/>
-            <set.script.switch/>
-            <set.script.suffix/>
-
-            <echo message="Waiting for ActiveMQ to start on ${os.name}"/>
-            <exec executable="${script.interpreter}" dir="@{activemq.home}" spawn="true">
-                <arg line="@{activemq.home}/bin/activemq start &amp;"/>
-            </exec>
-            <waitfor checkevery="100" checkeveryunit="millisecond" maxwait="2" maxwaitunit="minute"
-                     timeoutproperty="activemq.timeout">
-                <http url="http://localhost:@{activemq.port}"/>
-            </waitfor>
-            <fail if="activemq.timeout" message="Error starting ActiveMQ..."/>
-            <echo message="Started ActiveMQ..."/>
-        </sequential>
-    </macrodef>
-
-
-    <!--TODO: Assumes unix family os -->
-    <macrodef name="start.mysql">
-        <sequential>
-            <set.script.interpreter/>
-            <set.service.home/>
-            <echo message="Starting MySQL..."/>
-            <exec executable="${script.interpreter}" dir="${service.home}">
-                <arg line="service mysql start"/>
-            </exec>
-            <echo message="Started MySQL..."/>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="stop.tomcat">
-        <attribute name="tomcat.home"/>
-        <attribute name="tomcat.port"/>
-        <sequential>
-            <set.script.interpreter/>
-            <set.script.suffix/>
-            <set.script.switch/>
-
-            <echo message="Stopping tomcat..."/>
-            <echo message="Waiting for tomcat to stop with tomcat home at @{tomcat.home}"/>
-            <exec executable="${script.interpreter}" dir="@{tomcat.home}" spawn="true">
-                <arg line="${script.switch} @{tomcat.home}/bin/shutdown.${script.suffix}"/>
-            </exec>
-
-            <waitfor checkevery="100" checkeveryunit="millisecond" maxwait="2" maxwaitunit="minute"
-                     timeoutproperty="tomcat.timeout">
-                <not>
-                    <http url="http://localhost:@{tomcat.port}"/>
-                </not>
-            </waitfor>
-            <fail if="tomcat.timeout" message="Error shutting down tomcat..."/>
-            <echo message="tomcat stopped"/>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="restart.tomcat">
-        <attribute name="tomcat.home"/>
-        <attribute name="tomcat.port"/>
-        <sequential>
-            <stop.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
-            <start.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="drop.couch.db">
-        <attribute name="couch.db.server"/>
-        <attribute name="couch.db.port"/>
-        <attribute name="db.name"/>
-        <sequential>
-            <echo message="Dropping database @{db.name}"/>
-            <exec executable="curl">
-                <arg value="-s"/>
-                <arg value="-S"/>
-                <arg value="-X"/>
-                <arg value="DELETE"/>
-                <arg value="http://@{couch.db.server}:@{couch.db.port}/@{db.name}"/>
-            </exec>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="load.seed.data">
-        <attribute name="tomcat.home"/>
-        <attribute name="app.name"/>
-        <attribute name="couchdb.seed.main.class"/>
-        <attribute name="db.name"/>
-        <sequential>
-            <echo message="Starting to load seed data into ${db.name} for ${app.name}..."/>
-            <java fork="false" classname="@{couchdb.seed.main.class}">
-                <classpath>
-                    <path location="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes"/>
-                    <fileset dir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/lib">
-                        <include name="**/*.jar"/>
-                    </fileset>
-                </classpath>
-            </java>
-            <echo message="seed data loaded into @{db.name} database"/>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="set.timestamp">
-        <attribute name="property.to.set"/>
-        <sequential>
-            <tstamp>
-                <format property="@{property.to.set}" pattern="yyyy-MM-dd HH:mm:ss"/>
-            </tstamp>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="set.hudson.version">
-        <attribute name="tomcat.home"/>
-        <attribute name="app.name"/>
-        <attribute name="hudson.release.version"/>
-        <attribute name="hudson.build.number"/>
-        <sequential>
-            <set.timestamp property.to.set="cctimestamp"/>
-            <echo file="@{tomcat.home}/webapps/@{app.name}/META-INF/version.txt">
-                hudson.release.version=@{hudson.release.version}
-                hudson.build.number=@{hudson.build.number}
-                deploy.time=${cctimestamp}
-            </echo>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="set.nexus.version">
-        <attribute name="tomcat.home"/>
-        <attribute name="app.name"/>
-        <attribute name="nexus.server"/>
-        <attribute name="nexus.release.version"/>
-        <sequential>
-            <set.timestamp property.to.set="cctimestamp"/>
-            <echo file="@{tomcat.home}/webapps/@{app.name}/META-INF/version.txt">
-                nexus.server=@{nexus.server}
-                nexus.release.version=@{nexus.release.version}
-                deploy.time=${cctimestamp}
-            </echo>
         </sequential>
     </macrodef>
 
@@ -256,6 +34,14 @@
             <start.couch.db couch.db.port="@{couch.db.port}"/>
             <start.mysql/>
             <start.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="stop.slave">
+        <attribute name="tomcat.home"/>
+        <attribute name="tomcat.port"/>
+        <sequential>
+            <stop.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
         </sequential>
     </macrodef>
 </antlib>

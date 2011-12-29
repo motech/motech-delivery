@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<antlib>
+    <typedef resource="org/motechproject/build/env.xml"/>
+
+    <!--TODO: Assumes unix family os -->
+    <macrodef name="start.mysql">
+        <sequential>
+            <set.script.interpreter/>
+            <set.service.home/>
+            <echo message="Starting MySQL..."/>
+            <exec executable="${script.interpreter}" dir="${service.home}">
+                <arg line="service mysql start"/>
+            </exec>
+            <echo message="Started MySQL..."/>
+        </sequential>
+    </macrodef>
+</antlib>

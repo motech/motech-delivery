@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="motech-common-test" basedir=".">
-	<typedef resource="org/motechproject/build/deploy.xml"/>
+	<typedef resource="org/motechproject/build/deployMacroDefs.xml"/>
 	
 	<target name="test.start.tomcat">
 		<echo message="Trying to start tomcat at ${tomcat.home}"/>

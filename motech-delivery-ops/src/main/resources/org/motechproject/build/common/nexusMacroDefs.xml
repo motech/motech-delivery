@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <antlib>
-    <typedef resource="org/motechproject/build/common/env.xml"/>
+    <typedef resource="org/motechproject/build/common/envMacroDefs.xml"/>
 
-    <macrodef name="set.hudson.version">
+    <macrodef name="set.nexus.version">
         <attribute name="tomcat.home"/>
         <attribute name="app.name"/>
-        <attribute name="hudson.release.version"/>
-        <attribute name="hudson.build.number"/>
+        <attribute name="nexus.server"/>
+        <attribute name="nexus.release.version"/>
         <sequential>
             <set.timestamp property.to.set="cctimestamp"/>
             <echo file="@{tomcat.home}/webapps/@{app.name}/META-INF/version.txt">
-                hudson.release.version=@{hudson.release.version}
-                hudson.build.number=@{hudson.build.number}
+                nexus.server=@{nexus.server}
+                nexus.release.version=@{nexus.release.version}
                 deploy.time=${cctimestamp}
             </echo>
         </sequential>

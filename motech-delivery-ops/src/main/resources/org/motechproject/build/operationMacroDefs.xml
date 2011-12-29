@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <antlib>
-    <typedef resource="org/motechproject/build/common/env.xml"/>
-    <typedef resource="org/motechproject/build/common/activemq.xml"/>
-    <typedef resource="org/motechproject/build/common/couchdb.xml"/>
-    <typedef resource="org/motechproject/build/common/mysql.xml"/>
-    <typedef resource="org/motechproject/build/common/tomcat.xml"/>
+    <typedef resource="org/motechproject/build/common/envMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/activemqMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/couchdbMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/mysqlMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/tomcatMacroDefs.xml"/>
 
     <macrodef name="start.master.machine">
         <attribute name="couch.db.port"/>

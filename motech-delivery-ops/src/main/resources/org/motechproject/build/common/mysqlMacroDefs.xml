@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <antlib>
-    <typedef resource="org/motechproject/build/common/env.xml"/>
+    <typedef resource="org/motechproject/build/common/envMacroDefs.xml"/>
 
     <!--TODO: Assumes unix family os -->
     <macrodef name="start.mysql">

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<antlib>
+    <typedef resource="org/motechproject/build/common/envMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/activemqMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/couchdbMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/mysqlMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/tomcatMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/hudsonMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/nexusMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/seedMacroDefs.xml"/>
+
+    <macrodef name="download.app.from.remote">
+        <attribute name="app.name"/>
+        <attribute name="remote.location"/>
+        <attribute name="download.dir"/>
+        <sequential>
+            <copy tofile="@{download.dir}/@{app.name}.war" flatten="true" overwrite="true">
+                <resources>
+                    <url url="@{remote.location}"/>
+                </resources>
+            </copy>
+        </sequential>
+    </macrodef>
+</antlib>

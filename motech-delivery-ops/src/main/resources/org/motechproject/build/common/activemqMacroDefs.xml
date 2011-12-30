@@ -22,4 +22,20 @@
             <echo message="Started ActiveMQ..."/>
         </sequential>
     </macrodef>
+
+    <macrodef name="stop.activemq">
+        <attribute name="activemq.port"/>
+        <attribute name="activemq.home"/>
+        <sequential>
+            <set.script.interpreter/>
+            <set.script.switch/>
+            <set.script.suffix/>
+
+            <echo message="Stopping ActiveMQ on ${os.name}"/>
+            <exec executable="${script.interpreter}" dir="@{activemq.home}" spawn="true">
+                <arg line="@{activemq.home}/bin/activemq stop"/>
+            </exec>
+            <echo message="Stopped ActiveMQ..."/>
+        </sequential>
+    </macrodef>
 </antlib>

@@ -21,6 +21,20 @@
         </sequential>
     </macrodef>
 
+    <!--TODO: Assumes unix family os -->
+    <macrodef name="stop.couch.db">
+        <attribute name="couch.db.port"/>
+        <sequential>
+            <set.script.interpreter/>
+            <set.service.home/>
+            <echo message="Stopping Couch DB..."/>
+            <exec executable="${script.interpreter}" dir="${service.home}">
+                <arg line="service couchdb stop"/>
+            </exec>
+            <echo message="Stopped Couch DB..."/>
+        </sequential>
+    </macrodef>
+
     <macrodef name="drop.couch.db">
         <attribute name="couch.db.server"/>
         <attribute name="couch.db.port"/>
@@ -43,7 +57,7 @@
         <sequential>
             <echo message="Copying Files from backup at @{couch.source} to couch database at @{couch.destination}"/>
             <copy todir="@{couch.destination}">
-                <fileset dir="@{couch.source}" />
+                <fileset dir="@{couch.source}"/>
             </copy>
             <echo message="CouchDB restore successful."/>
         </sequential>

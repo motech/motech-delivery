@@ -13,7 +13,8 @@
         <attribute name="tomcat.home"/>
         <attribute name="tomcat.port"/>
         <sequential>
-            <start.node couch.db.port="@{couch.db.port}" activemq.home="@{activemq.home}" activemq.port="@{activemq.port}" tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
+            <start.node couch.db.port="@{couch.db.port}" activemq.home="@{activemq.home}"
+                        activemq.port="@{activemq.port}" tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
         </sequential>
     </macrodef>
 
@@ -24,7 +25,8 @@
         <attribute name="tomcat.home"/>
         <attribute name="tomcat.port"/>
         <sequential>
-            <start.node couch.db.port="@{couch.db.port}" activemq.home="@{activemq.home}" activemq.port="@{activemq.port}" tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
+            <start.node couch.db.port="@{couch.db.port}" activemq.home="@{activemq.home}"
+                        activemq.port="@{activemq.port}" tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
         </sequential>
     </macrodef>
 
@@ -32,7 +34,7 @@
         <attribute name="tomcat.home"/>
         <attribute name="tomcat.port"/>
         <sequential>
-            <stop.node tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
+            <stop.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
         </sequential>
     </macrodef>
 
@@ -43,18 +45,43 @@
         <attribute name="tomcat.home"/>
         <attribute name="tomcat.port"/>
         <sequential>
+            <start.mysql/>
             <start.activemq activemq.home="@{activemq.home}" activemq.port="@{activemq.port}"/>
             <start.couch.db couch.db.port="@{couch.db.port}"/>
-            <start.mysql/>
             <start.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
         </sequential>
     </macrodef>
 
     <macrodef name="stop.node">
+        <attribute name="activemq.home"/>
+        <attribute name="activemq.port"/>
+        <attribute name="couch.db.port"/>
         <attribute name="tomcat.home"/>
         <attribute name="tomcat.port"/>
         <sequential>
             <stop.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
+            <stop.couch.db couch.db.port="@{couch.db.port}"/>
+            <stop.activemq activemq.home="@{activemq.home}" activemq.port="@{activemq.port}"/>
+            <stop.mysql/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="backup.db.to.location">
+        <attribute name="activemq.home"/>
+        <attribute name="activemq.port"/>
+        <attribute name="couch.db.port"/>
+        <attribute name="tomcat.home"/>
+        <attribute name="tomcat.port"/>
+        <attribute name="mysql.data.backup.location"/>
+        <attribute name="mysql.data.location"/>
+        <attribute name="couchdb.data.backup.location"/>
+        <attribute name="couchdb.backup.location"/>
+
+        <sequential>
+            <stop.node/>
+            <backup.mysql.files to="@{mysql.data.backup.location}" from="@{mysql.data.location}"/>
+            <backup.couchdb.files to="@{couchdb.data.backup.location}" from="@{couchdb.data.location}"/>
+            <start.node/>
         </sequential>
     </macrodef>
 
@@ -67,9 +94,11 @@
         <attribute name="mysql.destination"/>
         <sequential>
             <stop.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
-            <restore.data.for.couch.db couch.source="@{couch.source}" couch.destination="@{couch.destination}" />
-            <restore.data.for.mysql.db.from.file.source mysql.source="@{mysql.source}" mysql.destination="@{mysql.destination}"/>
+            <restore.data.for.couch.db couch.source="@{couch.source}" couch.destination="@{couch.destination}"/>
+            <restore.data.for.mysql.db.from.file.source mysql.source="@{mysql.source}"
+                                                        mysql.destination="@{mysql.destination}"/>
             <start.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"/>
         </sequential>
     </macrodef>
+
 </antlib>

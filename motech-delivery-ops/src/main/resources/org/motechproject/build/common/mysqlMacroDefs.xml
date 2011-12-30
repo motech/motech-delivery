@@ -15,13 +15,26 @@
         </sequential>
     </macrodef>
 
+    <!--TODO: Assumes unix family os -->
+    <macrodef name="stop.mysql">
+        <sequential>
+            <set.script.interpreter/>
+            <set.service.home/>
+            <echo message="Stopping MySQL..."/>
+            <exec executable="${script.interpreter}" dir="${service.home}">
+                <arg line="service mysql stop"/>
+            </exec>
+            <echo message="Stopped MySQL..."/>
+        </sequential>
+    </macrodef>
+
     <macrodef name="restore.data.for.mysql.db.from.file.source">
         <attribute name="mysql.source"/>
         <attribute name="mysql.destination"/>
         <sequential>
             <echo message="Copying SQL form data fileset from backup at @{mysql.source} to SQL database at @{mysql.destination}"/>
             <copy todir="@{mysql.destination}">
-                <fileset dir="@{mysql.source}" />
+                <fileset dir="@{mysql.source}"/>
             </copy>
             <echo message="MySQL Database restore successful."/>
         </sequential>
@@ -38,10 +51,10 @@
             <set.script.switch/>
             <echo message="Importing SQL queries from .sql file at @{mysql.source} to @{mysql.username} database."/>
             <exec executable="${script.interpreter}">
-                <arg line="${script.switch} mysql -u@{mysql.username} -p@{mysql.password} -e &quot;show databases&quot; | grep -v Database | grep -v mysql| grep -v information_schema| gawk '{print &quot;drop database &quot; $1 &quot;;select sleep(0.1);&quot;}';" />
+                <arg line="${script.switch} mysql -u@{mysql.username} -p@{mysql.password} -e &quot;show databases&quot; | grep -v Database | grep -v mysql| grep -v information_schema| gawk '{print &quot;drop database &quot; $1 &quot;;select sleep(0.1);&quot;}';"/>
                 <arg line="exit;"/>
-	            <arg line="${script.switch} mysql -u@{mysql.username} -p${mysql.password} &lt; @{mysql.source}"/>
-	        </exec>
+                <arg line="${script.switch} mysql -u@{mysql.username} -p${mysql.password} &lt; @{mysql.source}"/>
+            </exec>
             <echo message="Import Successful."/>
         </sequential>
     </macrodef>

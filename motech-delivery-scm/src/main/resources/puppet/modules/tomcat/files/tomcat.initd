@@ -17,8 +17,8 @@
 source /etc/environment
 . /etc/init.d/functions
 
-RUN_AS_USER=tamasuper # Adjust run user here
-CATALINA_HOME=/home/tamasuper/apache-tomcat-7.0.22
+RUN_AS_USER=MOTECH_USER_TO_BE_REPLACED # Adjust run user here
+CATALINA_HOME=/home/$RUN_AS_USER/apache-tomcat-7.0.22
 
 start() {
         echo "Starting Tomcat: "

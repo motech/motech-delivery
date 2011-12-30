@@ -14,13 +14,23 @@ class tomcat {
     path    => ["/bin"],
     require => File["/tmp/apache-tomcat-7.0.22.tar.gz"],
   }
-  
+
+  file { "/tmp/tomcat_init.d":
+    source => "puppet:///modules/tomcat/tomcat.initd", \
+    require => Exec["tomcat_untar"],
+  }
+
+  exec { "prepare_initd_script":
+    command => "sed -i 's/MOTECH_USER_TO_BE_REPLACED/'@motech_user'/g' /tmp/tomcat_init.d",
+    require => Exec["/tmp/tomcat_init.d"],
+  }
+
   file { "/etc/init.d/tomcat" :
-  	source => "puppet:///modules/tomcat/tomcat.initd",
+  	source => "/tmp/tomcat_init.d",
   	mode   =>  777,
   	group  => "root",
   	owner  => "root",
-  	require => Exec["tomcat_untar"],
+  	require => Exec["prepare_initd_script"],
   }
 
   exec { "installtomcatservice" :

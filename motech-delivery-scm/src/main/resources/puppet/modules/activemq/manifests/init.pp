@@ -12,14 +12,23 @@ class activemq {
     creates => "/home/@motech_user/apache-activemq-5.5.1",
     path    => ["/bin",],
   }
-  
-  
+
+  file { "/tmp/activemq_init.d":
+    source => "puppet:///modules/activemq/activemq-init.d", \
+    require => Exec["activemq_untar"],
+  }
+
+  exec { "prepare_initd_script":
+    command => "sed -i 's/MOTECH_USER_TO_BE_REPLACED/'@motech_user'/g' /tmp/activemq_init.d",
+    require => Exec["/tmp/activemq_init.d"],
+  }
+
   file { "/etc/init.d/activemq" :
-  	source => "puppet:///modules/activemq/activemq-init.d",
+  	source => "/tmp/activemq_init.d",
   	mode   =>  777,
   	group  => "root",
   	owner  => "root",
-  	require => Exec["activemq_untar"], 
+  	require => Exec["prepare_initd_script"],
   }
   
   exec { "installservice" :

@@ -38,7 +38,7 @@
 # ------------------------------------------------------------------------
 # CONFIGURATION
 ACTIVEMQ_CONFIGS="/etc/default/activemq $HOME/.activemqrc"
-ACTIVEMQ_HOME=/home/tamasuper/apache-activemq-5.5.1
+ACTIVEMQ_HOME=$HOME/apache-activemq-5.5.1
 # Backup invocation parameters
 COMMANDLINE_ARGS="$@"
 
@@ -122,7 +122,7 @@ fi
 JAVACMD="auto"
 
 # Configure a user with non root priviledges, if no user is specified do not change user
-ACTIVEMQ_USER="tamasuper"
+ACTIVEMQ_USER="MOTECH_USER_TO_BE_REPLACED"
 
 # Set jvm memory configuration
 ACTIVEMQ_OPTS_MEMORY="-Xms256M -Xmx256M"

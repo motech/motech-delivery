@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+import static org.quartz.JobKey.jobKey;
+
 @Component
 public class AllScheduledJobs {
     private SchedulerFactoryBean schedulerFactory;
@@ -24,14 +28,14 @@ public class AllScheduledJobs {
     public ScheduledJob get(String name) {
         try {
             Scheduler scheduler = schedulerFactory.getScheduler();
-            JobDetail jobDetail = scheduler.getJobDetail(name, MotechSchedulerServiceImpl.JOB_GROUP_NAME);
+            JobDetail jobDetail = scheduler.getJobDetail(jobKey(name, MotechSchedulerServiceImpl.JOB_GROUP_NAME));
             if (jobDetail == null)
                 throw new IllegalArgumentException("No job named:" + name);
-            Trigger[] triggers = scheduler.getTriggersOfJob(name, MotechSchedulerServiceImpl.JOB_GROUP_NAME);
-            if (triggers.length == 0 || triggers.length > 1)
-                throw new AssertionError(String.format("There should be exactly one trigger for every job. Found %s triggers for %s", triggers.length, name));
+	        List<? extends Trigger> triggers = scheduler.getTriggersOfJob(jobKey(name, MotechSchedulerServiceImpl.JOB_GROUP_NAME));
+	        if (triggers.size() == 0 || triggers.size() > 1)
+                throw new AssertionError(String.format("There should be exactly one trigger for every job. Found %s triggers for %s", triggers.size(), name));
             queriedJobs.add(name);
-            return new ScheduledJob(jobDetail, triggers[0]);
+            return new ScheduledJob(jobDetail, triggers.get(0));
         } catch (SchedulerException e) {
             throw new RuntimeException(e);
         }

@@ -3,7 +3,6 @@ package org.motechproject.deliverytools.jobhandlerinvoker;
 import org.junit.Test;
 import org.motechproject.deliverytools.common.DeliveryToolsObject;
 import org.motechproject.deliverytools.jobhandlerinvoker.domain.ScheduledJob;
-import org.quartz.JobDetail;
 import org.springframework.context.ApplicationContext;
 
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +11,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.quartz.JobBuilder.newJob;
 
 public class ScheduledJobControllerTest extends DeliveryToolsObject {
     @Test
@@ -27,7 +27,7 @@ public class ScheduledJobControllerTest extends DeliveryToolsObject {
 
         HttpServletResponse response = mock(HttpServletResponse.class);
         AllScheduledJobs allScheduledJobs = mock(AllScheduledJobs.class);
-        when(allScheduledJobs.get(anyString())).thenReturn(new ScheduledJob(new JobDetail(), null));
+        when(allScheduledJobs.get(anyString())).thenReturn(new ScheduledJob(newJob().build(), null));
 
         ScheduledJobController controllerScheduled = new ScheduledJobController(applicationContext, allScheduledJobs, new QueriedJobs());
         controllerScheduled.invoke(request, response);

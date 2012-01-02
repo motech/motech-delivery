@@ -72,13 +72,13 @@
 		<attribute name="tomcat.port" />
 		<attribute name="mysql.data.backup.location" />
 		<attribute name="mysql.data.location" />
-		<attribute name="couchdb.data.backup.location" />
-		<attribute name="couchdb.data.location" />
+		<attribute name="couch.db.data.backup.location" />
+		<attribute name="couch.db.data.location" />
 
 		<sequential>
 			<stop.node activemq.home="@{activemq.home}" activemq.port="@{activemq.port}" tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}" couch.db.port="@{couch.db.port}"/>
 			<backup.mysql.files to="@{mysql.data.backup.location}" from="@{mysql.data.location}" />
-			<backup.couchdb.files to="@{couchdb.data.backup.location}" from="@{couchdb.data.location}" />
+			<backup.couch.db.files to="@{couch.db.data.backup.location}" from="@{couch.db.data.location}" />
 			<start.node activemq.home="@{activemq.home}" activemq.port="@{activemq.port}" tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}" couch.db.port="@{couch.db.port}"/>
 		</sequential>
 	</macrodef>

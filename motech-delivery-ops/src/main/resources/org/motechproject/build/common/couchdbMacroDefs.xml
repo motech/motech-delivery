@@ -63,7 +63,7 @@
         </sequential>
     </macrodef>
 
-    <macrodef name="backup.couchdb.files">
+    <macrodef name="backup.couch.db.files">
         <attribute name="to"/>
         <attribute name="from"/>
         <sequential>

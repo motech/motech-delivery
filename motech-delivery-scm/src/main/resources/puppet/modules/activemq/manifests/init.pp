@@ -14,13 +14,13 @@ class activemq {
   }
 
   file { "/tmp/activemq_init.d":
-    source => "puppet:///modules/activemq/activemq-init.d", 
+    source => "puppet:///modules/activemq/activemq-init.d",
     require => Exec["activemq_untar"],
   }
 
-  exec { "prepare_initd_script":
+  exec { "prepare_initd_script_activmq":
     command => "sed -i 's/MOTECH_USER_TO_BE_REPLACED/'@motech_user'/g' /tmp/activemq_init.d",
-    require => Exec["/tmp/activemq_init.d"],
+    require => File["/tmp/activemq_init.d"],
   }
 
   file { "/etc/init.d/activemq" :
@@ -28,7 +28,7 @@ class activemq {
   	mode   =>  777,
   	group  => "root",
   	owner  => "root",
-  	require => Exec["prepare_initd_script"],
+  	require => Exec["prepare_initd_script_activmq"],
   }
   
   exec { "installservice" :

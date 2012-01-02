@@ -16,13 +16,13 @@ class tomcat {
   }
 
   file { "/tmp/tomcat_init.d":
-    source => "puppet:///modules/tomcat/tomcat.initd", 
+    source => "puppet:///modules/tomcat/tomcat.initd",
     require => Exec["tomcat_untar"],
   }
 
-  exec { "prepare_initd_script":
+  exec { "prepare_initd_script_tomcat":
     command => "sed -i 's/MOTECH_USER_TO_BE_REPLACED/'@motech_user'/g' /tmp/tomcat_init.d",
-    require => Exec["/tmp/tomcat_init.d"],
+    require => File["/tmp/tomcat_init.d"],
   }
 
   file { "/etc/init.d/tomcat" :
@@ -30,7 +30,7 @@ class tomcat {
   	mode   =>  777,
   	group  => "root",
   	owner  => "root",
-  	require => Exec["prepare_initd_script"],
+  	require => Exec["prepare_initd_script_tomcat"],
   }
 
   exec { "installtomcatservice" :

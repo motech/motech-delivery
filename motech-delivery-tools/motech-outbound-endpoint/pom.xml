@@ -48,7 +48,7 @@
             <version>2.5</version>
         </dependency>
         <dependency>
-            <groupId>org.motechproject.deliverytools</groupId>
+            <groupId>org.motechproject</groupId>
             <artifactId>motech-deliverytools-common</artifactId>
             <version>0.3-SNAPSHOT</version>
         </dependency>

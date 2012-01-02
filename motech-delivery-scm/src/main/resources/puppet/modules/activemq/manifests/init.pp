@@ -14,7 +14,7 @@ class activemq {
   }
 
   file { "/tmp/activemq_init.d":
-    source => "puppet:///modules/activemq/activemq-init.d", \
+    source => "puppet:///modules/activemq/activemq-init.d", 
     require => Exec["activemq_untar"],
   }
 

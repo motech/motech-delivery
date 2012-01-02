@@ -10,6 +10,7 @@ node default {
  include tomcat
  include duplicity
  include motechquartz
+ include monitor
 }
 
 import "dev"

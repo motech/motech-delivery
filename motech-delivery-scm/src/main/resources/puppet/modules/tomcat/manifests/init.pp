@@ -16,7 +16,7 @@ class tomcat {
   }
 
   file { "/tmp/tomcat_init.d":
-    source => "puppet:///modules/tomcat/tomcat.initd", \
+    source => "puppet:///modules/tomcat/tomcat.initd", 
     require => Exec["tomcat_untar"],
   }
 

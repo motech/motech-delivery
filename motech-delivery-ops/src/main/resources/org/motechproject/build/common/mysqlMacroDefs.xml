@@ -58,4 +58,15 @@
             <echo message="Import Successful."/>
         </sequential>
     </macrodef>
+    <macrodef name="backup.mysql.files">
+        <attribute name="to"/>
+        <attribute name="from"/>
+        <sequential>
+                    <echo message="Copying SQL form data fileset from @{from} to backup at @{to}"/>
+                    <copy todir="@{to}">
+                        <fileset dir="@{from}"/>
+                    </copy>
+                    <echo message="MySQL Database backup successful."/>
+        </sequential>
+    </macrodef>
 </antlib>

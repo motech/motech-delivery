@@ -63,4 +63,16 @@
         </sequential>
     </macrodef>
 
+    <macrodef name="backup.couchdb.files">
+        <attribute name="to"/>
+        <attribute name="from"/>
+        <sequential>
+            <echo message="Copying Files from  @{from} to backup at @{to}"/>
+            <copy todir="@{to}">
+                <fileset dir="@{from}"/>
+            </copy>
+            <echo message="CouchDB backup successful."/>
+        </sequential>
+    </macrodef>
+
 </antlib>

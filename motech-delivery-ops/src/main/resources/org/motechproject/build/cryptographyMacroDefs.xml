@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<antlib>
+    <macrodef name="encrypt.password">
+        <attribute name="plainTextPassword"/>
+        <sequential>
+            <java fork="false" classname="org.motechproject.delivery.cryptography.Cryptography">
+                <arg value="secretKey"/>
+                <arg value="@{plainTextPassword}"/>
+                <arg value="false"/>
+            </java>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="decrypt.password">
+        <attribute name="encryptedPassword"/>
+        <sequential>
+            <java fork="false" classname="org.motechproject.delivery.cryptography.Cryptography">
+                <arg value="secretKey"/>
+                <arg value="@{encryptedPassword}"/>
+                <arg value="true"/>
+            </java>
+        </sequential>
+    </macrodef>
+</antlib>

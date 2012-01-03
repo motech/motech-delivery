@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="motech-common-test" basedir=".">
+	<typedef resource="org/motechproject/build/cryptographyMacroDefs.xml"/>
+	
+	<target name="encrypt.password">
+		<encrypt.password plainTextPassword="password"/>
+	</target>
+
+	<target name="decrypt.password">
+		<decrypt.password encryptedPassword="eKolu5YqsL2nqTP6LWQiOQ=="/>
+	</target>
+</project>

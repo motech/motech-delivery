@@ -1,3 +1,6 @@
+#
+#  Save and exit to continue with setup.
+#
  $motechUser = "motech"
  $motechPassword = '$1$IW4OvlrH$Kui/55oif8W3VZIrnX6jL1'
  $mysqlPassword = "password"

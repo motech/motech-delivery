@@ -1,8 +1,8 @@
 #!/bin/bash
 
-ENV="production"
-phone_numbers="9880xxxxxx 9845xxxxxx"
-api_key="KK76eca1f1a1229c2cc44ee858843b426d"
+ENV="<%= monitor-evnironment %>"
+phone_numbers="<%= monitor-adminPhoneNumbers %>"
+api_key="<%= monitor-kookooKey %>"
 
 
 

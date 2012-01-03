@@ -16,7 +16,7 @@ class tomcat {
   }
 
   file { "/etc/init.d/tomcat" :
-  	content => template("tomcat/tomcat_init.d"),
+  	content => template("tomcat/tomcat.initd"),
   	mode   =>  777,
   	group  => "root",
   	owner  => "root",

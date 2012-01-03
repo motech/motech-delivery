@@ -1,15 +1,15 @@
 
 class monitor {
-	file { "/home/tamasuper/bin/monitorTama.sh":
+	file { "/home/${motechUser}/bin/monitorTama.sh":
 		source => "puppet:///modules/monitor/monitorTama.sh",
-		require => [User["tamasuper"]],
+		require => [User["${motechUser}"]],
 		mode   =>  777,
-  		group  => "tamasuper",
-  		owner  => "tamasuper",
+  		group  => "${motechUser}",
+  		owner  => "${motechUser}",
 	}
 	cron { 'monitoTamaJob':
-		command => "/home/tamasuper/bin/monitorTama.sh>/var/tmp/monitorTama.log",
-		user => tamasuper,
+		command => "/home/${motechUser}/bin/monitorTama.sh>/var/tmp/monitorTama.log",
+		user => "${motechUser}",
 		minute => '*'
 	}	
 }

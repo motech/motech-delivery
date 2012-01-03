@@ -38,7 +38,7 @@
 # ------------------------------------------------------------------------
 # CONFIGURATION
 ACTIVEMQ_CONFIGS="/etc/default/activemq $HOME/.activemqrc"
-ACTIVEMQ_HOME=$HOME/apache-activemq-5.5.1
+ACTIVEMQ_HOME=/home/<%= motechUser %>/apache-activemq-5.5.1
 # Backup invocation parameters
 COMMANDLINE_ARGS="$@"
 

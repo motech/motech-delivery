@@ -1,7 +1,7 @@
 
 class motechquartz {
 	exec { "createdbmotechquartz" :
-		command => "mysqladmin -u root PASSWORD password; mysql -u root -ppassword -e \"create database if not exists motechquartz;\"",
+		command => "mysqladmin -u root PASSWORD ${mysqlPassword}; mysql -u root -p${mysqlPassword} -e \"create database if not exists motechquartz;\"",
 		require => [Package["mysql-server"], Package["mysql"]]
 	}
 	

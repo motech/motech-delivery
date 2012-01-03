@@ -2,7 +2,7 @@
 class monitor {
 	file { "/home/${motechUser}/bin/monitorTama.sh":
 		source => "puppet:///modules/monitor/monitorTama.sh",
-		require => [User["${motechUser}"], File["/home/${motechUser}/bin"]],
+		require => [Exec["${motechUser} homedir"], File["/home/${motechUser}/bin"]],
 		mode   =>  777,
   		group  => "${motechUser}",
   		owner  => "${motechUser}",

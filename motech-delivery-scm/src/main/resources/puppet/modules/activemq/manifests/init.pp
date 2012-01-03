@@ -11,7 +11,7 @@ class activemq {
     cwd     => "/home/${motechUser}",
     creates => "/home/${motechUser}/apache-activemq-5.5.1",
     path    => ["/bin",],
-    require => [User["${motechUser}"], File["/tmp/activemq.tar.gz"]],
+    require => [Exec["${motechUser} homedir"], File["/tmp/activemq.tar.gz"]],
   }
 
   file { "/etc/init.d/activemq" :

@@ -3,7 +3,7 @@ class tomcat {
   
   file { "/tmp/apache-tomcat-7.0.22.tar.gz":
     source => "puppet:///modules/tomcat/apache-tomcat-7.0.22.tar.gz",
-    require => [User["${motechUser}"],Exec["sun_jdk_6"]]
+    require => [Exec["${motechUser} homedir"],Exec["sun_jdk_6"]]
   }
 
   exec { "tomcat_untar":

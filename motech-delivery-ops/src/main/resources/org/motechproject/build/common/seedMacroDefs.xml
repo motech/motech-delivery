@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <antlib>
-    <typedef file="org/motechproject/build/common/envMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/envMacroDefs.xml"/>
 
     <macrodef name="load.seed.data">
         <attribute name="tomcat.home"/>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <antlib>
-    <typedef file="org/motechproject/build/common/envMacroDefs.xml"/>
-    <typedef file="org/motechproject/build/common/activemqMacroDefs.xml"/>
-    <typedef file="org/motechproject/build/common/couchdbMacroDefs.xml"/>
-    <typedef file="org/motechproject/build/common/mysqlMacroDefs.xml"/>
-    <typedef file="org/motechproject/build/common/tomcatMacroDefs.xml"/>
-    <typedef file="org/motechproject/build/common/hudsonMacroDefs.xml"/>
-    <typedef file="org/motechproject/build/common/nexusMacroDefs.xml"/>
-    <typedef file="org/motechproject/build/common/seedMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/envMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/activemqMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/couchdbMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/mysqlMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/tomcatMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/hudsonMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/nexusMacroDefs.xml"/>
+    <typedef resource="org/motechproject/build/common/seedMacroDefs.xml"/>
 
     <macrodef name="download.app.from.remote">
         <attribute name="app.name"/>

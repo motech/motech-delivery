@@ -3,7 +3,7 @@
     <macrodef name="encrypt.password">
         <attribute name="plainTextPassword"/>
         <sequential>
-            <java fork="false" classname="org.motechproject.delivery.cryptography.Cryptography">
+            <java fork="false" classname="org.motechproject.delivery.cryptography.Cryptography" outputProperty="encryptedPassword">
                 <arg value="secretKey"/>
                 <arg value="@{plainTextPassword}"/>
                 <arg value="false"/>
@@ -14,7 +14,7 @@
     <macrodef name="decrypt.password">
         <attribute name="encryptedPassword"/>
         <sequential>
-            <java fork="false" classname="org.motechproject.delivery.cryptography.Cryptography">
+            <java fork="false" classname="org.motechproject.delivery.cryptography.Cryptography" outputProperty="plainTextPassword">
                 <arg value="secretKey"/>
                 <arg value="@{encryptedPassword}"/>
                 <arg value="true"/>

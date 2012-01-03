@@ -4,9 +4,11 @@
 	
 	<target name="encrypt.password">
 		<encrypt.password plainTextPassword="password"/>
+        <echo message="Your encrypted password is '${encryptedPassword}'"/>
 	</target>
 
 	<target name="decrypt.password">
 		<decrypt.password encryptedPassword="eKolu5YqsL2nqTP6LWQiOQ=="/>
+        <echo message="Your decrypted password is '${plainTextPassword}'"/>
 	</target>
 </project>

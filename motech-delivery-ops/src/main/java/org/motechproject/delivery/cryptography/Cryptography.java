@@ -43,7 +43,7 @@ public class Cryptography {
 
         cipher.init(Cipher.ENCRYPT_MODE, key);
         String encryptedPassword = base64encoder.encode(cipher.doFinal(clearText));
-        System.out.println("Your encrypted password is " + encryptedPassword);
+        System.out.println(encryptedPassword);
         return encryptedPassword;
     }
 
@@ -53,7 +53,7 @@ public class Cryptography {
 
         cipher.init(Cipher.DECRYPT_MODE, key);
         String decryptedPassword = new String(cipher.doFinal(encryptedPasswordBytes));
-        System.out.println("Your decrypted password is " + decryptedPassword);
+        System.out.println(decryptedPassword);
         return decryptedPassword;
     }
 }

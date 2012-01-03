@@ -1,9 +1,10 @@
 
-class users ( $userName ) {
+class users ( $userName, $password ) {
   user { "${userName}":
       ensure     => present,
       shell      => "/bin/bash",
       home       => "/home/${userName}",
+      password   => ${password},
   }
   
   exec { "$userName homedir":
@@ -17,5 +18,9 @@ class users ( $userName ) {
   	owner => "root",
   	group => "root",
   	mode   =>  440,
-  }  
+  } 
+  exec { "$userName passwd":
+  	command => "passwd ${userName} ${password}",
+  	require => User[$userName],
+  } 
 }

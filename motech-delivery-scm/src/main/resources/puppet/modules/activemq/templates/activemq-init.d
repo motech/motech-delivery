@@ -122,7 +122,7 @@ fi
 JAVACMD="auto"
 
 # Configure a user with non root priviledges, if no user is specified do not change user
-ACTIVEMQ_USER="<%= userName %>"
+ACTIVEMQ_USER="<%= motechUser %>"
 
 # Set jvm memory configuration
 ACTIVEMQ_OPTS_MEMORY="-Xms256M -Xmx256M"

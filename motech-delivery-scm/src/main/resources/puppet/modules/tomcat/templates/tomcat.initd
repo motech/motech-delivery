@@ -10,14 +10,14 @@
 # Required-Start: couchdb mysqld activemq
 # Defalt-Start: 2 3 4 5
 # Default-Stop: 0 1 6
-# Description: Foo init script
+# Description: tomcat init script
 ### END INIT INFO
 
 # Source function library.
 source /etc/environment
 . /etc/init.d/functions
 
-RUN_AS_USER=MOTECH_USER_TO_BE_REPLACED # Adjust run user here
+RUN_AS_USER=<%= motechUser %> # Adjust run user here
 CATALINA_HOME=/home/$RUN_AS_USER/apache-tomcat-7.0.22
 
 start() {

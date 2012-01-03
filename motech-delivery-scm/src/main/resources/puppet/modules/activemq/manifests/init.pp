@@ -7,14 +7,14 @@ class activemq {
 
   exec { "activemq_untar":
     command => "tar xfz /tmp/activemq.tar.gz",
-    user => "${userName}",
-    cwd     => "/home/${userName}",
-    creates => "/home/${userName}/apache-activemq-5.5.1",
+    user => "${motechUser}",
+    cwd     => "/home/${motechUser}",
+    creates => "/home/${motechUser}/apache-activemq-5.5.1",
     path    => ["/bin",],
   }
 
   file { "/etc/init.d/activemq" :
-  	content => template("activemq/activemq_init.d"),
+  	content => template("activemq/activemq-init.d"),
   	mode   =>  777,
   	group  => "root",
   	owner  => "root",
@@ -28,7 +28,7 @@ class activemq {
   }
 
   service { "activemq":
-    path       => "/home/${userName}/apache-activemq-5.5.1/bin/activemq",
+    path       => "/home/${motechUser}/apache-activemq-5.5.1/bin/activemq",
     ensure     => running,
     enable     => true,
     require => Exec["installservice"],

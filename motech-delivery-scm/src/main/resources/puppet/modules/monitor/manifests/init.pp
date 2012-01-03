@@ -2,14 +2,22 @@
 class monitor {
 	file { "/home/${motechUser}/bin/monitorTama.sh":
 		source => "puppet:///modules/monitor/monitorTama.sh",
-		require => [User["${motechUser}"]],
+		require => [User["${motechUser}"], File["/home/${motechUser}/bin"]],
 		mode   =>  777,
   		group  => "${motechUser}",
   		owner  => "${motechUser}",
 	}
-	cron { 'monitoTamaJob':
+	cron { 'monitorTamaJob':
 		command => "/home/${motechUser}/bin/monitorTama.sh>/var/tmp/monitorTama.log",
 		user => "${motechUser}",
-		minute => '*'
-	}	
+		minute => '*',
+		require => File["/home/${motechUser}/bin/monitorTama.sh"],
+	}
+	file { "/home/${motechUser}/bin":
+	    mode => 0755,
+	    owner => "${motechUser}",
+	    group => "${motechUser}",
+	    ensure => directory,
+	    recurse => true,
+	} 		
 }

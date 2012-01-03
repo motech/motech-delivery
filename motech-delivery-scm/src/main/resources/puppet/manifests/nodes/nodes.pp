@@ -1,4 +1,7 @@
 node default {
+ $motechUser = "motech"
+ class{users : userName => "${motechUser}" }	
+	
  include java
  include git
  include httpd

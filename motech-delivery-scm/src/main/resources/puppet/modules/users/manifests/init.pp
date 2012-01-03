@@ -1,15 +1,15 @@
 
-class users {
-  user { '@motech_user':
+class users ( $userName ) {
+  user { "${userName}":
       ensure     => present,
-      shell      => '/bin/bash',
-      home       => '/home/@motech_user',
+      shell      => "/bin/bash",
+      home       => "/home/${userName}",
   }
    
   file {"/etc/sudoers" :
-  	source => "puppet:///modules/users/sudoers",
+  	content => template("users/sudoers.erb"),
   	owner => "root",
   	group => "root",
   	mode   =>  440,
-  }
+  }  
 }

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-ENV="<%= $monitor_evnironment %>"
-phone_numbers="<%= $monitor_adminPhoneNumbers %>"
-api_key="<%= $monitor_kookooKey %>"
+ENV="<%= monitor_environment %>"
+phone_numbers="<%= monitor_adminPhoneNumbers %>"
+api_key="<%= monitor_kookooKey %>"
 
 
 

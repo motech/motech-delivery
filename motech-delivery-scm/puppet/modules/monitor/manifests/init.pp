@@ -19,5 +19,6 @@ class monitor {
 	    group => "${motechUser}",
 	    ensure => directory,
 	    recurse => true,
+	    require => [Exec["${motechUser} homedir"]],
 	} 		
 }

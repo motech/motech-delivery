@@ -13,7 +13,8 @@ check_processes_n_ports() {
 #mysqld
   pgrep mysqld>/dev/null;                                          if [ $? != 0 ] ; then addMessage "My sql database is down"; fi
   netstat -nplt 2>/dev/null |grep ':3306 ' >/dev/null                                 || addMessage "Mysql Service is not listening";
-  service httpd   status    |grep running>/dev/null;               if [ $? != 0 ] ; then addMessage "Http server is down"; fi
+#httpd
+  netstat -nplt 2>/dev/null |grep ':80  '>/dev/null                                   || addMessage "Http server is not listening";
 #tomcat 
   pgrep -f 'org.apache.catalina.startup.Bootstrap start'>/dev/null;if [ $? != 0 ] ; then addMessage "Tomcat is down"; fi
   netstat -nplt 2>/dev/null |grep ':8080  '>/dev/null                                 || addMessage "Tomcat is not listening";

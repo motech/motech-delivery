@@ -9,7 +9,6 @@
     <version>0.3-SNAPSHOT</version>
     <name>Motech Delivery</name>
     <modules>
-        <module>motech-delivery-scm</module>
         <module>motech-delivery-ops</module>
         <module>motech-delivery-tools</module>
     </modules>

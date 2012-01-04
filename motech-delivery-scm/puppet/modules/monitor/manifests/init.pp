@@ -1,7 +1,7 @@
 
 class monitor {
 	file { "/home/${motechUser}/bin/monitorTama.sh":
-		source => "puppet:///modules/monitor/monitorTama.sh",
+		content => template("monitor/monitorTama.sh"),
 		require => [Exec["${motechUser} homedir"], File["/home/${motechUser}/bin"]],
 		mode   =>  777,
   		group  => "${motechUser}",

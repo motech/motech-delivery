@@ -28,7 +28,7 @@ alertMessage="";
 addMessage () {
   if [ "$alertMessage" = "" ] 
   then
-    alertMessage="This is alert from Taama $ENV, "$1;
+    alertMessage="This is alert from $ENV, "$1;
   else
     alertMessage+=" and "$1;
   fi

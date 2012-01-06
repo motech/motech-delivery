@@ -38,6 +38,8 @@
     <macrodef name="drop.couch.db">
         <attribute name="couch.db.server"/>
         <attribute name="couch.db.port"/>
+        <attribute name="couch.db.username" default=""/>
+        <attribute name="couch.db.password" default=""/>
         <attribute name="db.name"/>
         <sequential>
             <echo message="Dropping database @{db.name}"/>
@@ -46,7 +48,7 @@
                 <arg value="-S"/>
                 <arg value="-X"/>
                 <arg value="DELETE"/>
-                <arg value="http://@{couch.db.server}:@{couch.db.port}/@{db.name}"/>
+                <arg value="http://@{couch.db.username}:@{couch.db.password}@@@{couch.db.server}:@{couch.db.port}/@{db.name}"/>
             </exec>
         </sequential>
     </macrodef>

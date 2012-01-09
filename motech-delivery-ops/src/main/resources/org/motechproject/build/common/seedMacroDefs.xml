@@ -15,6 +15,9 @@
                     <fileset dir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/lib">
                         <include name="**/*.jar"/>
                     </fileset>
+                    <fileset dir="@{tomcat.home}/lib">
+                        <include name="**/*.jar"/>
+                    </fileset>
                 </classpath>
             </java>
             <echo message="seed data loaded into @{db.name} database"/>

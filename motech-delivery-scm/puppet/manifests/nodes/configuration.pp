@@ -1,32 +1,30 @@
-###########################################
-#  MoTeCH BootStrap
-#  Save and exit to continue with setup.
-############################################
+ #-----------------------------MOTECH BOOTSTRAP---------------------------------------
+ #  Save and exit to continue with setup.
+ #------------------------------------------------------------------------------------
 
-####settings###
-# user
-# to generate password hash use 'echo "password" | openssl passwd -1 -stdin'
+ #--------------------------------SETTINGS--------------------------------------------
+ # user
+ # to generate password hash use 'echo "password" | openssl passwd -1 -stdin'
  $motechUser = "motech"
  $motechPassword = '$1$IW4OvlrH$Kui/55oif8W3VZIrnX6jL1'
 
-# mysql
+ # mysql
  $mysqlPassword = "password"
 
-# monitor
+ # monitor
  $monitor_adminPhoneNumbers = "9880xxxxxx 9880xxxxxx"
  $monitor_kookooKey = "xxx"
  $monitor_environment = "production"
 
-# couchdbslave
+ # couchdbslave
  $masterServer = "127.0.0.1"
- $dbNames = "tama-web"
+ $dbNames = "tama-web ananya"
 
+ #--------------------------------RESOURCES--------------------------------------------
+ # comment out resources not required to be installed
 
-####resources##
-# comment out resources not required to be installed
-
-#class{users : userName => "${motechUser}", password => "${motechPassword}" }
-class{couchdbslave : masterServer => "${masterServer}", dbNames => "${dbNames}" }
+ # class{users : userName => "${motechUser}", password => "${motechPassword}" }
+ # class{couchdbslave : masterServer => "${masterServer}", dbNames => "${dbNames}" }
 
  # include java
  # include git

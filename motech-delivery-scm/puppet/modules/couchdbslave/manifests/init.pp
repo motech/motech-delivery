@@ -1,11 +1,16 @@
-class couchdbslave ($masterServer, $dbNames) {
 
-  file {"/home/vijayrc/setup-slave.sh" :
-    require => Service["couchdb"]
-  	content => template("couchdb/setup-slave.sh"),
-  	owner => "vijayrc",
-  	group => "vijayrc",
-  	mode   =>  777,
+class couchdbslave ( $masterServer, $dbNames ) {
+
+  file {"/home/${motechUser}/setup-slave.sh" :
+  	content => template("couchdbslave/setup-slave.sh"),
+  	owner => "${motechUser}",
+  	group => "${motechUser}",
+  	mode   =>  733,
+  }
+
+  exec {"/home/${motechUser}/setup-slave.sh":
+    require => File["/home/${motechUser}/setup-slave.sh"],
+    command =>  "/home/${motechUser}/setup-slave.sh",
   }
 
 }

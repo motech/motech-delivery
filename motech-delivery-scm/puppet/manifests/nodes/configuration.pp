@@ -20,15 +20,20 @@
  $masterServer = "127.0.0.1"
  $dbNames = "tama-web ananya"
 
+ # postgres
+ $postgresUser="postgres"
+ $postgresPassword= '$1$IW4OvlrH$Kui/55oif8W3VZIrnX6jL1'
+
  #--------------------------------RESOURCES--------------------------------------------
  # comment out resources not required to be installed
 
  # class{users : userName => "${motechUser}", password => "${motechPassword}" }
  # class{couchdbslave : masterServer => "${masterServer}", dbNames => "${dbNames}" }
+ # class{postgres : postgresUser => "${postgresUser}", postgresPassword => "${postgresPassword}" }
 
  # include java
  # include git
- # include httpd
+ # include httpd    
  # include ant
  # include couchdb
  # include mysql

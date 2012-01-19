@@ -3,6 +3,10 @@
  #------------------------------------------------------------------------------------
 
  #--------------------------------SETTINGS--------------------------------------------
+ # operatingsystem
+ $os = "centos5" #[centos5 | centos6]
+ $word = "32b" #[32b,64b]
+
  # user
  # to generate password hash use 'echo "password" | openssl passwd -1 -stdin'
  $motechUser = "motech"
@@ -17,7 +21,7 @@
  $monitor_environment = "production"
 
  # couchdb
- $couchMachine = "master" #[master||slave]
+ $couchMachine = "master" #[master|slave]
  $couchMaster = "127.0.0.1"
  $couchDbs = "tama-web ananya"
 
@@ -25,9 +29,10 @@
  $postgresUser="postgres"
  $postgresPassword= '$1$IW4OvlrH$Kui/55oif8W3VZIrnX6jL1'
 
- $postgresMachine = "master" #[master||slave]
+ $postgresMachine = "master" #[master|slave]
  $postgresMaster = "127.0.0.1"
  $postgresSlave = "127.0.0.1"
+
 
  #--------------------------------RESOURCES--------------------------------------------
  # comment out resources not required to be installed

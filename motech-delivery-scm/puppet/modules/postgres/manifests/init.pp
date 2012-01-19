@@ -2,8 +2,8 @@ class postgres ( $postgresUser, $postgresPassword ) {
 
     $allPacks = [ "postgresql91", "postgresql91-server", "postgresql91-libs", "postgresql91-contrib", "postgresql91-devel"]
 
-    file{ "/tmp/postgres-repo.rpm":
-        source => "puppet:///modules/postgres/pgdg-centos6-9.1-4-64b.noarch.rpm",
+    file{"/tmp/postgres-repo.rpm"
+        source => "puppet:///modules/postgres/pgdg-$os-9.1-4-$word.noarch.rpm",
     }
 
     exec { "run_postgres_repo":

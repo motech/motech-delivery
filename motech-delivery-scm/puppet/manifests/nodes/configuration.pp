@@ -21,7 +21,7 @@
  $monitor_environment = "production"
 
  # couchdb
- $couchMachine = "master" #[master|slave]
+ $couchMachine = "master" #[master | slave]
  $couchMaster = "127.0.0.1"
  $couchDbs = "tama-web ananya"
 
@@ -29,7 +29,7 @@
  $postgresUser="postgres"
  $postgresPassword= '$1$IW4OvlrH$Kui/55oif8W3VZIrnX6jL1'
 
- $postgresMachine = "master" #[master|slave]
+ $postgresMachine = "master" #[master | slave]
  $postgresMaster = "127.0.0.1"
  $postgresSlave = "127.0.0.1"
 
@@ -39,8 +39,7 @@
 
  # class{users : userName => "${motechUser}", password => "${motechPassword}" }
  # class{couchdb : couchMaster => "${couchMaster}", couchDbs => "${couchDbs}", couchMachine => "${couchMachine}" }
- # class{postgres : postgresUser => "${postgresUser}", postgresPassword => "${postgresPassword}" }
- # class{postgresreplication : postgresMaster => "${postgresMaster}", postgresSlave => "${postgresSlave}", postgresUser => "${postgresUser}", postgresMachine => "${postgresMachine}" }
+ # class{postgres : postgresUser => "${postgresUser}", postgresPassword => "${postgresPassword}", postgresMachine => "${postgresMachine}", postgresMaster => "${postgresMaster}", postgresSlave => "${postgresSlave}"}
 
  # include java
  # include git

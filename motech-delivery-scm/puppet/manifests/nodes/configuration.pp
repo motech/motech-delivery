@@ -24,12 +24,17 @@
  $postgresUser="postgres"
  $postgresPassword= '$1$IW4OvlrH$Kui/55oif8W3VZIrnX6jL1'
 
+ # postgres replication
+ $postgresMaster = "127.0.0.1"
+ $postgresSlave = "127.0.0.1"
+
  #--------------------------------RESOURCES--------------------------------------------
  # comment out resources not required to be installed
 
  # class{users : userName => "${motechUser}", password => "${motechPassword}" }
  # class{couchdbslave : masterServer => "${masterServer}", dbNames => "${dbNames}" }
  # class{postgres : postgresUser => "${postgresUser}", postgresPassword => "${postgresPassword}" }
+ # class{postgresReplication : postgresMaster => "${postgresMaster}", postgresSlave => "${postgresSlave}" }
 
  # include java
  # include git

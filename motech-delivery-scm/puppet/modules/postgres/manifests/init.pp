@@ -1,4 +1,4 @@
-class postgres {
+class postgres ( $postgresUser, $postgresPassword ) {
 
     $allPacks = [ "postgresql91", "postgresql91-server", "postgresql91-libs", "postgresql91-contrib", "postgresql91-devel"]
 
@@ -12,8 +12,10 @@ class postgres {
         creates => "/etc/yum.repos.d/pgdg-91-centos.repo"
     }
 
-    package { $allPacks:
+    package { "postgres_packs":
+        name => $allPacks
 		ensure => "present",
+		require => Exec["run_postgres_repo"],
 	}
 
 	user { "${postgresUser}":
@@ -21,6 +23,7 @@ class postgres {
         shell      => "/bin/bash",
         home       => "/home/$postgresUser",
         password   => $postgresPassword,
+        require    => Exec["run_postgres_repo"],
     }
 
     file { "/usr/local/pgsql/":
@@ -37,7 +40,7 @@ class postgres {
     exec { "initdb":
         command =>"/usr/pgsql-9.1/bin/initdb -D /usr/local/pgsql/data",
         user => "${postgresUser}",
-        require => File["/usr/local/pgsql/data"],
+        require => [File["/usr/local/pgsql/data"], Package["postgres_packs"]],
     }
 
     exec { "start-server":

@@ -1,4 +1,4 @@
-class couchdb {
+class couchdb  ($couchMaster, $couchDbs, $couchMachine ) {
   
   include repos::epelcouchdb
    
@@ -14,4 +14,21 @@ class couchdb {
     hasstatus  => true,
     require => Package["couchdb"],
   }
+
+  if $couchMachine == 'slave' {
+
+    file {"/home/${motechUser}/couch-slave.sh" :
+        content => template("couchdbslave/couch-slave.sh"),
+        owner => "${motechUser}",
+        group => "${motechUser}",
+        mode   =>  764,
+    }
+
+    exec {"run_slave_script":
+        require => File["/home/${motechUser}/couch-slave.sh"],
+        command =>  "/home/${motechUser}/couch-slave.sh",
+    }
+
+  }
+
 }

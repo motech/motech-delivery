@@ -1,7 +1,7 @@
 #!/bin/bash
 
-master="<%= masterServer %>"
-dbs="<%= dbNames %>"
+master="<%= couchdbMaster %>"
+dbs="<%= couchDbs %>"
 
 p1='{"source": "http://'
 p2=':5984/'

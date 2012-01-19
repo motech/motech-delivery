@@ -16,24 +16,25 @@
  $monitor_kookooKey = "xxx"
  $monitor_environment = "production"
 
- # couchdbslave
- $masterServer = "127.0.0.1"
- $dbNames = "tama-web ananya"
+ # couchdb
+ $couchMachine = "master" #[master||slave]
+ $couchMaster = "127.0.0.1"
+ $couchDbs = "tama-web ananya"
 
  # postgres
  $postgresUser="postgres"
  $postgresPassword= '$1$IW4OvlrH$Kui/55oif8W3VZIrnX6jL1'
 
  # postgres replication
+ $postgresMachine = "master" #[master||slave]
  $postgresMaster = "127.0.0.1"
  $postgresSlave = "127.0.0.1"
- $postgresMachine = "master" #master, slave
 
  #--------------------------------RESOURCES--------------------------------------------
  # comment out resources not required to be installed
 
  # class{users : userName => "${motechUser}", password => "${motechPassword}" }
- # class{couchdbslave : masterServer => "${masterServer}", dbNames => "${dbNames}" }
+ # class{couchdb : couchMaster => "${couchMaster}", couchDbs => "${couchDbs}", couchMachine => "${couchMachine}" }
  # class{postgres : postgresUser => "${postgresUser}", postgresPassword => "${postgresPassword}" }
  # class{postgresreplication : postgresMaster => "${postgresMaster}", postgresSlave => "${postgresSlave}", postgresUser => "${postgresUser}", postgresMachine => "${postgresMachine}" }
 
@@ -41,7 +42,6 @@
  # include git
  # include httpd    
  # include ant
- # include couchdb
  # include mysql
  # include mysqlserver
  # include activemq

@@ -8,7 +8,7 @@ class couchdbslave ( $masterServer, $dbNames ) {
   	mode   =>  764,
   }
 
-  exec {"/home/${motechUser}/setup-slave.sh":
+  exec {"run_slave_script":
     require => File["/home/${motechUser}/couch-slave.sh"],
     command =>  "/home/${motechUser}/couch-slave.sh",
   }

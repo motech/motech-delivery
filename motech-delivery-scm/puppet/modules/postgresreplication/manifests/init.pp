@@ -1,11 +1,24 @@
 
 class postgresreplication ( $postgresMaster, $postgresSlave, $postgresUser) {
 
+    exec{"backup_master_conf":
+        cwd     => "/usr/local/pgsql/data/",
+        command => "mv postgresql.conf postgresql.conf.backup && mv pg_hba.conf pg_hba.conf.backup",
+        user    => "${postgresUser}",
+    }
+
+    exec{"backup_slave_conf":
+        cwd     => "/usr/local/pgsql/data/",
+        command => "mv postgresql.conf postgresql.conf.backup",
+        user    => "${postgresUser}",
+    }
+
     file {"/usr/local/pgsql/data/postgresql.conf":
         content => template("postgresreplication/master_postgresql.erb"),
         owner => "${postgresUser}",
         group => "${postgresUser}",
   	    mode   =>  600,
+  	    require => Exec["backup_master_conf"],
     }
 
     file {"/usr/local/pgsql/data/pg_hba.conf":
@@ -13,6 +26,7 @@ class postgresreplication ( $postgresMaster, $postgresSlave, $postgresUser) {
         owner => "${postgresUser}",
         group => "${postgresUser}",
   	    mode   =>  600,
+  	    require => Exec["backup_master_conf"]
     }
 
     file {"/usr/local/pgsql/data/postgresql.conf":
@@ -20,6 +34,7 @@ class postgresreplication ( $postgresMaster, $postgresSlave, $postgresUser) {
         owner => "${postgresUser}",
         group => "${postgresUser}",
   	    mode   =>  600,
+  	    require => Exec["backup_slave_conf"]
     }
 
     file {"/usr/local/pgsql/data/recovery.conf":

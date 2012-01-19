@@ -35,7 +35,7 @@
  # class{users : userName => "${motechUser}", password => "${motechPassword}" }
  # class{couchdbslave : masterServer => "${masterServer}", dbNames => "${dbNames}" }
  # class{postgres : postgresUser => "${postgresUser}", postgresPassword => "${postgresPassword}" }
- # class{postgresreplication : postgresMaster => "${postgresMaster}", postgresSlave => "${postgresSlave}", postgresUser => "${postgresUser}" }
+ # class{postgresreplication : postgresMaster => "${postgresMaster}", postgresSlave => "${postgresSlave}", postgresUser => "${postgresUser}", postgresMachine => "${postgresMachine}" }
 
  # include java
  # include git

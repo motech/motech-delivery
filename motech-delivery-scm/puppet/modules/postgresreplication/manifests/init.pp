@@ -1,7 +1,8 @@
 
 class postgresreplication ( $postgresMaster, $postgresSlave, $postgresUser, $postgresMachine) {
 
-    case $postgresMachine{
+    case $postgresMachine {
+    
         master:{
             exec{"backup_master_conf":
                     cwd     => "/usr/local/pgsql/data/",
@@ -25,6 +26,7 @@ class postgresreplication ( $postgresMaster, $postgresSlave, $postgresUser, $pos
                 require => Exec["backup_master_conf"]
             }
         }
+
         slave:{
             exec{"backup_slave_conf":
                 cwd     => "/usr/local/pgsql/data/",

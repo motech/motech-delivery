@@ -27,6 +27,7 @@
  # postgres replication
  $postgresMaster = "127.0.0.1"
  $postgresSlave = "127.0.0.1"
+ $postgresMachine = "master" #master, slave
 
  #--------------------------------RESOURCES--------------------------------------------
  # comment out resources not required to be installed

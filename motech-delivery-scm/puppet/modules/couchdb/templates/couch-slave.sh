@@ -1,6 +1,6 @@
 #!/bin/bash
 
-master="<%= couchdbMaster %>"
+master="<%= couchMaster %>"
 dbs="<%= couchDbs %>"
 
 p1='{"source": "http://'

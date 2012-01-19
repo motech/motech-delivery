@@ -25,7 +25,6 @@
  $postgresUser="postgres"
  $postgresPassword= '$1$IW4OvlrH$Kui/55oif8W3VZIrnX6jL1'
 
- # postgres replication
  $postgresMachine = "master" #[master||slave]
  $postgresMaster = "127.0.0.1"
  $postgresSlave = "127.0.0.1"

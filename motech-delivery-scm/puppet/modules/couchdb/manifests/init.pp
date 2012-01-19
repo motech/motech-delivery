@@ -18,7 +18,7 @@ class couchdb  ($couchMaster, $couchDbs, $couchMachine ) {
   if $couchMachine == 'slave' {
 
     file {"/home/${motechUser}/couch-slave.sh" :
-        content => template("couchdbslave/couch-slave.sh"),
+        content => template("couchdb/couch-slave.sh"),
         owner => "${motechUser}",
         group => "${motechUser}",
         mode   =>  764,

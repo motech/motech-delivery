@@ -2,12 +2,12 @@ package org.motechproject.deliverytools.seed.domain;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.ektorp.support.TypeDiscriminator;
-import org.motechproject.model.MotechAuditableDataObject;
+import org.motechproject.model.MotechBaseDataObject;
 
 import java.util.List;
 
 @TypeDiscriminator("doc.type === 'Regimen'")
-public class Regimen extends MotechAuditableDataObject {
+public class Regimen extends MotechBaseDataObject {
     @JsonProperty
     private String type = "Regimen";
     @JsonProperty

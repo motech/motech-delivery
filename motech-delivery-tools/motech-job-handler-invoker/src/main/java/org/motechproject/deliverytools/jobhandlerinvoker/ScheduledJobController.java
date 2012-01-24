@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
@@ -44,8 +45,7 @@ public class ScheduledJobController {
             Object bean = applicationContext.getBean(beanName);
             Method method = ReflectionUtils.findMethod(bean.getClass(), request.methodName(), MotechEvent.class);
 
-            ScheduledJobName scheduledJobName = new ScheduledJobName(request.jobId(), method);
-            ScheduledJob scheduledJob = allScheduledJobs.get(scheduledJobName.jobId(request.isRepeating()));
+            ScheduledJob scheduledJob = getScheduleJob(request, method);
             MotechEventInvocation invocation = new MotechEventInvocation(scheduledJob);
             ReflectionUtils.invokeMethod(method, bean, invocation.event());
             return "All Good";
@@ -54,6 +54,28 @@ public class ScheduledJobController {
             logger.error(String.format("Could not handle the request: %s", request.toString()), e);
             return ExceptionUtils.getStackTrace(e);
         }
+    }
+
+    private ScheduledJob getScheduleJob(JobHandlerInvokeRequest request, Method method) {
+        ScheduledJobName scheduledJobName = new ScheduledJobName(request.jobId(), method);
+        return allScheduledJobs.get(scheduledJobName.jobId(request.isRepeating()));
+    }
+
+    @RequestMapping(value = "exists", method = RequestMethod.GET)
+    @ResponseBody 
+    public String exists(JobHandlerInvokeRequest request, HttpServletResponse response) {
+        String className = request.className();
+        String beanName = className.substring(0, 1).toLowerCase() + className.substring(1, className.length());
+        Object bean = applicationContext.getBean(beanName);
+        Method method = ReflectionUtils.findMethod(bean.getClass(), request.methodName(), MotechEvent.class);
+        try {
+            ScheduledJob scheduledJob = getScheduleJob(request, method);
+            if (scheduledJob != null)
+                return "true";
+        } catch (IllegalArgumentException e) {
+            if (e.getMessage().startsWith("No job named:")) return "false";
+        }
+        return "error";
     }
 
     @RequestMapping(value = "list", method = RequestMethod.GET)

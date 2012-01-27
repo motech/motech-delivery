@@ -3,6 +3,7 @@
 ENV="<%= monitor_environment %>"
 phone_numbers="<%= monitor_adminPhoneNumbers %>"
 api_key="<%= monitor_kookooKey %>"
+app_url="<%= monitor_app_url %>"
 
 
 
@@ -18,6 +19,8 @@ check_processes_n_ports() {
 #tomcat 
   pgrep -f 'org.apache.catalina.startup.Bootstrap start'>/dev/null;if [ $? != 0 ] ; then addMessage "Tomcat is down"; fi
   netstat -nplt 2>/dev/null |grep ':8080  '>/dev/null                                 || addMessage "Tomcat is not listening";
+#app
+  appIsUp=$(curl --write-out %{http_code} --silent --output /dev/null "$app_url"); if [ $appIsUp != 200 ] ; then addMessage "Application is down"; fi
 #active mq
   pgrep -f 'apache-activemq-5..../bin/run.jar start'>/dev/null;    if [ $? != 0 ] ; then addMessage "Active MQ is down"; fi
   netstat -nplt 2>/dev/null |grep ':61616 '>/dev/null                                 || addMessage "Active MQ Service is not listening";

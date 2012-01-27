@@ -19,6 +19,7 @@
  $monitor_adminPhoneNumbers = "9880xxxxxx 9880xxxxxx"
  $monitor_kookooKey = "xxx"
  $monitor_environment = "production"
+ $monitor_app_url = "http://localhost:8080/tama/login"
 
  # couchdb
  $couchMachine = "master" #[master | slave]

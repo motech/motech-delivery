@@ -16,10 +16,11 @@ public class HttpEndpoint {
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     @RequestMapping(value = "receive", method = RequestMethod.GET)
-    public void receive(HttpServletRequest servletRequest) {
+    public String receive(HttpServletRequest servletRequest) {
         String queryString = servletRequest.getQueryString();
         logger.info(String.format("Received request: %s", queryString));
         lastRequest = new Request(queryString);
+        return "Received";
     }
 
     @RequestMapping(value = "lastreceived", method = RequestMethod.GET)

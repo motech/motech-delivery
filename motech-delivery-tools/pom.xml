@@ -19,6 +19,7 @@
         <module>motech-kookoo-automation</module>
         <module>motech-outbound-endpoint</module>
         <module>motech-seed</module>
+        <module>motech-delivery-tools-web</module>
     </modules>
 
     <dependencies>

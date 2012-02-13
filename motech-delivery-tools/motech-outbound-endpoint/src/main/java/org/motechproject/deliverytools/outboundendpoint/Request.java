@@ -13,4 +13,9 @@ public class Request {
     public String queryString() {
         return queryString;
     }
+
+    @Override
+    public String toString() {
+        return queryString();
+    }
 }

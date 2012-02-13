@@ -11,11 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
+import static ch.lambdaj.Lambda.joinFrom;
+
 @RequestMapping("/motech-delivery-tools/outbound")
 @Controller
 public class HttpEndpoint {
     private static Request lastRequest;
     private Logger logger = Logger.getLogger(this.getClass().getName());
+    private RequestArchive requestArchive = new RequestArchive();
 
     @RequestMapping(value = "receive", method = RequestMethod.GET)
     @ResponseBody
@@ -23,6 +26,7 @@ public class HttpEndpoint {
         String queryString = URLDecoder.decode(servletRequest.getQueryString(), "UTf-8");
         logger.info(String.format("Received request: %s", queryString));
         lastRequest = new Request(queryString);
+        requestArchive.archive(lastRequest);
         return "Received";
     }
 
@@ -36,6 +40,12 @@ public class HttpEndpoint {
             }
         }
         return lastRequestQuery(response);
+    }
+
+    @RequestMapping(value = "all", method = RequestMethod.GET)
+    @ResponseBody
+    public String getAll(HttpServletResponse response) throws InterruptedException {
+        return joinFrom(requestArchive.getAll(), "<br>").queryString();
     }
 
     private String lastRequestQuery(HttpServletResponse response) {

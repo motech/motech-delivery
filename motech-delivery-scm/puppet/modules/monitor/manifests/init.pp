@@ -10,7 +10,7 @@ class monitor {
 	cron { 'monitorMotechJob':
 		command => "/home/${motechUser}/bin/monitorMotechService.sh>/var/tmp/monitorMotechService.log",
 		user => "${motechUser}",
-		minute => '*',
+		minute => '*/15',
 		require => File["/home/${motechUser}/bin/monitorMotechService.sh"],
 	}
 	file { "/home/${motechUser}/bin":

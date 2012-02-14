@@ -2,7 +2,7 @@ class postgres ( $postgresUser, $postgresPassword, $postgresMachine, $postgresMa
 
     $allPacks = [ "postgresql91", "postgresql91-server", "postgresql91-libs", "postgresql91-contrib", "postgresql91-devel"]
 
-    file{"/tmp/postgres-repo.rpm"
+    file{"/tmp/postgres-repo.rpm":
         source => "puppet:///modules/postgres/pgdg-$os-9.1-4-$word.noarch.rpm",
     }
 
@@ -13,7 +13,7 @@ class postgres ( $postgresUser, $postgresPassword, $postgresMachine, $postgresMa
     }
 
     package { "postgres_packs":
-        name => $allPacks
+        name => $allPacks,
 		ensure => "present",
 		require => Exec["run_postgres_repo"],
 	}

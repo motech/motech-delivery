@@ -20,6 +20,7 @@
         <module>motech-outbound-endpoint</module>
         <module>motech-seed</module>
         <module>motech-delivery-tools-web</module>
+        <module>motech-index-updater</module>
     </modules>
 
     <dependencies>

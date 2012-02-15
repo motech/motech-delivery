@@ -15,9 +15,9 @@
             <version>1.2.2</version>
         </dependency>
         <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20080701</version>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>1.7.1</version>
         </dependency>
     </dependencies>
 </project>

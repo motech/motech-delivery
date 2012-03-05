@@ -9,6 +9,6 @@ echo "# EL6-64bit - http://download.fedoraproject.org/pub/epel/6/x86_64/epel-rel
 
 cd /tmp/ && wget $1 --output-document=epel-release.rpm && rpm -ivh /tmp/epel-release.rpm && \
 yum -y install puppet && yum -y install git && \
-cd /tmp/ && git clone git://github.com/motech/motech-delivery.git && \
+cd /tmp/ && git clone git@github.com:motech/motech-delivery.git && \
 cd /tmp/motech-delivery/motech-delivery-scm/puppet  && vi manifests/nodes/configuration.pp && \
 puppet apply manifests/site.pp --modulepath=modules/

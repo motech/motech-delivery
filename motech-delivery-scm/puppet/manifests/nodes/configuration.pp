@@ -6,6 +6,7 @@
  # operatingsystem
  $os = "centos5" #[centos5 | centos6]
  $word = "32b" #[32b,64b]
+ $architechture = "x64" # [x64|i586]
 
  # user
  # to generate password hash use 'echo "password" | openssl passwd -1 -stdin'

@@ -1,7 +1,7 @@
 class java {
   file { "/tmp/jdk6.bin" :
-  	source => "puppet:///modules/java/jdk-6u29-linux-x64-rpm.bin",  	
-	mode => 775,
+    source => "puppet:///modules/java/jdk-6u29-linux-$architecture-rpm.bin",
+    mode => 775,
   }
   exec { "sun_jdk_6":
     path => ["/usr/bin","/bin","/usr/sbin","/sbin"],

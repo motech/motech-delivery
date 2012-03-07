@@ -8,7 +8,7 @@
 ### BEGIN INIT INFO
 # Provides: tomcat
 # Required-Start: couchdb mysqld activemq
-# Defalt-Start: 2 3 4 5
+# Default-Start: 2 3 4 5
 # Default-Stop: 0 1 6
 # Description: tomcat init script
 ### END INIT INFO

@@ -29,8 +29,8 @@
 
 ### BEGIN INIT INFO
 # Provides: activemq
-# Required-Start: mysqld
-# Defalt-Start: 2 3 4 5
+# Required-Start:
+# Default-Start: 2 3 4 5
 # Default-Stop: 0 1 6
 # Description: Foo init script
 ### END INIT INFO

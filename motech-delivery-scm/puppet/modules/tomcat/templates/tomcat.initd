@@ -23,7 +23,7 @@ CATALINA_HOME=/home/$RUN_AS_USER/apache-tomcat-7.0.22
 start() {
         echo "Starting Tomcat: "
         if [ "x$USER" != "x$RUN_AS_USER" ]; then
-          su - $RUN_AS_USER -c "$CATALINA_HOME/bin/startup.sh"
+          su - $RUN_AS_USER -c "export JAVA_OPTS='-XX:MaxPermSize=256M';$CATALINA_HOME/bin/startup.sh"
         else
           $CATALINA_HOME/bin/startup.sh
         fi

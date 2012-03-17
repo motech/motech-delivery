@@ -17,4 +17,11 @@ public class DocumentClass {
         this.documentMethods.add(documentMethod);
     }
 
+    public String name() {
+        return name;
+    }
+
+    public List<DocumentMethod> methods() {
+        return documentMethods;
+    }
 }

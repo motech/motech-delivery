@@ -1,19 +1,27 @@
 package org.motechproject.deliverytools.document.presenter;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.motechproject.deliverytools.document.domain.DocumentClass;
+import org.motechproject.deliverytools.document.domain.DocumentMethod;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 
 public class HtmlPresenterTest {
 
     private HtmlPresenter presenter;
 
     @Test
-    public void shouldProduceHTMLString() {
-        List<DocumentClass> classList = new ArrayList<DocumentClass>();
-        presenter = new HtmlPresenter(classList);
-        System.out.println(presenter.show());
+    public void shouldProduceHTMLString() throws IOException {
+        DocumentClass documentClass = new DocumentClass(Integer.class.getName());
+
+        for (Method method : Integer.class.getDeclaredMethods())
+            documentClass.addMethod(new DocumentMethod(1, method));
+
+        presenter = new HtmlPresenter(Arrays.asList(documentClass));
+        FileUtils.writeStringToFile(new File("sample_doc.html"), presenter.show());
     }
 }

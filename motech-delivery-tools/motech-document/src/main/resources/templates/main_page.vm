@@ -1,4 +1,40 @@
 <html>
 <title>MotechDoc</title>
-<body>$key</body>
+
+<body>
+    #foreach($class in $classList)
+        #printClass($class)
+    #end
 </html>
+
+
+#macro(printClass $class)
+<div class="class-box">
+    <h3>$class.name()</h3>
+    <ol>
+        #foreach($method in $class.methods())
+            <li>#printMethod($method)</li>
+        #end
+    </ol>
+</div>
+#end
+
+
+#macro(printMethod $method)
+<div class="method-box">
+    <fieldset>
+
+        <legend>$method.name()</legend>
+
+        <table class="param-table">
+            <thead><td>name</td><td>Type</td><td>Description</td></thead>
+            #foreach($argument in $method.arguments())
+                <tr><td>@argument_name@</td><td>$argument.getName()</td><td>@argument_description@</td></tr>
+            #end
+        </table>
+
+        
+
+    </fieldset>
+</div>
+#end

@@ -15,4 +15,16 @@ public class DocumentMethod {
         return method.getDeclaringClass().getName();
     }
 
+    public Class<?>[] arguments() {
+        return method.getParameterTypes();
+    }
+
+    public Class<?> returnType() {
+        return method.getReturnType();
+    }
+
+    public String name() {
+        return method.getName();
+    }
+
 }

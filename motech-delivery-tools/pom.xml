@@ -21,6 +21,7 @@
         <module>motech-seed</module>
         <module>motech-delivery-tools-web</module>
         <module>motech-index-updater</module>
+        <module>motech-document</module>
     </modules>
 
     <dependencies>

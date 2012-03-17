@@ -1,5 +1,8 @@
-package org.motechproject.deliverytools.document;
+package org.motechproject.deliverytools.document.repository;
 
+import org.motechproject.deliverytools.document.domain.Document;
+import org.motechproject.deliverytools.document.domain.DocumentClass;
+import org.motechproject.deliverytools.document.domain.DocumentMethod;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Repository;

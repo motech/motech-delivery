@@ -1,4 +1,4 @@
-package org.motechproject.deliverytools.document;
+package org.motechproject.deliverytools.document.domain;
 
 import java.lang.annotation.*;
 

@@ -23,8 +23,16 @@ public class DocumentMethod {
         return method.getReturnType();
     }
 
+    public boolean returns(){
+        return method.getGenericReturnType() != null;
+    }
+
     public String name() {
         return method.getName();
+    }
+
+    public boolean hasArguments() {
+        return method.getParameterTypes().length > 0;
     }
 
 }

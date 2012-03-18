@@ -1,6 +1,5 @@
-
 table, tbody {
-    font-size: 13px;
+    font-size: 12px;
     border-spacing: 0px;
 }
 
@@ -11,13 +10,31 @@ td, th {
     border: 0 none;
 }
 
-th {
+thead {
     text-decoration: underline;
-    background-color: #5f9ea0;
+    color: #5f9ea0;
 }
 
+.method-box {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
 
-#params-table{
-    background-color: #dcdcdc;
+.params-table {
+    padding-top: 3px;
+    padding-bottom: 5px;
+}
+
+.small-title {
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 3px;
+    padding-top: 10px;
+}
+
+fieldset{
+    border-color: #f5f5f5;
+    border-left-width: 0px;
+    border-right-width: 0px;
 }
 

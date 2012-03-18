@@ -29,3 +29,74 @@
 2012-03-17 23:44:49,449 - Velocimacro : added VM printClass: source=main_page.vm
 2012-03-17 23:44:49,449 - Velocimacro : added VM printMethod: source=main_page.vm
 2012-03-17 23:44:49,449 - ResourceManager : found main_page.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2012-03-18 14:57:26,766 - Log4JLogChute initialized using file 'velocity.log'
+2012-03-18 14:57:26,767 - Initializing Velocity, Calling init()...
+2012-03-18 14:57:26,767 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2012-03-18 14:57:26,767 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2012-03-18 14:57:26,767 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2012-03-18 14:57:26,767 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2012-03-18 14:57:26,767 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2012-03-18 14:57:26,767 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2012-03-18 14:57:26,772 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2012-03-18 14:57:26,773 - Do unicode file recognition:  false
+2012-03-18 14:57:26,773 - FileResourceLoader : adding path '/home/vijayrc/Projs/TW/Motech/Code/motech-delivery/motech-delivery-tools/motech-document/target/classes/templates'
+2012-03-18 14:57:26,784 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2012-03-18 14:57:26,786 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2012-03-18 14:57:26,787 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2012-03-18 14:57:26,787 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2012-03-18 14:57:26,788 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2012-03-18 14:57:26,788 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2012-03-18 14:57:26,790 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2012-03-18 14:57:26,791 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2012-03-18 14:57:26,792 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2012-03-18 14:57:26,793 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2012-03-18 14:57:26,823 - Created '20' parsers.
+2012-03-18 14:57:26,829 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2012-03-18 14:57:26,829 - Velocimacro : Default library not found.
+2012-03-18 14:57:26,830 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2012-03-18 14:57:26,830 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2012-03-18 14:57:26,830 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2012-03-18 14:57:26,830 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2012-03-18 14:57:26,847 - Velocimacro : added VM printClass: source=main_page.vm
+2012-03-18 14:57:26,847 - Velocimacro : added VM printMethod: source=main_page.vm
+2012-03-18 14:57:26,847 - ResourceManager : found main_page.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2012-03-18 14:57:26,867 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,867 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,868 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,868 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,868 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,868 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,868 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,868 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,868 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,869 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,873 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,873 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,873 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,873 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,873 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,874 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,874 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,874 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,874 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,875 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,875 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,875 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,875 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,876 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,876 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,876 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,876 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,876 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,876 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,876 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,877 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,877 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,877 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,877 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,877 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,878 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,878 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,878 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,878 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.
+2012-03-18 14:57:26,878 - Null reference [template 'main_page.vm', line 40, column 29] : $arument.getName() cannot be resolved.

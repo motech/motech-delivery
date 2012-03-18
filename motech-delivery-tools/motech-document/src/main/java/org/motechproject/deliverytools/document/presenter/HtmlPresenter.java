@@ -20,7 +20,7 @@ public class HtmlPresenter {
         this.classList = classList;
     }
 
-    public String show() throws IOException {
+    public String print() throws IOException {
         Properties properties = new Properties();
         properties.setProperty("file.resource.loader.path", getClass().getResource("/templates").getPath());
         VelocityEngine engine = new VelocityEngine(properties);

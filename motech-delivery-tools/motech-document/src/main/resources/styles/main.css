@@ -1,6 +1,10 @@
-table, tbody {
+div{
     font-size: 12px;
+}
+
+table, tbody {
     border-spacing: 0px;
+    font-size: 12px;
 }
 
 td, th {
@@ -11,8 +15,8 @@ td, th {
 }
 
 thead {
-    text-decoration: underline;
-    color: #5f9ea0;
+    color: black;
+    background-color: #dcdcdc;
 }
 
 .method-box {
@@ -27,9 +31,9 @@ thead {
 
 .small-title {
     font-size: 12px;
-    font-weight: bold;
     padding-bottom: 3px;
     padding-top: 10px;
+    color: #4169e1;
 }
 
 fieldset{
@@ -38,3 +42,11 @@ fieldset{
     border-right-width: 0px;
 }
 
+.page-box{
+    width: 1200px;
+}
+
+.method-legend{
+    font-size: 12px;
+    font-weight: bold;
+}

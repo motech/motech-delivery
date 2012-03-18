@@ -4,9 +4,12 @@
     <style type="text/css">$style</style>
 </head>
 <body>
+<div class="page-box">
     #foreach($class in $classList)
         #printClass($class)
     #end
+</div>
+</body>
 </html>
 
 
@@ -25,41 +28,41 @@
 #macro(printMethod $method)
 <div class="method-box">
     <fieldset>
-        <legend>$method.name()()</legend>
+        <legend class="method-legend">$method.name()()</legend>
         <div class="small-title">Takes:</div>
-        <table class="params-table">
-            <thead>
-            <td>name</td>
-            <td>type</td>
-            <td>description</td>
-            </thead>
-            #if($method.hasArguments())
+        #if($method.hasArguments())
+            <table class="params-table">
+                <thead>
+                <td>name</td>
+                <td>type</td>
+                <td>description</td>
+                </thead>
                 #foreach($argument in $method.arguments())
                     <tr>
-                        <td>@argument_name@</td>
-                        <td>$arument.getName()</td>
-                        <td>@argument_description@</td>
+                        <td>@name@</td>
+                        <td>$argument</td>
+                        <td>@description@</td>
                     </tr>
                 #end
-            #else
-                NIL
-            #end
-        </table>
+            </table>
+        #else
+            <p>nil</p>
+        #end
         <div class="small-title">Returns:</div>
-        <table class="return-table">
-            <thead>
-            <td>type</td>
-            <td>description</td>
-            </thead>
-            #if($method.returns())
+        #if($method.returns())
+            <table class="return-table">
+                <thead>
+                <td>type</td>
+                <td>description</td>
+                </thead>
                 <tr>
                     <td>$method.returnType()</td>
-                    <td>@argument_description@</td>
+                    <td>@description@</td>
                 </tr>
-            #else
-                void
-            #end
-        </table>
+            </table>
+        #else
+            </p>void</p>
+        #end
     </fieldset>
 </div>
 #end

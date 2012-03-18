@@ -22,6 +22,6 @@ public class HtmlPresenterTest {
             documentClass.addMethod(new DocumentMethod(1, method));
 
         presenter = new HtmlPresenter(Arrays.asList(documentClass));
-        FileUtils.writeStringToFile(new File("sample_doc.html"), presenter.show());
+        FileUtils.writeStringToFile(new File("sample_doc.html"), presenter.print());
     }
 }

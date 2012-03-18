@@ -3,7 +3,7 @@ div{
 }
 
 table, tbody {
-    border-spacing: 0px;
+    border-spacing: 2px;
     font-size: 12px;
 }
 
@@ -16,7 +16,7 @@ td, th {
 
 thead {
     color: black;
-    background-color: #dcdcdc;
+    background-color: #e6e6fa;
 }
 
 .method-box {
@@ -24,9 +24,10 @@ thead {
     padding-top: 10px;
 }
 
-.params-table {
+.params-table{
     padding-top: 3px;
     padding-bottom: 5px;
+    width: 70%;
 }
 
 .small-title {
@@ -43,10 +44,14 @@ fieldset{
 }
 
 .page-box{
-    width: 1200px;
+    width: 800px;
 }
 
 .method-legend{
     font-size: 12px;
     font-weight: bold;
+}
+
+.type-col{
+    width: 40%;
 }

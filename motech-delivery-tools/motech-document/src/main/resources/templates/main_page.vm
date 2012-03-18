@@ -33,9 +33,9 @@
         #if($method.hasArguments())
             <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                 #foreach($argument in $method.arguments())
                     <tr>
@@ -50,10 +50,10 @@
         #end
         <div class="small-title">Returns:</div>
         #if($method.returns())
-            <table class="return-table">
+            <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>$method.returnType()</td>

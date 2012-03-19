@@ -54,4 +54,5 @@
  # include duplicity
  # include motechquartz
  # include monitor
+ # include ssl
 

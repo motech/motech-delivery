@@ -4,6 +4,7 @@
 	<typedef resource="org/motechproject/build/common/activemqMacroDefs.xml" />
 	<typedef resource="org/motechproject/build/common/couchdbMacroDefs.xml" />
 	<typedef resource="org/motechproject/build/common/mysqlMacroDefs.xml" />
+	<typedef resource="org/motechproject/build/common/postgresMacroDefs.xml" />
 	<typedef resource="org/motechproject/build/common/tomcatMacroDefs.xml" />
 
 	<macrodef name="start.master.machine">

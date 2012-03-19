@@ -10,7 +10,7 @@
             <set.service.home/>
             <echo message="Starting PostGres..."/>
             <exec executable="${script.interpreter}" dir="${service.home}">
-                <arg line="service postgres-${version} start"/>
+                <arg line="service postgresql-@{version} start"/>
             </exec>
             <echo message="Started PostGres..."/>
         </sequential>
@@ -24,7 +24,7 @@
             <set.service.home/>
             <echo message="Stopping PostGres..."/>
             <exec executable="${script.interpreter}" dir="${service.home}">
-                <arg line="service postgres-${version} stop"/>
+                <arg line="service postgresql-@{version} stop"/>
             </exec>
             <echo message="Stopped PostGres..."/>
         </sequential>

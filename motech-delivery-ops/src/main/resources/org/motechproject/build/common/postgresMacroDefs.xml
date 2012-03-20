@@ -28,27 +28,4 @@
         </sequential>
     </macrodef>
 
-    <macrodef name="restore.data.for.postgres.db.from.file.source">
-        <attribute name="postgres.backup.folder"/>
-        <attribute name="postgres.data.folder"/>
-        <sequential>
-            <echo message="Copying SQL form data fileset from backup at @{postgres.backup.folder} to SQL database at @{postgres.data.folder}"/>
-            <copy todir="@{postgres.data.folder}">
-                <fileset dir="@{postgres.backup.folder}"/>
-            </copy>
-            <echo message="PostGres Database restore successful."/>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="backup.postgres.files">
-        <attribute name="postgres.data.folder"/>
-        <attribute name="postgres.backup.folder"/>
-        <sequential>
-                    <echo message="Copying postgres data fileset from @{from} to backup at @{to}"/>
-                    <copy todir="@{postgres.backup.folder}">
-                        <fileset dir="@{postgres.data.folder}"/>
-                    </copy>
-                    <echo message="PostGres Database backup successful."/>
-        </sequential>
-    </macrodef>
 </antlib>

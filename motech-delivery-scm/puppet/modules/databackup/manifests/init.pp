@@ -1,14 +1,19 @@
-class databackup  ($couchDbBackupDir, $postgresBackupDir, $dataBackupDir, $dataBackupLocLink) {
+class databackup  ($couchDbBackupLink, $postgresBackupLink, $dataBackupDir, $machineType) {
+    case $machineType {
+        slave: {
+            file {"${dataBackupDir}" :
+                ensure => "directory",
+            }
 
-    file { ["home/${motechUser}/${dataBackupDir}", "home/${motechUser}/${dataBackupDir}/${couchDbBackupDir}", "home/${motechUser}/${dataBackupDir}/${postgresBackupDir}"] :
-        ensure => "directory",
+            file { "${couchDbBackupLink}" :
+                ensure => "link",
+                target => "/var/lib/couchdb",
+            }
+
+            file { "${postgresBackupLink}" :
+                ensure => "link",
+                target => "/usr/local/pgsql/data",
+            }
+        }
     }
-
-    file {"${dataBackupLocLink}" :
-        ensure => "link",
-        target => "home/${motechUser}/${dataBackupDir}",
-    }
-
-  }
-
 }

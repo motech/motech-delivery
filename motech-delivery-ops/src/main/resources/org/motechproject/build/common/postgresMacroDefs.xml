@@ -4,13 +4,12 @@
 
     <!--TODO: Assumes unix family os -->
     <macrodef name="start.postgres">
-        <attribute name="version"/>
         <sequential>
             <set.script.interpreter/>
             <set.service.home/>
             <echo message="Starting PostGres..."/>
-            <exec executable="${script.interpreter}" dir="${service.home}">
-                <arg line="service postgresql-@{version} start"/>
+            <exec executable="${script.interpreter}" dir="${service.home}" failonerror="true">
+                <arg line="service postgresql start"/>
             </exec>
             <echo message="Started PostGres..."/>
         </sequential>
@@ -18,13 +17,12 @@
 
     <!--TODO: Assumes unix family os -->
     <macrodef name="stop.postgres">
-        <attribute name="version"/>
         <sequential>
             <set.script.interpreter/>
             <set.service.home/>
             <echo message="Stopping PostGres..."/>
-            <exec executable="${script.interpreter}" dir="${service.home}">
-                <arg line="service postgresql-@{version} stop"/>
+            <exec executable="${script.interpreter}" dir="${service.home}"  failonerror="true">
+                <arg line="service postgresql stop"/>
             </exec>
             <echo message="Stopped PostGres..."/>
         </sequential>

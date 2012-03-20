@@ -26,6 +26,7 @@
  $couchMachine = "master" #[master | slave]
  $couchMaster = "127.0.0.1"
  $couchDbs = "tama-web ananya"
+ $couchDbBackupDir = "couchdb"
 
  # postgres
  $postgresUser="postgres"
@@ -34,6 +35,12 @@
  $postgresMachine = "master" #[master | slave]
  $postgresMaster = "127.0.0.1"
  $postgresSlave = "127.0.0.1"
+ $postgresBackupDir = "postgres"
+
+ # data backup
+ $dataBackupDir = "tapeBackup"
+ $dataBackupLocLink = "/opt/backups"
+
 
 
  #--------------------------------RESOURCES--------------------------------------------
@@ -42,6 +49,7 @@
  # class{users : userName => "${motechUser}", password => "${motechPassword}" }
  # class{couchdb : couchMaster => "${couchMaster}", couchDbs => "${couchDbs}", couchMachine => "${couchMachine}" }
  # class{postgres : postgresUser => "${postgresUser}", postgresPassword => "${postgresPassword}", postgresMachine => "${postgresMachine}", postgresMaster => "${postgresMaster}", postgresSlave => "${postgresSlave}"}
+ # class{databackup : couchDbBackupDir => "${couchDbBackupDir}", postgresBackupDir => "${postgresBackupDir}", dataBackupDir => "${dataBackupDir}", dataBackupLocLink => "${d~ataBackupLocLink}"}
 
  # include java
  # include git

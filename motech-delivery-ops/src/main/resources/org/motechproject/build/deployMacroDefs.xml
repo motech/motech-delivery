@@ -14,7 +14,11 @@
         <attribute name="remote.location"/>
         <attribute name="download.dir"/>
         <sequential>
-          <get src="@{remote.location}" dest="@{download.dir}/@{app.name}.war" verbose="false"/>
+            <copy tofile="@{download.dir}/@{app.name}.war" flatten="true" overwrite="true">
+                <resources>
+                    <url url="@{remote.location}"/>
+                </resources>
+            </copy>
         </sequential>
     </macrodef>
 </antlib>

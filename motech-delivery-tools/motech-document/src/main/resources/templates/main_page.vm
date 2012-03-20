@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>MotechDoc</title>
+    <style type="text/css">$style</style>
+</head>
+<body>
+<div class="page-box">
+    #foreach($class in $classList)
+        #printClass($class)
+    #end
+</div>
+</body>
+</html>
+
+
+#macro(printClass $class)
+<div class="class-box">
+    <h3>$class.name()</h3>
+    <ol>
+        #foreach($method in $class.methods())
+            <li>#printMethod($method)</li>
+        #end
+    </ol>
+</div>
+#end
+
+
+#macro(printMethod $method)
+<div class="method-box">
+    <fieldset>
+        <legend class="method-legend">$method.name()()</legend>
+        <div class="small-title">Takes:</div>
+        #if($method.hasArguments())
+            <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                #foreach($argument in $method.arguments())
+                    <tr>
+                        <td>@name@</td>
+                        <td>$argument</td>
+                        <td>@description@</td>
+                    </tr>
+                #end
+            </table>
+        #else
+            <p>nil</p>
+        #end
+        <div class="small-title">Returns:</div>
+        #if($method.returns())
+            <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>$method.returnType()</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+        #else
+            </p>void</p>
+        #end
+    </fieldset>
+</div>
+#end

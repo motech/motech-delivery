@@ -4,6 +4,7 @@
 	<typedef resource="org/motechproject/build/common/activemqMacroDefs.xml" />
 	<typedef resource="org/motechproject/build/common/couchdbMacroDefs.xml" />
 	<typedef resource="org/motechproject/build/common/mysqlMacroDefs.xml" />
+	<typedef resource="org/motechproject/build/common/postgresMacroDefs.xml" />
 	<typedef resource="org/motechproject/build/common/tomcatMacroDefs.xml" />
 
 	<macrodef name="start.master.machine">
@@ -95,6 +96,74 @@
 			<restore.data.for.couch.db couch.source="@{couch.source}" couch.destination="@{couch.destination}" />
 			<restore.data.for.mysql.db.from.file.source mysql.source="@{mysql.source}" mysql.destination="@{mysql.destination}" />
 			<start.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}" />
+		</sequential>
+	</macrodef>
+
+    <macrodef name="start.node.with.postgres">
+        <attribute name="activemq.home" />
+        <attribute name="activemq.port" />
+        <attribute name="couch.db.port" />
+        <attribute name="tomcat.home" />
+        <attribute name="tomcat.port" />
+        <sequential>
+            <start.postgres />
+            <start.activemq activemq.home="@{activemq.home}" activemq.port="@{activemq.port}" />
+            <start.couch.db couch.db.port="@{couch.db.port}" />
+            <start.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}" />
+        </sequential>
+    </macrodef>
+
+    <macrodef name="stop.node.with.postgres">
+        <attribute name="activemq.home" />
+        <attribute name="activemq.port" />
+        <attribute name="couch.db.port" />
+        <attribute name="tomcat.home" />
+        <attribute name="tomcat.port" />
+        <sequential>
+            <stop.tomcat tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}" />
+            <stop.couch.db couch.db.port="@{couch.db.port}" />
+            <stop.activemq activemq.home="@{activemq.home}" activemq.port="@{activemq.port}" />
+            <stop.postgres />
+        </sequential>
+    </macrodef>
+
+	<macrodef name="backup.postgres.db.to.location">
+		<attribute name="activemq.home" />
+		<attribute name="activemq.port" />
+		<attribute name="couch.db.port" />
+		<attribute name="tomcat.home" />
+		<attribute name="tomcat.port" />
+		<attribute name="postgres.data.backup.location" />
+		<attribute name="postgres.data.location" />
+		<attribute name="couch.db.data.backup.location" />
+		<attribute name="couch.db.data.location" />
+
+		<sequential>
+			<stop.node.with.postgres
+                    activemq.home="@{activemq.home}" activemq.port="@{activemq.port}"
+                    tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"
+                    couch.db.port="@{couch.db.port}"/>
+			<backup.postgres.files postgres.backup.folder="@{postgres.data.backup.location}" postgres.data.folder="@{postgres.data.location}" />
+			<backup.couch.db.files to="@{couch.db.data.backup.location}" from="@{couch.db.data.location}" />
+			<start.node.with.postgres
+                    activemq.home="@{activemq.home}" activemq.port="@{activemq.port}"
+                    tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}"
+                    couch.db.port="@{couch.db.port}"/>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="restore.postgres.db">
+		<attribute name="tomcat.home" />
+		<attribute name="tomcat.port" />
+		<attribute name="couch.source" />
+		<attribute name="couch.destination" />
+		<attribute name="postgres.data.backup.location" />
+		<attribute name="postgres.data.location" />
+		<sequential>
+            <stop.node.with.postgres activemq.home="@{activemq.home}" activemq.port="@{activemq.port}" tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}" couch.db.port="@{couch.db.port}"/>
+			<restore.data.for.couch.db couch.source="@{couch.source}" couch.destination="@{couch.destination}" />
+			<restore.data.for.postgres.db.from.file.source postgres.data.folder="@{postgres.data.location}" postgres.backup.folder="@{postgres.data.backup.location}" />
+            <start.node.with.postgres activemq.home="@{activemq.home}" activemq.port="@{activemq.port}" tomcat.home="@{tomcat.home}" tomcat.port="@{tomcat.port}" couch.db.port="@{couch.db.port}"/>
 		</sequential>
 	</macrodef>
 

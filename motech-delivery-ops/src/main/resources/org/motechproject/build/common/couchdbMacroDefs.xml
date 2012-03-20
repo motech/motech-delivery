@@ -28,7 +28,7 @@
             <set.script.interpreter/>
             <set.service.home/>
             <echo message="Stopping Couch DB..."/>
-            <exec executable="${script.interpreter}" dir="${service.home}">
+            <exec executable="${script.interpreter}" dir="${service.home}" failonerror="true">
                 <arg line="service couchdb stop"/>
             </exec>
             <echo message="Stopped Couch DB..."/>

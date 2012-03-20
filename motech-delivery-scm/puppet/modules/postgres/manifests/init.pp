@@ -49,6 +49,11 @@ class postgres ( $postgresUser, $postgresPassword, $postgresMachine, $postgresMa
            require => Exec["initdb"],
     }
 
+    file { "/etc/init.d/postgresql":
+        ensure => "link",
+        target => "/etc/init.d/postgresql-9.1",
+    }
+
     case $postgresMachine {
 
         master:{

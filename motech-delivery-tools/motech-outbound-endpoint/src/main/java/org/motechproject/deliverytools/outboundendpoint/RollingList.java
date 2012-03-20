@@ -3,9 +3,11 @@ package org.motechproject.deliverytools.outboundendpoint;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Collections.synchronizedList;
+
 public class RollingList<T> {
     private int size;
-    private List<T> list = new ArrayList<T>();
+    private final List<T> list = synchronizedList(new ArrayList<T>());
 
     public RollingList(int size) {
         this.size = size;
@@ -20,5 +22,9 @@ public class RollingList<T> {
 
     public List<T> getList() {
         return list;
+    }
+
+    public void clearAll() {
+        list.clear();
     }
 }

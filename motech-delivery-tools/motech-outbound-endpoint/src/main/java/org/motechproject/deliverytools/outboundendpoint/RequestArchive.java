@@ -12,4 +12,8 @@ public class RequestArchive {
     public List<Request> getAll() {
         return archive.getList();
     }
+
+    public void purgeAll() {
+        archive.clearAll();
+    }
 }

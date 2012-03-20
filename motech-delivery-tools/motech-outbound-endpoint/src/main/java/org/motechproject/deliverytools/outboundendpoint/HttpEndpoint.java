@@ -35,11 +35,11 @@ public class HttpEndpoint {
     public String lastRequest(GetLastReceivedRequest getLastReceivedRequest, HttpServletResponse response) throws InterruptedException {
         if (getLastReceivedRequest.waitForSeconds() > 0) {
             for (int i = 0; i < getLastReceivedRequest.waitForSeconds(); i++) {
-                if (lastRequest != null) return lastRequestQuery(response);
+                if (lastRequest != null) return lastRequestQuery();
                 Thread.sleep(1000);
             }
         }
-        return lastRequestQuery(response);
+        return lastRequestQuery();
     }
 
     @RequestMapping(value = "all", method = RequestMethod.GET)
@@ -48,7 +48,7 @@ public class HttpEndpoint {
         return joinFrom(requestArchive.getAll(), "<br>").queryString();
     }
 
-    private String lastRequestQuery(HttpServletResponse response) {
+    private String lastRequestQuery() {
         if (lastRequest == null) {
             return "";
         }
@@ -59,6 +59,8 @@ public class HttpEndpoint {
     @ResponseBody
     public String clear() {
         lastRequest = null;
+        requestArchive.purgeAll();
+        
         return "All Good";
     }
 }

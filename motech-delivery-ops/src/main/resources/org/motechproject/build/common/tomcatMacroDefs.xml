@@ -12,7 +12,7 @@
 
             <echo message="Stopping tomcat..."/>
             <echo message="Waiting for tomcat to stop with tomcat home at @{tomcat.home}"/>
-            <exec executable="${script.interpreter}" dir="@{tomcat.home}">
+            <exec executable="${script.interpreter}" dir="@{tomcat.home}" spawn="true">
                 <arg line="${script.switch} @{tomcat.home}/bin/shutdown.${script.suffix}"/>
             </exec>
 

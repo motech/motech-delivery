@@ -8,5 +8,5 @@ package org.motechproject.deliverytools.indexupdater;
  * To change this template use File | Settings | File Templates.
  */
 public interface ITask {
-    void Run();
+    void run();
 }

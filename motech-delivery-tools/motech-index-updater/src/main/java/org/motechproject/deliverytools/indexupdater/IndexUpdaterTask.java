@@ -12,25 +12,25 @@ public class IndexUpdaterTask implements ITask {
     private HttpUtil httpUtil;
 
     @Override
-    public void Run() {
+    public void run() {
         httpUtil = new HttpUtil();
         String dbsUrl = String.format("%s/_all_dbs", server);
         JsonArray dbs = httpUtil.getJson(dbsUrl).getAsJsonArray();
         for (JsonElement db : dbs){
             String dbName = db.getAsString();
-            IndexDbViews(dbName);
-            CompactDbAndCleanViews(dbName);
+            indexDbViews(dbName);
+            compactDbAndCleanViews(dbName);
         }
     }
 
-    private void CompactDbAndCleanViews(String dbName) {
+    private void compactDbAndCleanViews(String dbName) {
         String compactUrl = String.format("%s/%s/_compact", server, dbName);
         httpUtil.post(compactUrl);
         String cleanupUrl = String.format("%s/%s/_view_cleanup", server, dbName);
         httpUtil.post(cleanupUrl);
     }
 
-    private void IndexDbViews(String dbName) {
+    private void indexDbViews(String dbName) {
         String dbUrl = String.format("%s/%s/_all_docs?startkey=%%22_design%%2F%%22&include_docs=true", server, dbName);
         JsonElement jsonElement = httpUtil.getJson(dbUrl);
         JsonArray rows = jsonElement.getAsJsonObject().get("rows").getAsJsonArray();

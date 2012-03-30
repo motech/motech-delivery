@@ -22,6 +22,7 @@
         <module>motech-delivery-tools-web</module>
         <module>motech-index-updater</module>
         <module>motech-document</module>
+        <module>motech-schedule-testing</module>
     </modules>
 
     <dependencies>

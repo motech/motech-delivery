@@ -11,6 +11,7 @@
     <modules>
         <module>motech-delivery-ops</module>
         <module>motech-delivery-tools</module>
+        <module>motech-schedule-testing</module>
     </modules>
 
     <properties>

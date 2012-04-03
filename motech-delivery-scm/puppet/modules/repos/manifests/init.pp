@@ -4,5 +4,4 @@ class repos {
   include repos::epel
   include repos::jpackage
   include repos::epelcouchdb
-  include repos::postgres
 }

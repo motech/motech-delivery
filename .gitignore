@@ -19,4 +19,4 @@ Error_log/
 bbcwt.log*
 test-output/
 .DS_Store
-
+motech-delivery-tools/motech-document/velocity.log

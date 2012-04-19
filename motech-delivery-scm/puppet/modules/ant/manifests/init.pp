@@ -2,8 +2,7 @@
 class ant {
 
   file {"/tmp/ant.tar.gz":
-    source => "puppet:///modules/ant/apache-ant-1.8.2-bin.tar.gz",
-    require => Exec["sun_jdk_6"]
+    source => "http://motechrepo.github.com/pub/motech/other/apache-ant-1.8.2-bin.tar.gz",
   }
 	
   exec { "ant_untar":

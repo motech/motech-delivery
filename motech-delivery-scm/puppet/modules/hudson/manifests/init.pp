@@ -1,6 +1,5 @@
 class hudson {
   include repos::hudson
-  include java
 
   package { "hudson":
     ensure  =>  "present",

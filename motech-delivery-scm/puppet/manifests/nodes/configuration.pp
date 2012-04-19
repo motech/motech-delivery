@@ -54,7 +54,7 @@
  # class{postgresreplication : postgresUser => "${postgresUser}", postgresMachine => "${postgresMachine}", postgresMaster => "${postgresMaster}", postgresSlave => "${postgresSlave}"}
  # class{databackup : couchDbBackupLink => "${couchDbBackupLink}", postgresBackupLink => "${postgresBackupLink}", dataBackupDir => "${dataBackupDir}", machineType => "${machineType}"}
 
- # include java
+
  # include git
  # include httpd    
  # include ant
@@ -66,4 +66,5 @@
  # include motechquartz
  # include monitor
  # include ssl
+   include verboice
 

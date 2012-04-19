@@ -2,8 +2,8 @@ class tomcat {
   include users
   
   file { "/tmp/apache-tomcat-7.0.22.tar.gz":
-    source => "puppet:///modules/tomcat/apache-tomcat-7.0.22.tar.gz",
-    require => [Exec["${motechUser} homedir"],Exec["sun_jdk_6"]]
+    source => "http://motechrepo.github.com/pub/motech/other/apache-tomcat-7.0.22.tar.gz",
+    require => [Exec["${motechUser} homedir"]]
   }
 
   exec { "tomcat_untar":

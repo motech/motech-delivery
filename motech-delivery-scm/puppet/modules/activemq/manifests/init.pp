@@ -1,8 +1,7 @@
 class activemq {
 
   file { "/tmp/activemq.tar.gz":
-    source => "puppet:///modules/activemq/apache-activemq-5.5.1-bin.tar.gz",
-    require => Exec["sun_jdk_6"],
+    source => "http://motechrepo.github.com/pub/motech/other/apache-activemq-5.5.1-bin.tar.gz",
   }
 
   exec { "activemq_untar":

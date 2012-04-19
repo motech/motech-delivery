@@ -1,18 +1,18 @@
 class tomcat {
   include users
   
-  file { "/tmp/apache-tomcat-7.0.22.tar.gz":
-    source => "http://motechrepo.github.com/pub/motech/other/apache-tomcat-7.0.22.tar.gz",
-    require => [Exec["${motechUser} homedir"]]
+  exec {"gettomcattarfile" :
+  	command => "/usr/bin/wget -O /tmp/apache-tomcat-7.0.22.tar.gz http://motechrepo.github.com/pub/motech/other/apache-tomcat-7.0.22.tar.gz",
+  	require => [Exec["${motechUser} homedir"]]
   }
-
+  
   exec { "tomcat_untar":
     command => "tar xfz /tmp/apache-tomcat-7.0.22.tar.gz",
     user => "${motechUser}",
     cwd     => "/home/${motechUser}",
     creates => "/home/${motechUser}/apache-tomcat-7.0.22",
     path    => ["/bin"],
-    require => File["/tmp/apache-tomcat-7.0.22.tar.gz"],
+    require => Exec["gettomcattarfile"],
   }
 
   file { "/etc/init.d/tomcat" :

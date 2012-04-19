@@ -1,8 +1,9 @@
 class activemq {
 
-  file { "/tmp/activemq.tar.gz":
-    source => "http://motechrepo.github.com/pub/motech/other/apache-activemq-5.5.1-bin.tar.gz",
+  exec { "getactivemqtar":
+  	command => "/usr/bin/wget -O /tmp/activemq.tar.gz http://motechrepo.github.com/pub/motech/other/apache-activemq-5.5.1-bin.tar.gz"
   }
+
 
   exec { "activemq_untar":
     command => "tar xfz /tmp/activemq.tar.gz",
@@ -10,7 +11,7 @@ class activemq {
     cwd     => "/home/${motechUser}",
     creates => "/home/${motechUser}/apache-activemq-5.5.1",
     path    => ["/bin",],
-    require => [Exec["${motechUser} homedir"], File["/tmp/activemq.tar.gz"]],
+    require => [Exec["${motechUser} homedir"], Exec["getactivemqtar"]],
   }
 
   file { "/etc/init.d/activemq" :

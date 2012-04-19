@@ -1,9 +1,8 @@
 
 class ant {
-
-  file {"/tmp/ant.tar.gz":
-    source => "http://motechrepo.github.com/pub/motech/other/apache-ant-1.8.2-bin.tar.gz",
-  }
+  exec {"getanttarfile" :
+  	command => "/usr/bin/wget -O /tmp/ant.tar.gz http://motechrepo.github.com/pub/motech/other/apache-ant-1.8.2-bin.tar.gz"
+   }
 	
   exec { "ant_untar":
     command => "tar xfz /tmp/ant.tar.gz",

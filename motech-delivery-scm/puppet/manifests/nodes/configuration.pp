@@ -66,5 +66,6 @@
  # include motechquartz
  # include monitor
  # include ssl
-   include verboice
+ # include verboice
+ #  include doxygen
 

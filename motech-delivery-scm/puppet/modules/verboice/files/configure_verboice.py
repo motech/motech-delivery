@@ -31,8 +31,14 @@ def configure_sound_file_loc():
 
     write_to_file(verboice_conf_file_path, content_with_updated_asterisk_loc)
 
+def setup_verboice_restart_config():
+    asterisk_conf_file_path = '{0}/extensions.conf'.format(asterisk_installation_dir)
+    restart_config = """[verboice-restart]
+exten => _.,1,AGI(agi://localhost:19000,${EXTEN})"""
+    append_to_file(asterisk_conf_file_path, restart_config)
+
 def setup_verboice_voice_plan(channel_id):
-    asterisk_conf_file_path = '{0}/asterisk.conf'.format(asterisk_installation_dir)
+    asterisk_conf_file_path = '{0}/extensions.conf'.format(asterisk_installation_dir)
 
     voice_plan_config_template = """[verboice]
 exten => #channel_id#,1,Answer
@@ -40,7 +46,6 @@ exten => #channel_id#,n,Wait(1)
 exten => #channel_id#,n,AGI(agi://{0}:19000,,${{EXTEN}})"""
 
     voice_plan_config = re.sub(r'#channel_id#', channel_id, voice_plan_config_template.format(verboice_host.split(':')[0]))
-
     append_to_file(asterisk_conf_file_path, voice_plan_config)
 
 def setup_asterisk_manager():
@@ -76,7 +81,7 @@ exten => 4567,1,Dial(SIP/ivan,20)"""
 
     append_to_file('{0}/sip.conf'.format(asterisk_installation_dir), demo_sip_accounts)
 
-    insert_after_line('{0}/extensions.conf'.format(asterisk_installation_dir), r'[default]' + os.linesep, demo_sip_accounts_dial_plan)
+    insert_after_line('{0}/extensions.conf'.format(asterisk_installation_dir), r'[default]', demo_sip_accounts_dial_plan + os.linesep)
 
 def setup_verboice():
 
@@ -120,11 +125,12 @@ def append_to_file(file_path, content):
     file.write(file.read() + os.linesep + content)
 
 def insert_after_line(file_path, line_to_insert_after, content):
-    re.sub(line_to_insert_after, line_to_insert_after + os.linesep + content, get_content_as_string(file_path))
+    write_to_file(file_path, get_content_as_string(file_path).replace(line_to_insert_after, line_to_insert_after + os.linesep + content))
 
 configure_sound_file_loc()
 channel_id = setup_verboice()
 setup_verboice_voice_plan(channel_id)
+setup_verboice_restart_config()
 setup_asterisk_manager()
 add_channel_conf_to_etc_host(channel_id)
 add_demo_sip_accounts()

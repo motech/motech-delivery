@@ -1,8 +1,7 @@
-include repos::motech
-	
 class verboice {
+include repos::motech
 
-    file { 'configure_verboice':
+    file { '/tmp/configure_verboice.py':
         ensure => present,
         source => 'puppet:///modules/verboice/configure_verboice.py'
     }
@@ -13,7 +12,7 @@ class verboice {
 		timeout => 0
 	}
 
-    exec { "configure_verboice" :
-        require => File['configure_verboice']
+    exec { "/tmp/configure_verboice.py" :
+        require => [File['/tmp/configure_verboice.py'], Exec['/usr/bin/yum -y install Verboice']]
     }
 }

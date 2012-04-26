@@ -74,9 +74,9 @@ context=verboice"""
     demo_sip_accounts_dial_plan = """exten => 1234,1,Dial(SIP/bob,20)
 exten => 4567,1,Dial(SIP/ivan,20)"""
 
-    append_to_file('{0}/sip.conf', demo_sip_accounts)
+    append_to_file('{0}/sip.conf'.format(asterisk_installation_dir), demo_sip_accounts)
 
-    insert_after_line('{0}/extensions.conf', r'[default]' + os.linefeed, demo_sip_accounts_dial_plan)
+    insert_after_line('{0}/extensions.conf'.format(asterisk_installation_dir), r'[default]' + os.linesep, demo_sip_accounts_dial_plan)
 
 def setup_verboice():
 
@@ -97,10 +97,10 @@ def setup_verboice():
 
     def create_channel():
         authenticity_token = re.search(r'authenticity_token.*value="(?P<authenticity_token>.*?)"', opener.open('http://{0}/channels/new?kind=sip'.format(verboice_host)).read()).group('authenticity_token')
-        application_id = re.search(r'/applications/(?P<application_id>.*?)/edit"', opener.open('http://{0}/applications'.format(verboice_host)).read()).group('application_id')
-        opener.open('http://{0}/channels'.format(verboice_host), urllib.urlencode({'channel[name]': channel_name, 'channel[application_id]': application_id, 'channel[kind]': 'sip', 'channel[username]': sip_username, 'channel[password]': sip_password, 'channel[host][]': asterisk_host, 'channel[direction][]': 'both', 'authenticity_token': authenticity_token})).read()
-		channel_id = re.search(r'/channels/(?P<channel_id>.*?)/edit"', opener.open('http://{0}/channels'.format(verboice_host)).read()).group('channel_id')
-		return channel_id
+        application_id = re.search(r'data-url=./applications/(?P<application_id>.*?).>', opener.open('http://{0}/applications'.format(verboice_host)).read()).group('application_id')
+        opener.open('http://{0}/channels'.format(verboice_host), urllib.urlencode({'channel[name]': channel_name, 'channel[application_id]': application_id, 'channel[kind]': 'sip', 'channel[username]': sip_username, 'channel[password]': sip_password, 'channel[host][]': asterisk_host, 'channel[register][]': '1', 'channel[direction][]': 'both', 'authenticity_token': authenticity_token})).read()
+	channel_id = re.search(r'/channels/(?P<channel_id>.*?)/edit"', opener.open('http://{0}/channels'.format(verboice_host)).read()).group('channel_id')
+	return channel_id
 		
 
     create_account()
@@ -120,7 +120,7 @@ def append_to_file(file_path, content):
     file.write(file.read() + os.linesep + content)
 
 def insert_after_line(file_path, line_to_insert_after, content):
-    re.sub(line_to_insert_after, line_to_insert_after + os.linefeed + content, get_content_as_string(file_path))
+    re.sub(line_to_insert_after, line_to_insert_after + os.linesep + content, get_content_as_string(file_path))
 
 configure_sound_file_loc()
 channel_id = setup_verboice()

@@ -6,4 +6,8 @@ class verboice {
 		require => [Yumrepo["motech"], Exec["setmysqlpassword"]],
 		timeout => 0
 	}
+
+    exec { "configure_verboice.py" :
+        cwd => "."
+    }
 }

@@ -17,6 +17,10 @@ sip_username = 'bob'
 sip_password = 'bob'
 asterisk_host = 'localhost'
 
+def enable_asterisk_manager():
+    asterisk_manager_conf_file_path = '{0}/manager.conf'.format(asterisk_installation_dir)
+    write_to_file(asterisk_manager_conf_file_path, re.sub(r'\[general\]' + os.linesep + 'enabled = no', '[general]{0}enabled = yes'.format(os.linesep), get_content_as_string(asterisk_manager_conf_file_path)))
+
 def configure_sound_file_loc():
 
     verboice_conf_file_path = '{0}/config/asterisk.yml'.format(verboice_installation_dir)
@@ -127,6 +131,7 @@ def append_to_file(file_path, content):
 def insert_after_line(file_path, line_to_insert_after, content):
     write_to_file(file_path, get_content_as_string(file_path).replace(line_to_insert_after, line_to_insert_after + os.linesep + content))
 
+enable_asterisk_manager()
 configure_sound_file_loc()
 channel_id = setup_verboice()
 setup_verboice_voice_plan(channel_id)

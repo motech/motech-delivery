@@ -10,6 +10,6 @@ class ant {
     cwd     => "/home/${motechUser}",
     creates => "/home/${motechUser}/apache-ant-1.8.2",
     path    => ["/bin",],
-    require => [File["/tmp/ant.tar.gz"], Exec["${motechUser} homedir"]],
+    require => [Exec['getanttarfile']],
   }
 }

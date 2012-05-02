@@ -22,16 +22,14 @@ import static org.motechproject.scheduletracking.api.events.constants.EventDataK
 public class FakeSchedule {
     private ScheduleTrackingService trackingService;
     private final SetDateAction setDateAction;
-    private Scheduler scheduler;
+    private final Scheduler scheduler;
     private Map<Pair, List<Date>> alertTimes;
     private final LinkedList<Date> fulfillmentDates;
     private String name;
     private LocalDate nextFulfillmentDateToUse;
-    private SchedulerFactoryBean schedulerFactoryBean;
 
     public FakeSchedule(ScheduleTrackingService trackingService, SchedulerFactoryBean schedulerFactoryBean, SetDateAction setDateAction) {
         this.trackingService = trackingService;
-        this.schedulerFactoryBean = schedulerFactoryBean;
         this.scheduler = schedulerFactoryBean.getScheduler();
         this.setDateAction = setDateAction;
 
@@ -49,7 +47,6 @@ public class FakeSchedule {
         trackingService.enroll(enrollmentRequest);
 
         while (true) {
-            scheduler = schedulerFactoryBean.getScheduler();
             captureAlertsFor(externalId, scheduleName);
             try {
                 LocalDate fulfillmentDate = nextFulfillmentDate();

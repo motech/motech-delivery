@@ -44,6 +44,10 @@
  $dataBackupDir = "/opt/backups"
  $machineType = "master" #[master | slave]
 
+ # activemq
+ $activemqMachine = "master" #[master | slave]
+ $activemqMasterHost = "127.0.0.1"
+ $activemqMasterPort = 61616
 
  #--------------------------------RESOURCES--------------------------------------------
  # comment out resources not required to be installed
@@ -53,6 +57,7 @@
  # class{postgres : postgresUser => "${postgresUser}", postgresPassword => "${postgresPassword}", postgresMachine => "${postgresMachine}", postgresMaster => "${postgresMaster}", postgresSlave => "${postgresSlave}"}
  # class{postgresreplication : postgresUser => "${postgresUser}", postgresMachine => "${postgresMachine}", postgresMaster => "${postgresMaster}", postgresSlave => "${postgresSlave}"}
  # class{databackup : couchDbBackupLink => "${couchDbBackupLink}", postgresBackupLink => "${postgresBackupLink}", dataBackupDir => "${dataBackupDir}", machineType => "${machineType}"}
+ # class { activemq : activemqMachine => "${activemqMachine}", activemqMasterHost => "${activemqMasterHost}", activemqMasterPort => "${activemqMasterPort}" }
 
 
  # include git

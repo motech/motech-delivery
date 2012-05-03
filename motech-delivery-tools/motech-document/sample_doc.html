@@ -6,7 +6,7 @@
 }
 
 table, tbody {
-    border-spacing: 0px;
+    border-spacing: 2px;
     font-size: 12px;
 }
 
@@ -19,7 +19,7 @@ td, th {
 
 thead {
     color: black;
-    background-color: #dcdcdc;
+    background-color: #e6e6fa;
 }
 
 .method-box {
@@ -27,9 +27,10 @@ thead {
     padding-top: 10px;
 }
 
-.params-table {
+.params-table{
     padding-top: 3px;
     padding-bottom: 5px;
+    width: 70%;
 }
 
 .small-title {
@@ -46,12 +47,16 @@ fieldset{
 }
 
 .page-box{
-    width: 1200px;
+    width: 800px;
 }
 
 .method-legend{
     font-size: 12px;
     font-weight: bold;
+}
+
+.type-col{
+    width: 40%;
 }</style>
 </head>
 <body>
@@ -65,9 +70,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -76,10 +81,10 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>int</td>
@@ -95,9 +100,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -106,10 +111,10 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>int</td>
@@ -125,9 +130,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -136,10 +141,10 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>int</td>
@@ -155,9 +160,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -166,10 +171,10 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>boolean</td>
@@ -185,9 +190,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -201,10 +206,10 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>class java.lang.String</td>
@@ -220,9 +225,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -231,10 +236,10 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>class java.lang.String</td>
@@ -250,10 +255,10 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <p>nil</p>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>class java.lang.String</td>
@@ -269,10 +274,10 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <p>nil</p>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>int</td>
@@ -288,9 +293,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -299,10 +304,10 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>int</td>
@@ -318,39 +323,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>class java.lang.Integer</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="return-table">
-                <thead>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                <tr>
-                    <td>int</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">compareTo()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -359,10 +334,40 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>int</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">compareTo()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>class java.lang.Integer</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>int</td>
@@ -378,10 +383,10 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <p>nil</p>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>byte</td>
@@ -397,10 +402,10 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <p>nil</p>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>short</td>
@@ -416,10 +421,10 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <p>nil</p>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>int</td>
@@ -435,10 +440,10 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <p>nil</p>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>long</td>
@@ -454,10 +459,10 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <p>nil</p>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>float</td>
@@ -473,10 +478,10 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <p>nil</p>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>double</td>
@@ -492,9 +497,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -508,10 +513,10 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>class java.lang.Integer</td>
@@ -527,9 +532,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -538,10 +543,10 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>class java.lang.Integer</td>
@@ -557,9 +562,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -568,10 +573,10 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>class java.lang.Integer</td>
@@ -587,9 +592,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -598,43 +603,13 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>class java.lang.String</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">decode()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>class java.lang.String</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="return-table">
-                <thead>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                <tr>
-                    <td>class java.lang.Integer</td>
                     <td>@description@</td>
                 </tr>
             </table>
@@ -647,9 +622,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -668,13 +643,43 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>void</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">decode()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>class java.lang.String</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>class java.lang.Integer</td>
                     <td>@description@</td>
                 </tr>
             </table>
@@ -687,10 +692,10 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <p>nil</p>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>class java.lang.String</td>
@@ -706,10 +711,10 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <p>nil</p>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>void</td>
@@ -725,9 +730,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -736,10 +741,10 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>int</td>
@@ -755,26 +760,21 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
                         <td>class java.lang.String</td>
                         <td>@description@</td>
                     </tr>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>int</td>
@@ -790,69 +790,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>class java.lang.String</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="return-table">
-                <thead>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                <tr>
-                    <td>int</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">getInteger()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>class java.lang.String</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="return-table">
-                <thead>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                <tr>
-                    <td>class java.lang.Integer</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">getInteger()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -866,268 +806,13 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
-                <thead>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                <tr>
-                    <td>class java.lang.Integer</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">getInteger()</legend>
-        <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>class java.lang.String</td>
-                        <td>@description@</td>
-                    </tr>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>class java.lang.Integer</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="return-table">
-                <thead>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                <tr>
-                    <td>class java.lang.Integer</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">highestOneBit()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="return-table">
-                <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>int</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">lowestOneBit()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="return-table">
-                <thead>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                <tr>
-                    <td>int</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">rotateLeft()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="return-table">
-                <thead>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                <tr>
-                    <td>int</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">rotateRight()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="return-table">
-                <thead>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                <tr>
-                    <td>int</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">signum()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="return-table">
-                <thead>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                <tr>
-                    <td>int</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">stringSize()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="return-table">
-                <thead>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                <tr>
-                    <td>int</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">toBinaryString()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="return-table">
-                <thead>
-                <td>type</td>
-                <td>description</td>
-                </thead>
-                <tr>
-                    <td>class java.lang.String</td>
                     <td>@description@</td>
                 </tr>
             </table>
@@ -1140,9 +825,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -1151,10 +836,40 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>class java.lang.String</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">toBinaryString()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>class java.lang.String</td>
@@ -1170,9 +885,9 @@ fieldset{
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
-                <td>name</td>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
                 </thead>
                                     <tr>
                         <td>@name@</td>
@@ -1186,13 +901,303 @@ fieldset{
                     </tr>
                             </table>
                 <div class="small-title">Returns:</div>
-                    <table class="return-table">
+                    <table class="params-table">
                 <thead>
-                <td>type</td>
-                <td>description</td>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
                 </thead>
                 <tr>
                     <td>class java.lang.String</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">stringSize()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>int</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">getInteger()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>class java.lang.String</td>
+                        <td>@description@</td>
+                    </tr>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>class java.lang.Integer</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>class java.lang.Integer</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">getInteger()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>class java.lang.String</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>class java.lang.Integer</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">getInteger()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>class java.lang.String</td>
+                        <td>@description@</td>
+                    </tr>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>class java.lang.Integer</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">highestOneBit()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>int</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">lowestOneBit()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>int</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">rotateLeft()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>int</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">rotateRight()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>int</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">signum()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>int</td>
                     <td>@description@</td>
                 </tr>
             </table>

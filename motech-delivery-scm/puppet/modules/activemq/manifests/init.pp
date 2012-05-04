@@ -32,6 +32,7 @@ class activemq ( $activemqMachine, $activemqMasterHost, $activemqMasterPort ) {
        }
 
        file { "/home/${motechUser}/apache-activemq-5.5.1/conf/activemq.xml":
+           notify => Service["activemq"],
            content => template("activemq/activemq_slave.xml.erb"),
            owner => "${motechUser}",
            group => "${motechUser}",

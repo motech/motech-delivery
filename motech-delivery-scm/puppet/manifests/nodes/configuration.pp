@@ -49,6 +49,13 @@
  $activemqMasterHost = "127.0.0.1"
  $activemqMasterPort = 61616
 
+ # httpd
+ $httpdMachine = "master" #[master | slave]
+ $httpdMasterHost = "127.0.0.1"
+ $httpdMasterPort = "80"
+ $httpdSlaveHost = "127.0.0.1"
+ $httpdSlavePort = "80"
+
  #--------------------------------RESOURCES--------------------------------------------
  # comment out resources not required to be installed
 
@@ -58,7 +65,7 @@
  # class{postgresreplication : postgresUser => "${postgresUser}", postgresMachine => "${postgresMachine}", postgresMaster => "${postgresMaster}", postgresSlave => "${postgresSlave}"}
  # class{databackup : couchDbBackupLink => "${couchDbBackupLink}", postgresBackupLink => "${postgresBackupLink}", dataBackupDir => "${dataBackupDir}", machineType => "${machineType}"}
  # class { activemq : activemqMachine => "${activemqMachine}", activemqMasterHost => "${activemqMasterHost}", activemqMasterPort => "${activemqMasterPort}" }
-
+ # class { httpd : httpdMachine => "${httpdMachine}", httpdMasterHost => "${httpdMasterHost}", httpdMasterPort => "${httpdMasterPort}", httpdSlaveHost => "${httpdSlaveHost}", httpdSlavePort => "${httpdSlavePort}" }
 
  # include git
  # include httpd    

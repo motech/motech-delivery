@@ -40,6 +40,7 @@ class postgres_pgpool ( $postgresUser, $postgresPassword, $postgresMachine, $pos
     exec { "initdb":
         command =>"/usr/pgsql-9.1/bin/initdb -D /usr/local/pgsql/data",
         user => "${postgresUser}",
+        unless => "/usr/bin/test -f /usr/local/pgsql/data/pg_ident.conf",
         require => [File["/usr/local/pgsql/data"], Package["postgres_packs"]],
     }
 
@@ -77,7 +78,7 @@ class postgres_pgpool ( $postgresUser, $postgresPassword, $postgresMachine, $pos
                 owner => "${postgresUser}",
                 group => "${postgresUser}",
                 mode   =>  600,
-                require => Exec["backup_conf"],
+                require => File["/usr/local/pgsql/data/postgresql.conf"],
             }
         }
 
@@ -87,7 +88,7 @@ class postgres_pgpool ( $postgresUser, $postgresPassword, $postgresMachine, $pos
                 owner => "${postgresUser}",
                 group => "${postgresUser}",
                 mode   =>  600,
-                require => Exec["backup_conf"],
+                require => File["/usr/local/pgsql/data/postgresql.conf"],
             }
         }
     }
@@ -95,6 +96,7 @@ class postgres_pgpool ( $postgresUser, $postgresPassword, $postgresMachine, $pos
     package { "postgresql_libs":
         name => postgresql-libs,
 		ensure => "present",
+		require => File["/usr/local/pgsql/data/pg_hba.conf"],
 	}
 
     package {"pgpool":

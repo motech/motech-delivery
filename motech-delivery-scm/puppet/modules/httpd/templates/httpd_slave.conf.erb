@@ -134,6 +134,7 @@ MaxRequestsPerChild  0
 #
 #Listen 12.34.56.78:80
 Listen 80
+Listen <%= httpdProxyPort %>
 
 #
 # Dynamic Shared Object (DSO) Support
@@ -1009,9 +1010,11 @@ BrowserMatch "^Dreamweaver-WebDAV-SCM1" redirect-carefully
 #</VirtualHost>
 
 # mod_proxy configuration for load balancing master slave
-ProxyPass / balancer://hotcluster/
-<Proxy balancer://hotcluster>
-BalancerMember http://<%= httpdMasterHost %>:<%= httpdMasterPort %>
-# The below is the hot standby
-BalancerMember http://<%= httpdSlaveHost %>:<%= httpdSlavePort %> status=+H
-</Proxy>
+<VirtualHost *:<%= httpdProxyPort %>>
+    ProxyPass / balancer://hotcluster/
+    <Proxy balancer://hotcluster>
+        BalancerMember http://<%= httpdMasterHost %>:<%= httpdMasterPort %>
+        # The below is the hot standby
+        BalancerMember http://<%= httpdSlaveHost %>:<%= httpdSlavePort %> status=+H
+    </Proxy>
+</VirtualHost>

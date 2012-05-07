@@ -4,7 +4,7 @@ class httpd ( $httpdMachine, $httpdMasterHost, $httpdMasterPort, $httpdSlaveHost
 		ensure => "present",
 	}
 
-    if "${httpdMachine}" == 'slave' {
+    if "${httpdMachine}" == 'failoverProxy' {
        exec {
             "backup_slave_conf":
                 cwd     => "/etc/httpd/conf",

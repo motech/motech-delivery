@@ -50,7 +50,8 @@
  $activemqMasterPort = 61616
 
  # httpd
- $httpdMachine = "master" #[master | slave]
+ $httpdMachine = "regular" #[regular | failoverProxy] Running in slave sets up the
+ $httpdProxyPort = 8082
  $httpdMasterHost = "127.0.0.1"
  $httpdMasterPort = "80"
  $httpdSlaveHost = "127.0.0.1"

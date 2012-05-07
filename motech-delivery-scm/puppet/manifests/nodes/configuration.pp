@@ -32,8 +32,8 @@
 
  # postgres
  $postgresUser="postgres"
- # The password used in case of PGPOOL is the same as postgresPassword
  $postgresPassword= '$1$IW4OvlrH$Kui/55oif8W3VZIrnX6jL1'
+ $pgpoolPassword = '5f4dcc3b5aa765d61d8327deb882cf99'
 
  $postgresMachine = "master" #[master | slave]
  $postgresMaster = "127.0.0.1"

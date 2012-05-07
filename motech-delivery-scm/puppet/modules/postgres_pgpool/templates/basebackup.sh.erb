@@ -1,0 +1,38 @@
+#/bin/sh -x
+PRIMARY_PORT=5432
+STANDBY_PORT=5433
+PRIMARY=/home/postgres/data
+STANDBY=/home/postgres/standby
+
+master_db_cluster=$1
+recovery_node_host_name=$2
+recovery_db_cluster=$3
+
+if [ $master_db_cluster = $PRIMARY ];then
+  PORT=$PRIMARY_PORT
+  SOURCE_CLUSTER=$PRIMARY
+  DEST_CLUSTER=$STANDBY
+else
+  PORT=$STANDBY_PORT
+  SOURCE_CLUSTER=$STANDBY
+  DEST_CLUSTER=$PRIMARY
+fi
+
+psql -p $PORT -c "SELECT pg_start_backup('Streaming Replication', true)" postgres
+
+rsync -C -a -c --delete --exclude postgresql.conf --exclude postmaster.pid \
+--exclude postmaster.opts --exclude pg_log \
+--exclude recovery.conf --exclude recovery.done \
+--exclude pg_xlog \
+$SOURCE_CLUSTER/ $DEST_CLUSTER/
+
+mkdir $DEST_CLUSTER/pg_xlog
+chmod 700 $DEST_CLUSTER/pg_xlog
+rm $DEST_CLUSTER/recovery.done
+cat > $DEST_CLUSTER/recovery.conf <<EOF
+standby_mode          = 'on'
+primary_conninfo      = 'port=$PORT user=postgres'
+trigger_file = '/var/log/pgpool/trigger/trigger_file1'
+EOF
+
+psql -p $PORT -c "SELECT pg_stop_backup()" postgres

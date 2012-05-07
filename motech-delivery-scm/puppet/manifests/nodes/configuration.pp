@@ -56,6 +56,10 @@
  $httpdMasterPort = "80"
  $httpdSlaveHost = "127.0.0.1"
  $httpdSlavePort = "80"
+ 
+ # https
+ $SSLCertificateFile = "/etc/pki/tls/certs/localhost.crt"
+ $SSLCertificateKeyFile = "/etc/pki/tls/private/localhost.key"
 
  #--------------------------------RESOURCES--------------------------------------------
  # comment out resources not required to be installed

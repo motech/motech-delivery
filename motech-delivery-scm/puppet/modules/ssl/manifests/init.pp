@@ -10,5 +10,5 @@ class ssl {
     }
 	exec {"config-ssl" :
         require => File["/home/${motechUser}/configure-ssl.sh"],
-	command => "sh /home/${motechUser}/configure-ssl.sh"}
+	command => "sh /home/${motechUser}/configure-ssl.sh ${SSLCertificateFile} ${SSLCertificateKeyFile} "}
 }

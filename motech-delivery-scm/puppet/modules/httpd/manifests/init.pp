@@ -1,5 +1,5 @@
 
-class httpd ( $httpdMachine, $httpdMasterHost, $httpdMasterPort, $httpdSlaveHost, $httpdSlavePort ) {
+class httpd ( $httpdMachine, $httpdProxyPort, $httpdMasterHost, $httpdMasterPort, $httpdSlaveHost, $httpdSlavePort ) {
 	package { "httpd" :
 		ensure => "present",
 	}

@@ -66,7 +66,7 @@
  # class{postgresreplication : postgresUser => "${postgresUser}", postgresMachine => "${postgresMachine}", postgresMaster => "${postgresMaster}", postgresSlave => "${postgresSlave}"}
  # class{databackup : couchDbBackupLink => "${couchDbBackupLink}", postgresBackupLink => "${postgresBackupLink}", dataBackupDir => "${dataBackupDir}", machineType => "${machineType}"}
  # class { activemq : activemqMachine => "${activemqMachine}", activemqMasterHost => "${activemqMasterHost}", activemqMasterPort => "${activemqMasterPort}" }
- # class { httpd : httpdMachine => "${httpdMachine}", httpdMasterHost => "${httpdMasterHost}", httpdMasterPort => "${httpdMasterPort}", httpdSlaveHost => "${httpdSlaveHost}", httpdSlavePort => "${httpdSlavePort}" }
+ # class { httpd : httpdMachine => "${httpdMachine}", httpdProxyPort => "${httpdProxyPort}", httpdMasterHost => "${httpdMasterHost}", httpdMasterPort => "${httpdMasterPort}", httpdSlaveHost => "${httpdSlaveHost}", httpdSlavePort => "${httpdSlavePort}" }
 
  # include git
  # include httpd    

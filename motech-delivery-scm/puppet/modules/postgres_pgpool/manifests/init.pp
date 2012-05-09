@@ -41,6 +41,7 @@ class postgres_pgpool ( $postgresUser, $postgresPassword, $postgresMachine, $pos
         command =>"/usr/pgsql-9.1/bin/initdb -D /usr/local/pgsql/data",
         user => "${postgresUser}",
         unless => "/usr/bin/test -f /usr/local/pgsql/data/pg_ident.conf",
+        #onlyif => "grep -c post /usr/local/pgsql/data/",
         require => [File["/usr/local/pgsql/data"], Package["postgres_packs"]],
     }
 
@@ -105,7 +106,7 @@ class postgres_pgpool ( $postgresUser, $postgresPassword, $postgresMachine, $pos
         require => Package["postgresql_libs"],
     }
 
-    file { "/etc/pgpool-II-91/pgpool.conf":
+    file { "/usr/local/etc/pgpool.conf":
             content => template("postgres_pgpool/pgpool.conf.erb"),
             owner => "root",
             group => "root",
@@ -113,12 +114,12 @@ class postgres_pgpool ( $postgresUser, $postgresPassword, $postgresMachine, $pos
             require => Package["pgpool"],
          }
 
-    file { "/etc/pgpool-II-91/pcp.conf":
+    file { "/usr/local/etc/pcp.conf":
             content => template("postgres_pgpool/pcp.conf.erb"),
             owner => "root",
             group => "root",
             mode => 644,
-            require => File["/etc/pgpool-II-91/pgpool.conf"],
+            require => File["/usr/local/etc/pgpool.conf"],
          }
 
     file { "/usr/local/pgsql/data/basebackup.sh":
@@ -126,7 +127,7 @@ class postgres_pgpool ( $postgresUser, $postgresPassword, $postgresMachine, $pos
             owner => "root",
             group => "root",
             mode => 755,
-            require => File["/etc/pgpool-II-91/pcp.conf"],
+            require => File["/usr/local/etc/pcp.conf"],
          }
 
     file { "/usr/local/pgsql/data/pgpool_remote_start.sh":

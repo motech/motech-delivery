@@ -12,4 +12,4 @@ DEST=$1
 DESTDIR=$2
 PGCTL=/usr/pgsql-9.1/bin/pg_ctl
 
-$PGCTL -w -D $DESTDIR start 2>/dev/null 1>/dev/null < /dev/null &
+ssh -T $DEST $PGCTL -w -D $DESTDIR start 2>/dev/null 1>/dev/null < /dev/null    &

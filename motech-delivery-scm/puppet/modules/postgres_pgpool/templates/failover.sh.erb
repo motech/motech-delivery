@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 # Execute command by failover.
 # special values:  %d = node id
 #                  %h = host name
@@ -20,5 +20,5 @@ old_primary_node_id=$8
 trigger=/var/log/pgpool/trigger/trigger_file1
 
 if [ $failed_node_id = $old_primary_node_id ];then	# master failed
-    touch $trigger	# let standby take over
+    ssh -T postgres@$new_master_host_name touch $trigger	# let standby take over
 fi

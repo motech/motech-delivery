@@ -8,11 +8,13 @@ include repos::motech
 
 	exec { "/usr/bin/yum -y install Verboice" :
 		environment => "MYSQL_PASSWORD=$mysqlPassword",
-		require => [Yumrepo["motech"], Exec["setmysqlpassword"], Package["sox"]],
-		timeout => 0
+		require => [Yumrepo["motech"], Exec["setmysqlpassword"], Package["sox"], Package["libxslt"]],
+		timeout => 0,
+		logoutput => true
 	}
 
-	exec { "monit -g verboice start all"
+	exec { "monit -g verboice start all":
+		require => Exec["/usr/bin/yum -y install Verboice"]
 	}
 
     exec { "/tmp/configure_verboice.py" :

@@ -7,5 +7,5 @@ import java.lang.annotation.*;
 @Documented
 public @interface Seed {
     int priority();
-    String version() default "1.0";
+    String version();
 }

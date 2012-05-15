@@ -10,7 +10,7 @@ public class VersionTest {
         Version version = new Version("1.1");
         Version otherVersion = new Version("1.0");
 
-        assertTrue(version.isGreaterThan(otherVersion));
+        assertTrue(version.isGreaterThanOrEqualTo(otherVersion));
     }
 
     @Test
@@ -18,7 +18,15 @@ public class VersionTest {
         Version version = new Version("1.0");
         Version otherVersion = new Version("1.1");
 
-        assertFalse(version.isGreaterThan(otherVersion));
+        assertFalse(version.isGreaterThanOrEqualTo(otherVersion));
+    }
+
+    @Test
+    public void shouldReturnTrueIfTheCurrentVersionIsEqualToTheOtherVersion() throws Exception {
+        Version version = new Version("1.0");
+        Version otherVersion = new Version("1.0");
+
+        assertTrue(version.isGreaterThanOrEqualTo(otherVersion));
     }
 
     @Test
@@ -26,7 +34,7 @@ public class VersionTest {
         Version version = new Version("3.2");
         Version otherVersion = new Version("2.1");
 
-        assertFalse(version.isGreaterThan(otherVersion));
+        assertFalse(version.isGreaterThanOrEqualTo(otherVersion));
     }
 
     @Test

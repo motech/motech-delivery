@@ -10,8 +10,8 @@ public class Version implements Comparable<Version> {
         this.minorVersionNumber = Integer.parseInt(versionArray[1]);
     }
 
-    public boolean isGreaterThan(Version otherVersion) {
-        return majorVersionNumber.equals(otherVersion.majorVersionNumber) && minorVersionNumber > otherVersion.minorVersionNumber;
+    public boolean isGreaterThanOrEqualTo(Version otherVersion) {
+        return majorVersionNumber.equals(otherVersion.majorVersionNumber) && minorVersionNumber >= otherVersion.minorVersionNumber;
     }
 
     @Override

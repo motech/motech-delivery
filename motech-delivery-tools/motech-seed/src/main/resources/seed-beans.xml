@@ -11,5 +11,5 @@
     <util:properties id="seedProperties" location="classpath:seed.properties"/>
     <context:annotation-config/>
     <context:spring-configured/>
-    <beans:import resource="classpath*:**/**/applicationContext-sampleapp.xml"/>
+    <beans:import resource="classpath*:**/**/applicationContext*.xml"/>
 </beans>

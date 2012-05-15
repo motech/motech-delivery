@@ -16,7 +16,7 @@ public class RegimenSeed{
     @Autowired
     private AllDrugs allDrugs;
 
-    @Seed(priority = 0)
+    @Seed(priority = 0, version = "1.1")
     public void load() throws InterruptedException {
         Regimen regimen = new Regimen("regimen", allDrugs.getAll());
         allRegimens.add(regimen);

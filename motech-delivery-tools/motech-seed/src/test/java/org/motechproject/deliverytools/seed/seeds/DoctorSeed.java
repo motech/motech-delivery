@@ -18,7 +18,7 @@ public class DoctorSeed{
     @Autowired
     private AllClinics allClinics;
 
-    @Seed(priority = 0)
+    @Seed(priority = 0, version = "1.1")
     public void load() throws InterruptedException {
         List<Clinic> clinics = allClinics.getAll();
         Doctor doctor = new Doctor("dre",clinics.get(0));

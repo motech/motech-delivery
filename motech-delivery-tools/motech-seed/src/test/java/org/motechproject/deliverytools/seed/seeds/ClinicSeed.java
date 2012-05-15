@@ -12,7 +12,7 @@ public class ClinicSeed{
     @Autowired
     private AllClinics allClinics;
 
-    @Seed(priority = 1)
+    @Seed(priority = 1, version = "1.1")
     public void load() throws InterruptedException {
         Clinic clinic = new Clinic("C1", "city");
         allClinics.add(clinic);

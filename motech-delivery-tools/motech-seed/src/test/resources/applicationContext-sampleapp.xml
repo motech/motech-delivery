@@ -10,7 +10,6 @@
 
     <context:annotation-config/>
     <context:spring-configured/>
-    <context:component-scan base-package="org.motechproject.deliverytools.seed.seeds"/>
     <import resource="classpath:applicationPlatformCommon.xml"/>
     <bean id="eventRelay" class="org.motechproject.deliverytools.seed.domain.DummyEventRelay" />
 

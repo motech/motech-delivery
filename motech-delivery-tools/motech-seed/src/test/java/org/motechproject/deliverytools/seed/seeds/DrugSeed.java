@@ -12,7 +12,7 @@ public class DrugSeed{
     @Autowired
     private AllDrugs allDrugs;
 
-    @Seed(priority = 1)
+    @Seed(priority = 1, version = "1.1")
     public void load() throws InterruptedException {
         Drug drug1 = new Drug("D1");
         Drug drug2 = new Drug("D2");

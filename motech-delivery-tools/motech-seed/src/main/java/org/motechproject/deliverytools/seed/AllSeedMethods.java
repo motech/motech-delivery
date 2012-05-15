@@ -32,6 +32,14 @@ public class AllSeedMethods implements BeanPostProcessor {
         return bean;
     }
 
+    public void run() throws Exception {
+        Collections.sort(methods);
+        for (SeedMethod method : methods) {
+            System.out.println("Running Seed " + method.getMethodName());
+            method.run();
+        }
+    }
+
     private void addValidSeedMethodsToRun(List<SeedMethod> allSeedMethods, List<Version> allVersionList) {
         for (Version version : allVersionList)
             for (SeedMethod method : allSeedMethods)
@@ -58,13 +66,5 @@ public class AllSeedMethods implements BeanPostProcessor {
                                 method.getAnnotation(Seed.class).version()));
 
         return allSeedMethods;
-    }
-
-    public void run() throws Exception {
-        Collections.sort(methods);
-        for (SeedMethod method : methods) {
-            System.out.println("Running Seed " + method.getMethodName());
-            method.run();
-        }
     }
 }

@@ -10,11 +10,17 @@
 
     <context:annotation-config/>
     <context:spring-configured/>
+    <context:component-scan base-package="org.motechproject.deliverytools.seed.seeds"/>
     <import resource="classpath:applicationPlatformCommon.xml"/>
     <bean id="eventRelay" class="org.motechproject.deliverytools.seed.domain.DummyEventRelay" />
 
+    <bean id="couchDbInstance" class="org.ektorp.impl.StdCouchDbInstance">
+        <constructor-arg>
+            <bean id="httpClient" class="org.ektorp.spring.HttpClientFactoryBean"/>
+        </constructor-arg>
+    </bean>
     <bean id="couchDbConnector" class="org.ektorp.impl.StdCouchDbConnector">
-        <constructor-arg ref="couchDbInstance"/>
         <constructor-arg value="sample-seed"/>
+        <constructor-arg ref="couchDbInstance"/>
     </bean>
 </beans>

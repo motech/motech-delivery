@@ -7,5 +7,8 @@ import java.lang.annotation.*;
 @Documented
 public @interface Seed {
     int priority();
+
     String version();
+
+    String comment() default "";
 }

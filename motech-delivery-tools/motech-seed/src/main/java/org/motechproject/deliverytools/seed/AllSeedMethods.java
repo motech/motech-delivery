@@ -35,7 +35,7 @@ public class AllSeedMethods implements BeanPostProcessor {
     public void run() throws Exception {
         Collections.sort(methods);
         for (SeedMethod method : methods) {
-            System.out.println("Running Seed " + method.getMethodName());
+            System.out.println("Running Seed " + method);
             method.run();
         }
     }

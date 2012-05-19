@@ -17,10 +17,6 @@ public class SeedMethod implements Comparable<SeedMethod> {
         this.version = new Version(version);
     }
 
-    public String getMethodName() {
-        return method.toString();
-    }
-
     @Override
     public int compareTo(SeedMethod seedMethod) {
         return version.equals(seedMethod.version) ?
@@ -34,5 +30,10 @@ public class SeedMethod implements Comparable<SeedMethod> {
 
     public void run() throws Exception {
         method.invoke(bean, null);
+    }
+
+    @Override
+    public String toString() {
+        return version + "|" + priority + "|" + method;
     }
 }

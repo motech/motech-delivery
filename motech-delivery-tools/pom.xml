@@ -23,6 +23,7 @@
         <module>motech-index-updater</module>
         <module>motech-document</module>
         <module>motech-schedule-testing</module>
+        <module>motech-delivery-batch</module>
     </modules>
 
     <dependencies>

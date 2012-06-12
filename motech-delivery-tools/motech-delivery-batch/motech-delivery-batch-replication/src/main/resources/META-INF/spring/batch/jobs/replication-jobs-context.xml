@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:batch="http://www.springframework.org/schema/batch"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.1.xsd
+                                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="org.motechproject.batch.jobs.replication"/>
+
+    <batch:job-repository id="jobRepository"/>
+
+    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+        <property name="jobRepository" ref="jobRepository"/>
+    </bean>
+
+    <!--couchdb replication -->
+
+    <batch:job id="replicationJob">
+        <batch:step id="dbReplicationStepIndex">
+            <batch:tasklet ref="dbReplicator"/>
+        </batch:step>
+    </batch:job>
+
+    <bean id="replicationJobLauncher" class="org.motechproject.batch.QuartzLauncher">
+        <constructor-arg ref="replicationJob"/>
+        <constructor-arg ref="jobLauncher"/>
+    </bean>
+
+    <bean id="replicationJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="replicationJobLauncher"/>
+        <property name="targetMethod" value="run"/>
+    </bean>
+
+    <bean id="replicationCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="replicationJobDetail"/>
+        <property name="cronExpression" value="0 20 5 * * ?"/>
+    </bean>
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="replicationCronTrigger"/>
+            </list>
+        </property>
+    </bean>
+</beans>

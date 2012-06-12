@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:batch="http://www.springframework.org/schema/batch"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.1.xsd
+                                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="org.motechproject.batch.jobs.services"/>
+
+    <batch:job-repository id="jobRepository"/>
+
+    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+            <property name="jobRepository" ref="jobRepository"/>
+    </bean>
+
+    <!--stop all services-->
+
+    <batch:job id="stopAllServicesJob">
+        <batch:step id="stopAllServicesStepIndex">
+            <batch:tasklet ref="stopAllServices"/>
+        </batch:step>
+    </batch:job>
+
+    <bean id="stopAllServicesJobLauncher" class="org.motechproject.batch.QuartzLauncher">
+        <constructor-arg ref="stopAllServicesJob"/>
+        <constructor-arg ref="jobLauncher"/>
+    </bean>
+
+    <bean id="stopAllServicesJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="stopAllServicesJobLauncher"/>
+        <property name="targetMethod" value="run"/>
+    </bean>
+
+    <bean id="stopAllServicesCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="stopAllServicesJobDetail"/>
+        <property name="cronExpression" value="0 45 3 * * ?"/>
+    </bean>
+
+    <!--start all services-->
+
+    <batch:job id="startAllServicesJob">
+        <batch:step id="startAllServicesStepIndex">
+            <batch:tasklet ref="startAllServices"/>
+        </batch:step>
+    </batch:job>
+
+    <bean id="startAllServicesJobLauncher" class="org.motechproject.batch.QuartzLauncher">
+        <constructor-arg ref="startAllServicesJob"/>
+        <constructor-arg ref="jobLauncher"/>
+    </bean>
+
+    <bean id="startAllServicesJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="startAllServicesJobLauncher"/>
+        <property name="targetMethod" value="run"/>
+    </bean>
+
+    <bean id="startAllServicesCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="startAllServicesJobDetail"/>
+        <property name="cronExpression" value="0 15 5 * * ?"/>
+    </bean>
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="stopAllServicesCronTrigger"/>
+                <ref bean="startAllServicesCronTrigger"/>
+            </list>
+        </property>
+    </bean>
+</beans>

@@ -1,6 +1,7 @@
 package org.motechproject.batch;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +10,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Properties;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:/applicationBatchCommonContext.xml")
 public class AuthenticationProviderTest {
 
-    @Autowired
     AuthenticationProvider authenticationProvider;
+
+    @Before
+    public void setUp(){
+        authenticationProvider = new AuthenticationProvider(new Properties());
+    }
 
     @Test
     public void shouldEncrypt() throws Exception {

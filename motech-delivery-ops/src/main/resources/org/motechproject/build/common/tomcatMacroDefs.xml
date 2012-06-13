@@ -71,4 +71,51 @@
             <echo message="tomcat started"/>
         </sequential>
     </macrodef>
+
+    <macrodef name="execute.java.class">
+        <attribute name="tomcat.home"/>
+        <attribute name="app.name"/>
+        <attribute name="command.line.args"/>
+        <attribute name="main.class"/>
+        <sequential>
+            <echo message="Executing @{main.class}"/>
+
+            <java fork="false" classname="@{main.class}">
+                <arg line="@{command.line.args}"/>
+                <classpath>
+                    <fileset dir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/lib">
+                        <include name="**/*.jar"/>
+                    </fileset>
+                    <fileset dir="@{tomcat.home}/lib">
+                        <include name="**/*.jar"/>
+                    </fileset>
+                </classpath>
+            </java>
+
+            <echo message="Executing class done"/>
+        </sequential>
+    </macrodef>
+
+     <macrodef name="explode.war">
+        <attribute name="tomcat.home"/>
+        <attribute name="app.name"/>
+        <sequential>
+            <unzip src="@{tomcat.home}/webapps/@{app.name}.war" dest="@{tomcat.home}/webapps/@{app.name}/"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="copy.over.properties">
+        <attribute name="tomcat.home"/>
+        <attribute name="app.name"/>
+        <attribute name="basedir"/>
+        <attribute name="env"/>
+        <sequential>
+            <copy overwrite="true" todir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes">
+                <fileset dir="@{basedir}/properties/@{env}">
+                    <include name="*.properties"/>
+                    <exclude name="**/*.*"/>
+                </fileset>
+            </copy>
+        </sequential>
+    </macrodef>
 </antlib>

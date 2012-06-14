@@ -113,7 +113,6 @@
             <copy overwrite="true" todir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes">
                 <fileset dir="@{basedir}/properties/@{env}">
                     <include name="*.properties"/>
-                    <exclude name="**/*.*"/>
                 </fileset>
             </copy>
         </sequential>

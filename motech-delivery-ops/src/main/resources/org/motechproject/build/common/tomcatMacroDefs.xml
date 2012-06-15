@@ -83,6 +83,7 @@
             <java fork="false" classname="@{main.class}">
                 <arg line="@{command.line.args}"/>
                 <classpath>
+                    <path location="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes"/>
                     <fileset dir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/lib">
                         <include name="**/*.jar"/>
                     </fileset>

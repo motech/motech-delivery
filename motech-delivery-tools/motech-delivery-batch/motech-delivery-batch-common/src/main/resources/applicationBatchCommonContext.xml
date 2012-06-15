@@ -13,7 +13,7 @@
 
     <context:component-scan base-package="org.motechproject.batch"/>
 
-    <util:properties id="batchCommonProperties" location="classpath*:batchCommon.properties"/>
+    <util:properties id="batchCommonProperties" location="classpath:batchCommon.properties"/>
 
     <sec:http auto-config="false" use-expressions="true">
         <sec:intercept-url pattern="/**" access="hasRole('admin')" requires-channel="any"/>

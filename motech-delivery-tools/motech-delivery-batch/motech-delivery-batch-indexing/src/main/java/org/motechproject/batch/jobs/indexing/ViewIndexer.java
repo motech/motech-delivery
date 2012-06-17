@@ -15,6 +15,7 @@
  */
 package org.motechproject.batch.jobs.indexing;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -49,8 +50,12 @@ public class ViewIndexer implements Tasklet, InitializingBean {
     @Override
     public RepeatStatus execute(StepContribution arg0, ChunkContext arg1) throws Exception {
         CouchDBViewIndexer couchDBViewIndexer = new CouchDBViewIndexer();
-        couchDBViewIndexer.indexAllViews(masterCouchDbHost);
-        couchDBViewIndexer.indexAllViews(slaveCouchDbHost);
+        if (StringUtils.isNotEmpty(masterCouchDbHost)) {
+            couchDBViewIndexer.indexAllViews(masterCouchDbHost);
+        }
+        if (StringUtils.isNotEmpty(slaveCouchDbHost)) {
+            couchDBViewIndexer.indexAllViews(slaveCouchDbHost);
+        }
         return RepeatStatus.FINISHED;
     }
 }

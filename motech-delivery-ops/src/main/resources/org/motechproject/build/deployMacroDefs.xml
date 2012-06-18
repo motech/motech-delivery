@@ -4,6 +4,7 @@
     <typedef file="org/motechproject/build/common/activemqMacroDefs.xml"/>
     <typedef file="org/motechproject/build/common/couchdbMacroDefs.xml"/>
     <typedef file="org/motechproject/build/common/mysqlMacroDefs.xml"/>
+    <typedef file="org/motechproject/build/common/dbMacroDefs.xml"/>
     <typedef file="org/motechproject/build/common/tomcatMacroDefs.xml"/>
     <typedef file="org/motechproject/build/common/hudsonMacroDefs.xml"/>
     <typedef file="org/motechproject/build/common/nexusMacroDefs.xml"/>

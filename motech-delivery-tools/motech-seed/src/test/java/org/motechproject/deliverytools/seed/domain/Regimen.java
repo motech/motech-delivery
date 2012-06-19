@@ -1,13 +1,14 @@
 package org.motechproject.deliverytools.seed.domain;
 
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.ektorp.support.CouchDbDocument;
 import org.ektorp.support.TypeDiscriminator;
-import org.motechproject.model.MotechBaseDataObject;
 
 import java.util.List;
 
 @TypeDiscriminator("doc.type === 'Regimen'")
-public class Regimen extends MotechBaseDataObject {
+public class Regimen extends CouchDbDocument {
+
     @JsonProperty
     private String type = "Regimen";
     @JsonProperty
@@ -30,4 +31,5 @@ public class Regimen extends MotechBaseDataObject {
     public List<Drug> drugs() {
         return drugs;
     }
+
 }

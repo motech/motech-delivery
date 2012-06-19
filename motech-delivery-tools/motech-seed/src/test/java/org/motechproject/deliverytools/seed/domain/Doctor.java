@@ -1,12 +1,13 @@
 package org.motechproject.deliverytools.seed.domain;
 
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.ektorp.support.CouchDbDocument;
 import org.ektorp.support.TypeDiscriminator;
-import org.motechproject.model.MotechBaseDataObject;
 
 
 @TypeDiscriminator("doc.type === 'Doctor'")
-public class Doctor extends MotechBaseDataObject {
+public class Doctor extends CouchDbDocument {
+
     @JsonProperty
     private String type = "Doctor";
     @JsonProperty
@@ -25,4 +26,5 @@ public class Doctor extends MotechBaseDataObject {
     public Clinic clinic() {
         return clinic;
     }
+
 }

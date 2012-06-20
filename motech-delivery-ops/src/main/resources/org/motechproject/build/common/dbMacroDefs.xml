@@ -23,6 +23,7 @@
             <property name="flyway.user" value="@{user}"/>
             <property name="flyway.password" value="@{password}"/>
             <flyway:migrate />
+            <delete dir="${temp.migration.dir}" />
         </sequential>
     </macrodef>
 

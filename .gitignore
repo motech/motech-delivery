@@ -21,3 +21,4 @@ test-output/
 .DS_Store
 motech-delivery-tools/motech-document/velocity.log
 motech-delivery-tools/motech-document/motech_api_doc.pdf
+*.log

@@ -10,6 +10,7 @@ import org.motechproject.scheduletracking.api.service.EnrollmentRequest;
 import org.motechproject.scheduletracking.api.service.ScheduleTrackingService;
 import org.quartz.*;
 import org.quartz.impl.calendar.BaseCalendar;
+import org.quartz.spi.OperableTrigger;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 import java.util.*;
@@ -18,6 +19,7 @@ import static java.text.MessageFormat.format;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.motechproject.scheduletracking.api.events.constants.EventDataKeys.*;
+import static org.quartz.impl.matchers.GroupMatcher.triggerGroupEquals;
 
 public class FakeSchedule {
     private ScheduleTrackingService trackingService;
@@ -92,9 +94,9 @@ public class FakeSchedule {
     }
 
     private void captureAlertsFor(String externalId, String scheduleName) throws SchedulerException {
-        for (String triggerName : scheduler.getTriggerNames("default")) {
-            Trigger trigger = scheduler.getTrigger(triggerName, "default");
-            JobDetail detail = scheduler.getJobDetail(trigger.getJobName(), "default");
+        for (TriggerKey triggerKey : scheduler.getTriggerKeys(triggerGroupEquals("default"))) {
+            Trigger trigger = scheduler.getTrigger(triggerKey);
+            JobDetail detail = scheduler.getJobDetail(JobKey.jobKey(trigger.getJobKey().getName(), "default"));
 
             JobDataMap dataMap = detail.getJobDataMap();
             if (scheduleName.equals(dataMap.get(SCHEDULE_NAME)) && externalId.equals(dataMap.get(EXTERNAL_ID))) {
@@ -108,7 +110,7 @@ public class FakeSchedule {
 
     private void storeAlertTimes(Trigger trigger, JobDetail detail, LocalDate startDate) {
         LocalDate endDate = startDate.plusYears(2);
-        List times = TriggerUtils.computeFireTimesBetween(trigger, new BaseCalendar(), startDate.toDate(), endDate.toDate());
+        List times = TriggerUtils.computeFireTimesBetween((OperableTrigger) trigger, new BaseCalendar(), startDate.toDate(), endDate.toDate());
 
         String windowName = String.valueOf(detail.getJobDataMap().get(WINDOW_NAME));
         MilestoneAlert milestoneAlert = (MilestoneAlert) detail.getJobDataMap().get(MILESTONE_NAME);

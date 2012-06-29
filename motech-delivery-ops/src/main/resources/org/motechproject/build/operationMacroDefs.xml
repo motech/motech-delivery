@@ -6,6 +6,7 @@
 	<typedef file="org/motechproject/build/common/mysqlMacroDefs.xml" />
 	<typedef file="org/motechproject/build/common/postgresMacroDefs.xml" />
 	<typedef file="org/motechproject/build/common/tomcatMacroDefs.xml" />
+	<typedef file="org/motechproject/build/common/nagiosMacroDefs.xml" />
 
 	<macrodef name="start.master.machine">
 		<attribute name="couch.db.port" />

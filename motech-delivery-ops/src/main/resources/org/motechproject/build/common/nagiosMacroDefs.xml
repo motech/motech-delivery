@@ -8,7 +8,7 @@
             <copy overwrite="true" todir="/etc/nagios/objects/">
                 <fileset dir="@{base.directory}/nagios/objects"/>
             </copy>
-            <copy overwrite="true" todir="/usr/lib64/nagios/plugins/">
+            <copy overwrite="true" todir="/usr/lib64/nagios/plugins/" failonerror="false">
                 <fileset dir="@{base.directory}/nagios/plugins"/>
             </copy>
         </sequential>

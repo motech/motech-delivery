@@ -34,6 +34,6 @@ public class SeedMethod implements Comparable<SeedMethod> {
 
     @Override
     public String toString() {
-        return version + "|" + priority + "|" + method;
+        return version + "|" + priority + "|" + method.getName();
     }
 }

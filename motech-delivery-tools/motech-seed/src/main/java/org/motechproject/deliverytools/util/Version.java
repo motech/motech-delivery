@@ -42,4 +42,9 @@ public class Version implements Comparable<Version> {
         result = 31 * result + (minorVersionNumber != null ? minorVersionNumber.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return majorVersionNumber + "." + minorVersionNumber;
+    }
 }

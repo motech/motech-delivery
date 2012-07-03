@@ -8,22 +8,14 @@
         <attribute name="user"/>
         <attribute name="password"/>
         <sequential>
-            <tempfile property="temp.migration.dir" destDir="." prefix="migration"/>
-            <mkdir dir="${temp.migration.dir}"/>
-            <basename property="temp.migration.dir.name.without.path" file="${temp.migration.dir}"/>
-
-            <copy todir="${temp.migration.dir}">
-                <fileset dir="@{migrationDir}" />
-            </copy>
-
             <property name="flyway.schemas" value="@{schemas}" />
-            <property name="flyway.baseDir" value="${temp.migration.dir.name.without.path}/"/>
+            <property name="flyway.baseDir" value="@{migrationDir}"/>
             <property name="flyway.driver" value="@{dbDriver}"/>
             <property name="flyway.url" value="@{dbJdbcUrl}"/>
             <property name="flyway.user" value="@{user}"/>
             <property name="flyway.password" value="@{password}"/>
+
             <flyway:migrate />
-            <delete dir="${temp.migration.dir}" />
         </sequential>
     </macrodef>
 

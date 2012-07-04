@@ -97,7 +97,7 @@
         </sequential>
     </macrodef>
 
-     <macrodef name="explode.war">
+    <macrodef name="explode.war">
         <attribute name="tomcat.home"/>
         <attribute name="app.name"/>
         <sequential>

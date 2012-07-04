@@ -14,8 +14,9 @@
         <attribute name="app.name"/>
         <attribute name="remote.location"/>
         <attribute name="download.dir"/>
+        <attribute name="app.ext" default="war" />
         <sequential>
-            <copy tofile="@{download.dir}/@{app.name}.war" flatten="true" overwrite="true">
+            <copy tofile="@{download.dir}/@{app.name}.@{app.ext}" flatten="true" overwrite="true">
                 <resources>
                     <url url="@{remote.location}"/>
                 </resources>

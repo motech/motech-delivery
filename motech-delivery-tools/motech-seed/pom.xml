@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-	    <groupId>org.motechproject</groupId>
+	    <groupId>org.motechproject.ghana-national-delivery</groupId>
 	    <artifactId>motech-delivery-tools</artifactId>
       <version>0.3-SNAPSHOT</version>
     </parent>
@@ -15,7 +15,7 @@
         <spring.version>3.0.5.RELEASE</spring.version>
         <slf4j.version>1.6.1</slf4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <motech.version>0.10</motech.version>
+        <motech.version>0.12-GHANA-NATIONAL-SNAPSHOT</motech.version>
     </properties>
 
     <dependencies>

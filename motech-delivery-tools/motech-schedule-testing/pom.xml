@@ -6,7 +6,7 @@
 
     <parent>
         <artifactId>motech-delivery-tools</artifactId>
-        <groupId>org.motechproject</groupId>
+        <groupId>org.motechproject.ghana-national-delivery</groupId>
         <version>0.3-SNAPSHOT</version>
     </parent>
 
@@ -16,7 +16,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.0.5.RELEASE</spring.version>
-        <motech.version>0.11</motech.version>
+        <motech.version>0.12-GHANA-NATIONAL-SNAPSHOT</motech.version>
     </properties>
 
     <dependencies>

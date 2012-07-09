@@ -1,6 +1,7 @@
 package org.motechproject.deliverytools.jobhandlerinvoker.domain;
 
-import org.motechproject.model.MotechEvent;
+
+import org.motechproject.scheduler.domain.MotechEvent;
 
 import java.util.HashMap;
 

@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.motechproject.deliverytools.jobhandlerinvoker.domain.ScheduledJob;
-import org.motechproject.scheduler.MotechSchedulerServiceImpl;
 import org.motechproject.util.DateUtil;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
@@ -30,14 +29,14 @@ public class AllScheduledJobsIT {
 
     @Before
     public void setUp() throws SchedulerException {
-        schedulerFactory.getScheduler().deleteJob(jobName, MotechSchedulerServiceImpl.JOB_GROUP_NAME);
+        schedulerFactory.getScheduler().deleteJob(jobName, AllScheduledJobs.JOB_GROUP_NAME);
     }
 
     @Test
     public void shouldLoadJobFromQuartzDataStore() throws SchedulerException {
         JobDetail jobDetail = new JobDetail();
         jobDetail.setName(jobName);
-        jobDetail.setGroup(MotechSchedulerServiceImpl.JOB_GROUP_NAME);
+        jobDetail.setGroup(AllScheduledJobs.JOB_GROUP_NAME);
         jobDetail.setJobClass(JobForAllScheduledJobsIT.class);
         JobDataMap jobDataMap = new JobDataMap();
         jobDataMap.put("foo", "bar");

@@ -2,8 +2,8 @@ package org.motechproject.deliverytools.jobhandlerinvoker.domain;
 
 import org.junit.Test;
 import org.motechproject.deliverytools.jobhandlerinvoker.HandlerForJobHandlerInvokerTests;
-import org.motechproject.model.MotechEvent;
 import org.motechproject.scheduler.domain.JobId;
+import org.motechproject.scheduler.domain.MotechEvent;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Method;

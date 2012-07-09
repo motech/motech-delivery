@@ -1,7 +1,6 @@
 package org.motechproject.deliverytools.jobhandlerinvoker;
 
 import org.motechproject.deliverytools.jobhandlerinvoker.domain.ScheduledJob;
-import org.motechproject.scheduler.MotechSchedulerServiceImpl;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
@@ -15,6 +14,8 @@ public class AllScheduledJobs {
     private SchedulerFactoryBean schedulerFactory;
     private QueriedJobs queriedJobs;
 
+    public static String JOB_GROUP_NAME = "default";
+
     @Autowired
     public AllScheduledJobs(SchedulerFactoryBean schedulerFactory, QueriedJobs queriedJobs) throws SchedulerException {
         this.schedulerFactory = schedulerFactory;
@@ -24,10 +25,11 @@ public class AllScheduledJobs {
     public ScheduledJob get(String name) {
         try {
             Scheduler scheduler = schedulerFactory.getScheduler();
-            JobDetail jobDetail = scheduler.getJobDetail(name, MotechSchedulerServiceImpl.JOB_GROUP_NAME);
+
+            JobDetail jobDetail = scheduler.getJobDetail(name, JOB_GROUP_NAME);
             if (jobDetail == null)
                 throw new IllegalArgumentException("No job named:" + name);
-            Trigger[] triggers = scheduler.getTriggersOfJob(name, MotechSchedulerServiceImpl.JOB_GROUP_NAME);
+            Trigger[] triggers = scheduler.getTriggersOfJob(name, JOB_GROUP_NAME);
             if (triggers.length == 0 || triggers.length > 1)
                 throw new AssertionError(String.format("There should be exactly one trigger for every job. Found %s triggers for %s", triggers.length, name));
             queriedJobs.add(name);

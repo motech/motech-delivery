@@ -63,6 +63,11 @@
             <artifactId>motech-deliverytools-common</artifactId>
             <version>0.3-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.6.8</version>
+        </dependency>
     </dependencies>
 
 </project>

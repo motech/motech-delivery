@@ -10,7 +10,7 @@
         <version>0.3-SNAPSHOT</version>
     </parent>
     <name>Motech Index Updater</name>
-    <groupId>groupId</groupId>
+    <groupId>org.motechproject.ghana-national-delivery</groupId>
     <artifactId>motech-index-updater</artifactId>
     <version>1.0-SNAPSHOT</version>
 

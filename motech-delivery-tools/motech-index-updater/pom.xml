@@ -7,12 +7,12 @@
     <parent>
         <groupId>org.motechproject</groupId>
         <artifactId>motech-delivery-tools</artifactId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.11-SNAPSHOT</version>
     </parent>
     <name>Motech Index Updater</name>
     <groupId>groupId</groupId>
     <artifactId>motech-index-updater</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.11-SNAPSHOT</version>
 
     <dependencies>
         <dependency>

@@ -7,17 +7,11 @@
     <parent>
         <artifactId>motech-delivery-tools</artifactId>
         <groupId>org.motechproject</groupId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.11-SNAPSHOT</version>
     </parent>
-
-    <version>0.4-SNAPSHOT</version>
+    <name>Motech Schedule Testing</name>
+    <version>0.11-SNAPSHOT</version>
     <artifactId>motech-schedule-testing</artifactId>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>3.0.5.RELEASE</spring.version>
-        <motech.version>0.11</motech.version>
-    </properties>
 
     <dependencies>
         <dependency>

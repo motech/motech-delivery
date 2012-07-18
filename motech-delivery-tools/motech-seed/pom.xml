@@ -5,18 +5,11 @@
     <parent>
 	    <groupId>org.motechproject</groupId>
 	    <artifactId>motech-delivery-tools</artifactId>
-      <version>0.3-SNAPSHOT</version>
+      <version>0.11-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>motech-seed</artifactId>
     <name>Motech Seed</name>
-
-    <properties>
-        <spring.version>3.0.5.RELEASE</spring.version>
-        <slf4j.version>1.6.1</slf4j.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <motech.version>0.10</motech.version>
-    </properties>
 
     <dependencies>
         <dependency>

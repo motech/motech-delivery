@@ -1,6 +1,6 @@
 package org.motechproject.deliverytools.jobhandlerinvoker;
 
-import org.motechproject.model.MotechEvent;
+import org.motechproject.scheduler.domain.MotechEvent;
 import org.motechproject.server.event.annotations.MotechListener;
 
 public class HandlerForJobHandlerInvokerTests {

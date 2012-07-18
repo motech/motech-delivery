@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import org.motechproject.deliverytools.jobhandlerinvoker.domain.MotechEventInvocation;
 import org.motechproject.deliverytools.jobhandlerinvoker.domain.ScheduledJob;
 import org.motechproject.deliverytools.jobhandlerinvoker.domain.ScheduledJobName;
-import org.motechproject.model.MotechEvent;
+import org.motechproject.scheduler.domain.MotechEvent;
 import org.motechproject.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;

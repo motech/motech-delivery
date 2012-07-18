@@ -5,19 +5,12 @@
     <parent>
 	    <groupId>org.motechproject</groupId>
 	    <artifactId>motech-delivery-tools</artifactId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.11-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>motech-job-handler-invoker</artifactId>
     <name>Motech Job Handler Invoker</name>
-
-    <properties>
-        <spring.version>3.0.5.RELEASE</spring.version>
-        <slf4j.version>1.6.1</slf4j.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <motech.version>0.7</motech.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -60,13 +53,18 @@
         <dependency>
             <groupId>org.motechproject</groupId>
             <artifactId>motech-deliverytools-common</artifactId>
-            <version>0.3-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>3.0.5.RELEASE</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.motechproject</groupId>
+            <artifactId>motech-scheduler</artifactId>
+            <version>${motech.version}</version>
         </dependency>
     </dependencies>
 

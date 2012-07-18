@@ -119,4 +119,21 @@
             </copy>
         </sequential>
     </macrodef>
+
+    <macrodef name="copy.over.resources">
+        <attribute name="tomcat.home"/>
+        <attribute name="app.name"/>
+        <attribute name="basedir"/>
+        <attribute name="env"/>
+        <sequential>
+            <copy failonerror="false" overwrite="true" todir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes">
+                <fileset dir="@{basedir}/properties/default" />
+            </copy>
+            <copy overwrite="true" todir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes">
+                <fileset dir="@{basedir}/properties/@{env}">
+                    <exclude name="deploy.properties" />
+                </fileset>
+            </copy>
+        </sequential>
+    </macrodef>
 </antlib>

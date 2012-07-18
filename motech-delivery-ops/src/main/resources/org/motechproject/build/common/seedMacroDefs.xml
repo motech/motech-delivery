@@ -4,6 +4,7 @@
 
     <macrodef name="load.seed.data">
         <attribute name="tomcat.home"/>
+        <attribute name="jdk.home"/>
         <attribute name="app.name"/>
         <attribute name="couchdb.seed.main.class"/>
         <attribute name="db.name"/>
@@ -17,6 +18,9 @@
                     </fileset>
                     <fileset dir="@{tomcat.home}/lib">
                         <include name="**/*.jar"/>
+                    </fileset>
+                    <fileset dir="@{jdk.home}">
+                        <include name="**/rt.jar"/>
                     </fileset>
                 </classpath>
             </java>

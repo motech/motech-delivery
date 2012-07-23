@@ -19,6 +19,7 @@
         <module>motech-delivery-batch-indexing</module>
         <module>motech-delivery-batch-replication</module>
         <module>motech-delivery-batch-services</module>
+        <module>motech-delivery-batch-web</module>
     </modules>
 
     <description>MoTech Batch Job Interface</description>

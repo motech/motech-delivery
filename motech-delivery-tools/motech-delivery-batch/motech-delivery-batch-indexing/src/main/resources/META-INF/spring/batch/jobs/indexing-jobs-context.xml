@@ -35,7 +35,7 @@
 
     <bean id="viewIndexCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="viewIndexJobDetail"/>
-        <property name="cronExpression" value="0 */15 * * * ?"/>
+        <property name="cronExpression" value="${batch.indexing.cron}"/>
     </bean>
 
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">

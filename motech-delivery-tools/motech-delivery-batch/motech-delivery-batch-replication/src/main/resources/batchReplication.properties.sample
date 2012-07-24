@@ -1,2 +1,3 @@
 couchdb.master.host=localhost
 couchdb.slave.host=
+batch.replication.cron=0 20 5 * * ?

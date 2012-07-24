@@ -35,7 +35,7 @@
 
     <bean id="replicationCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="replicationJobDetail"/>
-        <property name="cronExpression" value="0 20 5 * * ?"/>
+        <property name="cronExpression" value="${batch.replication.cron}"/>
     </bean>
 
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">

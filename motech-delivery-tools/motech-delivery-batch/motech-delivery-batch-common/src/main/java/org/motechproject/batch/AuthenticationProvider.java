@@ -69,4 +69,5 @@ public class AuthenticationProvider extends AbstractUserDetailsAuthenticationPro
         }
         return hashValue;
     }
+
 }

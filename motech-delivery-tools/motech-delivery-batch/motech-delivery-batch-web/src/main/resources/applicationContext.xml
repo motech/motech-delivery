@@ -9,8 +9,10 @@
             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd"
        xmlns:util="http://www.springframework.org/schema/util">
 
+    <util:properties id="batchProperties" location="classpath:batch-default.properties"/>
     <context:property-placeholder location="classpath*:*.properties" ignore-unresolvable="true"/>
 
+    <import resource="classpath:applicationBatchCommonContext.xml"/>
     <import resource="classpath:applicationBatchReplicationContext.xml"/>
     <import resource="classpath:META-INF/spring/batch/jobs/replication-jobs-context.xml"/>
 
@@ -20,30 +22,27 @@
     <import resource="classpath:applicationBatchCompactionContext.xml"/>
     <import resource="classpath:META-INF/spring/batch/jobs/compaction-jobs-context.xml"/>
 
-    <security:http auto-config='true'>
-        <security:intercept-url pattern="/**" access="ROLE_USER"/>
-    </security:http>
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+        <!--<property name="driverClass" value="com.mysql.jdbc.Driver"/>-->
+        <!--<property name="jdbcUrl" value="${db.connection.string}"/>-->
+        <!--<property name="user" value="${db.username}"/>-->
+        <!--<property name="password" value="${db.password}"/>-->
+        <!--<property name="minPoolSize" value="${db.pool.size}"/>-->
+        <!--<property name="maxPoolSize" value="${db.pool.size}"/>-->
+        <!--<property name="maxIdleTime" value="${db.pool.maxIdleTime}"/>-->
+    <!--</bean>-->
 
-    <security:authentication-manager>
-        <security:authentication-provider>
-            <security:user-service>
-                <security:user name="admin" password="p@ssw0rd" authorities="ROLE_USER, ROLE_ADMIN"/>
-            </security:user-service>
-        </security:authentication-provider>
-    </security:authentication-manager>
+    <!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--</bean>-->
 
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="${db.connection.string}"/>
-        <property name="user" value="${db.username}"/>
-        <property name="password" value="${db.password}"/>
-        <property name="minPoolSize" value="${db.pool.size}"/>
-        <property name="maxPoolSize" value="${db.pool.size}"/>
-        <property name="maxIdleTime" value="${db.pool.maxIdleTime}"/>
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="viewIndexCronTrigger"/>
+                <ref bean="dbCompactorCronTrigger"/>
+                <ref bean="replicationCronTrigger"/>
+            </list>
+        </property>
     </bean>
-
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-
 </beans>

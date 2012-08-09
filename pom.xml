@@ -6,7 +6,7 @@
     <groupId>org.motechproject</groupId>
     <artifactId>motech-delivery</artifactId>
     <packaging>pom</packaging>
-    <version>0.3</version>
+    <version>0.3-SNAPSHOT</version>
     <name>Motech Delivery</name>
     <modules>
         <module>motech-delivery-ops</module>

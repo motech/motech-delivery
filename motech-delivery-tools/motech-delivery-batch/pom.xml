@@ -10,7 +10,7 @@
     <parent>
         <artifactId>motech-delivery-tools</artifactId>
         <groupId>org.motechproject</groupId>
-        <version>0.3</version>
+        <version>0.3-SNAPSHOT</version>
     </parent>
 
     <modules>

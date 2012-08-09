@@ -21,7 +21,7 @@ public class DateTimeController {
 
     @RequestMapping(value = "update", method = RequestMethod.GET)
     @ResponseBody
-    public String update(@RequestParam String date, @RequestParam String hour, @RequestParam String minute, @RequestParam(required = false) String type, HttpServletResponse response) {
+    public String update(@RequestParam String date, @RequestParam(defaultValue = "0") String hour, @RequestParam(defaultValue = "0") String minute, @RequestParam(required = false) String type, HttpServletResponse response) {
         try {
             TimeMachine sourceInstance = getTimeMachine(type);
             DateTimeSourceUtil.SourceInstance = sourceInstance;

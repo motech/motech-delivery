@@ -12,37 +12,37 @@ import static junit.framework.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class TimeMachineTest {
-    private TimeMachine timeMachine;
+public class FrozenTimeMachineTest {
+    private FrozenTimeMachine frozenTimeMachine;
 
     @Before
     public void setUp() {
         DateTimeSource dateTimeSource = mock(DateTimeSource.class);
         when(dateTimeSource.timeZone()).thenReturn(DateTimeZone.UTC);
-        timeMachine = new TimeMachine(dateTimeSource);
+        frozenTimeMachine = new FrozenTimeMachine(dateTimeSource);
     }
 
     @Test
     public void whenDateAndTimeIsNotSetShouldBeToday() {
-        assertNotNull(timeMachine.today());
-        assertNotNull(timeMachine.now());
+        assertNotNull(frozenTimeMachine.today());
+        assertNotNull(frozenTimeMachine.now());
     }
 
     @Test
     public void whenOnlyDateIsSetup() {
-        timeMachine.update("2011-10-17", "", null);
+        frozenTimeMachine.update("2011-10-17", "", null);
         assertDate();
     }
 
     private void assertDate() {
         //Joda should have used interface for getYear/month etc methods
-        LocalDate today = timeMachine.today();
+        LocalDate today = frozenTimeMachine.today();
         assertNotNull(today);
         assertEquals(2011, today.getYear());
         assertEquals(10, today.getMonthOfYear());
         assertEquals(17, today.getDayOfMonth());
 
-        DateTime now = timeMachine.now();
+        DateTime now = frozenTimeMachine.now();
         assertNotNull(now);
         assertEquals(2011, now.getYear());
         assertEquals(10, now.getMonthOfYear());
@@ -51,19 +51,19 @@ public class TimeMachineTest {
 
     @Test
     public void whenBothDateAndTimeIsSet() {
-        timeMachine.update("2011-10-17", "14", "20");
+        frozenTimeMachine.update("2011-10-17", "14", "20");
         assertDate();
-        DateTime now = timeMachine.now();
+        DateTime now = frozenTimeMachine.now();
         assertEquals(14, now.getHourOfDay());
         assertEquals(20, now.getMinuteOfHour());
     }
 
     @Test
     public void useTheLastSetValues() {
-        timeMachine.update("2011-10-17", "14", "20");
-        timeMachine.update(null, null, null);
+        frozenTimeMachine.update("2011-10-17", "14", "20");
+        frozenTimeMachine.update(null, null, null);
         assertDate();
-        DateTime now = timeMachine.now();
+        DateTime now = frozenTimeMachine.now();
         assertEquals(14, now.getHourOfDay());
         assertEquals(20, now.getMinuteOfHour());
     }

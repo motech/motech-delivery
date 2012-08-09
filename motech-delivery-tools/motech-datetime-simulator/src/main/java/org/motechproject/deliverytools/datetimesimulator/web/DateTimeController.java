@@ -1,6 +1,8 @@
 package org.motechproject.deliverytools.datetimesimulator.web;
 
 import org.apache.log4j.Logger;
+import org.motechproject.deliverytools.datetimesimulator.domain.FlowingTimeMachine;
+import org.motechproject.deliverytools.datetimesimulator.domain.FrozenTimeMachine;
 import org.motechproject.deliverytools.datetimesimulator.domain.TimeMachine;
 import org.motechproject.util.DateTimeSourceUtil;
 import org.motechproject.util.DateUtil;
@@ -19,13 +21,10 @@ public class DateTimeController {
 
     @RequestMapping(value = "update", method = RequestMethod.GET)
     @ResponseBody
-    public String update(@RequestParam String date, @RequestParam String hour, @RequestParam String minute, HttpServletResponse response) {
+    public String update(@RequestParam String date, @RequestParam String hour, @RequestParam String minute, @RequestParam(required = false) String type, HttpServletResponse response) {
         try {
-            TimeMachine sourceInstance;
-            if (!(DateTimeSourceUtil.SourceInstance instanceof TimeMachine)) {
-                DateTimeSourceUtil.SourceInstance = new TimeMachine(DateTimeSourceUtil.SourceInstance);
-            }
-            sourceInstance = (TimeMachine) DateTimeSourceUtil.SourceInstance;
+            TimeMachine sourceInstance = getTimeMachine(type);
+            DateTimeSourceUtil.SourceInstance = sourceInstance;
             sourceInstance.update(date, hour, minute);
             return String.format("Successfully set datetime to: %s", DateUtil.now());
         } catch (Exception e) {
@@ -33,6 +32,13 @@ public class DateTimeController {
             logger.error(String.format("Could not set the datetime from Date=%s, Hour=%s, Minute=%s. Did you use something like: 2011-10-17", date, hour, minute), e);
             return e.toString();
         }
+    }
+
+    private TimeMachine getTimeMachine(String type) {
+        if("flow".equals(type)){
+            return new FlowingTimeMachine(DateTimeSourceUtil.SourceInstance);
+        }
+        return new FrozenTimeMachine(DateTimeSourceUtil.SourceInstance);
     }
 
     @RequestMapping(value = "get", method = RequestMethod.GET)

@@ -47,6 +47,12 @@
             <artifactId>motech-ivr-kookoo</artifactId>
             <version>0.3-SNAPSHOT</version>
             <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.motechproject</groupId>
+                    <artifactId>motech-platform-decisiontree</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

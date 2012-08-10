@@ -3,10 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>motech-delivery</artifactId>
-        <groupId>org.motechproject</groupId>
-        <version>0.3-SNAPSHOT</version>
+        <artifactId>motech-delivery-batch</artifactId>
+        <groupId>org.motechproject.batch</groupId>
+        <version>0.1-SNAPSHOT</version>
     </parent>
+
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.motechproject.batch</groupId>

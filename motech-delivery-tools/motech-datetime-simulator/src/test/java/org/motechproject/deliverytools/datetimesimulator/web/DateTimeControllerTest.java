@@ -19,13 +19,13 @@ public class DateTimeControllerTest {
 
     @Test
     public void invalidInput() {
-        controller.update("afsdff", null, null, servletResponse);
+        controller.update("afsdff", null, null, null, servletResponse);
         verify(servletResponse).setStatus(500);
     }
 
     @Test
     public void todayIsNotSetWhenExternalDateTimeSourceIsNotSet() {
-        controller.update("2011-10-17", null, null, servletResponse);
+        controller.update("2011-10-17", null, null, null, servletResponse);
         verifyZeroInteractions(servletResponse);
     }
 }

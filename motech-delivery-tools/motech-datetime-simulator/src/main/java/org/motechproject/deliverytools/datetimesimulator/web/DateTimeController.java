@@ -6,6 +6,7 @@ import org.motechproject.deliverytools.datetimesimulator.domain.FrozenTimeMachin
 import org.motechproject.deliverytools.datetimesimulator.domain.TimeMachine;
 import org.motechproject.util.DateTimeSourceUtil;
 import org.motechproject.util.DateUtil;
+import org.motechproject.util.datetime.DefaultDateTimeSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,9 +37,9 @@ public class DateTimeController {
 
     private TimeMachine getTimeMachine(String type) {
         if("flow".equals(type)){
-            return new FlowingTimeMachine(DateTimeSourceUtil.SourceInstance);
+            return new FlowingTimeMachine(new DefaultDateTimeSource());
         }
-        return new FrozenTimeMachine(DateTimeSourceUtil.SourceInstance);
+        return new FrozenTimeMachine(new DefaultDateTimeSource());
     }
 
     @RequestMapping(value = "get", method = RequestMethod.GET)

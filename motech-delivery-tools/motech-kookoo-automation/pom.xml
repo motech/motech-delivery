@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.motechproject</groupId>
             <artifactId>motech-ivr-kookoo</artifactId>
-            <version>${project.version}</version>
+            <version>${motech.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

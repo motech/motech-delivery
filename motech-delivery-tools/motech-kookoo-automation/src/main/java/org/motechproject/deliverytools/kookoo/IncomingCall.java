@@ -2,7 +2,7 @@ package org.motechproject.deliverytools.kookoo;
 
 import com.google.gson.reflect.TypeToken;
 import org.motechproject.dao.MotechJsonReader;
-import org.motechproject.ivr.kookoo.KookooCallServiceImpl;
+import org.motechproject.server.kookoo.KookooCallServiceImpl;
 
 import java.io.IOException;
 import java.lang.reflect.Type;

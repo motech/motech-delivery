@@ -25,7 +25,7 @@ public class DateTimeController {
     public String update(@RequestParam String date, @RequestParam(defaultValue = "0") String hour, @RequestParam(defaultValue = "0") String minute, @RequestParam(required = false) String type, HttpServletResponse response) {
         try {
             TimeMachine sourceInstance = getTimeMachine(type);
-            DateTimeSourceUtil.SourceInstance = sourceInstance;
+            DateTimeSourceUtil.setSourceInstance(sourceInstance);
             sourceInstance.update(date, hour, minute);
             return String.format("Successfully set datetime to: %s", DateUtil.now());
         } catch (Exception e) {

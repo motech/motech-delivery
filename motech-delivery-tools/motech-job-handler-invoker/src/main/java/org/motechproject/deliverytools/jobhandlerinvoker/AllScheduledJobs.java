@@ -1,7 +1,7 @@
 package org.motechproject.deliverytools.jobhandlerinvoker;
 
 import org.motechproject.deliverytools.jobhandlerinvoker.domain.ScheduledJob;
-import org.motechproject.scheduler.MotechSchedulerServiceImpl;
+import org.motechproject.scheduler.impl.MotechSchedulerServiceImpl;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;

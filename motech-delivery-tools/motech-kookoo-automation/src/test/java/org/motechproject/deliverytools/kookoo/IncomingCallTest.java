@@ -2,7 +2,7 @@ package org.motechproject.deliverytools.kookoo;
 
 import org.json.JSONObject;
 import org.junit.Test;
-import org.motechproject.ivr.kookoo.KookooCallServiceImpl;
+import org.motechproject.server.kookoo.KookooCallServiceImpl;
 
 import java.io.IOException;
 import java.net.URLEncoder;

@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.motechproject.deliverytools.jobhandlerinvoker.domain.ScheduledJob;
-import org.motechproject.scheduler.MotechSchedulerServiceImpl;
+import org.motechproject.scheduler.impl.MotechSchedulerServiceImpl;
 import org.motechproject.util.DateUtil;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;

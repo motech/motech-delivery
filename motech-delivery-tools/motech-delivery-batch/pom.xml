@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.motechproject.batch</groupId>
     <artifactId>motech-delivery-batch</artifactId>
-    <version>0.11-SNAPSHOT</version>
+    <version>0.12-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>MoTech Batch Jobs</name>
 
     <parent>
         <artifactId>motech-delivery-tools</artifactId>
         <groupId>org.motechproject</groupId>
-        <version>0.11-SNAPSHOT</version>
+        <version>0.12-SNAPSHOT</version>
     </parent>
 
     <modules>

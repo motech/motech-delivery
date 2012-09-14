@@ -10,7 +10,7 @@
         <attribute name="db.name"/>
         <sequential>
             <echo message="Starting to load seed data into @{db.name} for @{app.name}..."/>
-            <java fork="false" classname="@{couchdb.seed.main.class}">
+            <java fork="false" classname="@{couchdb.seed.main.class}" failonerror="true">
                 <classpath>
                     <path location="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes"/>
                     <fileset dir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/lib">

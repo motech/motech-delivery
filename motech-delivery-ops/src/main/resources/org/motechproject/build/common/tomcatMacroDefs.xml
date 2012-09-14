@@ -80,7 +80,7 @@
         <sequential>
             <echo message="Executing @{main.class}"/>
 
-            <java fork="false" classname="@{main.class}">
+            <java fork="false" classname="@{main.class}" failonerror="true">
                 <arg line="@{command.line.args}"/>
                 <classpath>
                     <path location="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes"/>

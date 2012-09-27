@@ -78,14 +78,19 @@
         <attribute name="command.line.args"/>
         <attribute name="main.class"/>
         <sequential>
+            <echo message="copying over properties"/>
+            <mkdir dir="temp_properties"/>
+            <copy overwrite="true" todir="temp_properties" failonerror="true" includeEmptyDirs="false">
+                <fileset dir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes">
+                    <exclude name="**/*.class"/>
+                </fileset>
+            </copy>
             <echo message="Executing @{main.class}"/>
 
             <java fork="false" classname="@{main.class}" failonerror="true">
                 <arg line="@{command.line.args}"/>
                 <classpath>
-                    <fileset dir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes">
-                        <include name="**/*.properties"/>
-                    </fileset>
+                    <path location="temp_properties"/>
                     <fileset dir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/lib">
                         <include name="**/*.jar"/>
                     </fileset>
@@ -96,6 +101,8 @@
             </java>
 
             <echo message="Executing class done"/>
+
+            <delete dir="temp_properties"/>
         </sequential>
     </macrodef>
 
@@ -116,24 +123,6 @@
             <copy overwrite="true" todir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes">
                 <fileset dir="@{basedir}/properties/@{env}">
                     <include name="*.properties"/>
-                    <exclude name="deploy.properties" />
-                </fileset>
-            </copy>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="copy.over.resources">
-        <attribute name="tomcat.home"/>
-        <attribute name="app.name"/>
-        <attribute name="basedir"/>
-        <attribute name="env"/>
-        <sequential>
-            <copy failonerror="false" overwrite="true" todir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes">
-                <fileset dir="@{basedir}/properties/default" />
-            </copy>
-            <copy overwrite="true" todir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes">
-                <fileset dir="@{basedir}/properties/@{env}">
-                    <exclude name="deploy.properties" />
                 </fileset>
             </copy>
         </sequential>

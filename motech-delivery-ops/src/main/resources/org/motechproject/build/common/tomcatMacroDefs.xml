@@ -77,7 +77,9 @@
         <attribute name="app.name"/>
         <attribute name="command.line.args"/>
         <attribute name="main.class"/>
+
         <sequential>
+            <property name="log4j" value="file:@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes/log4j.properties"/>
             <echo message="copying over properties"/>
             <mkdir dir="temp_properties"/>
             <copy overwrite="true" todir="temp_properties" failonerror="true" includeEmptyDirs="false">
@@ -88,6 +90,7 @@
             <echo message="Executing @{main.class}"/>
 
             <java fork="false" classname="@{main.class}" failonerror="true">
+                <sysproperty key="log4j.configuration" value="${log4j}"/>
                 <arg line="@{command.line.args}"/>
                 <classpath>
                     <path location="temp_properties"/>

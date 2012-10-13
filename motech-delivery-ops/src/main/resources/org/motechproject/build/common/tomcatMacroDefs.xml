@@ -79,7 +79,12 @@
         <attribute name="main.class"/>
 
         <sequential>
-            <property name="log4j" value="file:@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes/log4j.properties"/>
+            <condition property="log4j" value="file:@{tomcat.home}/webapps/@{app.name}/WEB-INF/classes/log4j.properties">
+                <not>
+                    <isset property="log4j" />
+                </not>
+            </condition>
+            <echo message="log4j.properties location: ${log4j}"/>
             <echo message="copying over properties"/>
             <mkdir dir="temp_properties"/>
             <copy overwrite="true" todir="temp_properties" failonerror="true" includeEmptyDirs="false">

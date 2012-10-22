@@ -88,11 +88,23 @@
             </copy>
             <echo message="Executing @{main.class}"/>
 
+            <condition property="log4jFileName" value="log4j.properties">
+                <not>
+                    <isset property="log4jFileName" />
+                </not>
+            </condition>
+            <condition property="log4jDir" value="">
+                <not>
+                    <isset property="log4jDir" />
+                </not>
+            </condition>
+
             <java fork="false" classname="@{main.class}" failonerror="true">
-                <sysproperty key="log4j.configuration" value="log4j.properties"/>
+                <sysproperty key="log4j.configuration" value="${log4jFileName}"/>
                 <arg line="@{command.line.args}"/>
                 <classpath>
                     <path location="temp_properties"/>
+                    <pathelement path="${log4jDir}"/>
                     <fileset dir="@{tomcat.home}/webapps/@{app.name}/WEB-INF/lib">
                         <include name="**/*.jar"/>
                     </fileset>

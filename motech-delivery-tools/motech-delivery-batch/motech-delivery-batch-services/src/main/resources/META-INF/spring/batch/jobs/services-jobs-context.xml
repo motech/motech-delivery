@@ -4,18 +4,20 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:batch="http://www.springframework.org/schema/batch"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.1.xsd
-                                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+                            http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.1.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="org.motechproject.batch.jobs.services"/>
 
-    <context:property-placeholder properties-ref="serviceCronProperties" ignore-resource-not-found="true"/>
-
     <batch:job-repository id="jobRepository"/>
+
+    <import resource="classpath*:applicationBatchServiceContext.xml"/>
 
     <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
             <property name="jobRepository" ref="jobRepository"/>
     </bean>
+
+
 
     <!--stop all services-->
 
@@ -37,7 +39,7 @@
 
     <bean id="stopAllServicesCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="stopAllServicesJobDetail"/>
-        <property name="cronExpression" value="${batch.service.stop.time}"/>
+        <property name="cronExpression" value="#{batchServiceProperties['batch.service.stop.time']}"/>
     </bean>
 
     <!--start all services-->
@@ -60,7 +62,7 @@
 
     <bean id="startAllServicesCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="startAllServicesJobDetail"/>
-        <property name="cronExpression" value="${batch.service.start.time}"/>
+        <property name="cronExpression" value="#{batchServiceProperties['batch.service.start.time']}"/>
     </bean>
 
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
@@ -68,24 +70,6 @@
             <list>
                 <ref bean="stopAllServicesCronTrigger"/>
                 <ref bean="startAllServicesCronTrigger"/>
-            </list>
-        </property>
-    </bean>
-
-    <bean id="serviceCronProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="ignoreResourceNotFound">true</property>
-        <!-- Defaults -->
-        <property name="properties">
-            <props>
-                <prop key="batch.service.start.time">0 15 5 * * ?</prop>
-                <prop key="batch.service.stop.time">0 45 3 * * ?</prop>
-            </props>
-        </property>
-
-        <!--User defined values-->
-        <property name="locations">
-            <list>
-                <value>classpath*:batchServices.properties</value>
             </list>
         </property>
     </bean>

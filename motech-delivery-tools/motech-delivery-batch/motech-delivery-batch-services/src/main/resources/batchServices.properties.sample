@@ -1,3 +1,5 @@
 deploy.build.file=/home/motech/deploy
 ant.file=
 environment=
+batch.service.stop.time=
+batch.service.start.time=

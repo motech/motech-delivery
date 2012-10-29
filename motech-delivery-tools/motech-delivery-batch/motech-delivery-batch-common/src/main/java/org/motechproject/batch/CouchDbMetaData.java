@@ -24,7 +24,7 @@ public class CouchDbMetaData {
         this.port = port;
     }
 
-    private String couchDbBaseUrl() {
+    protected String couchDbBaseUrl() {
         return "http://" + host + ":" + port + "/";
     }
 

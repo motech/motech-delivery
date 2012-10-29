@@ -85,7 +85,7 @@
         <!--User defined values-->
         <property name="locations">
             <list>
-                <value>classpath:batchServices.properties</value>
+                <value>classpath*:batchServices.properties</value>
             </list>
         </property>
     </bean>

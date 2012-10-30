@@ -1,5 +1,6 @@
 package org.motechproject.batch.jobs.compaction;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -30,8 +31,10 @@ public class DbCompactor implements Tasklet, InitializingBean {
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         CouchDbCompactor couchDbCompactor = new CouchDbCompactor();
-        couchDbCompactor.compactAllDatabases(masterCouchDbHost);
-        couchDbCompactor.compactAllDatabases(slaveCouchDbHost);
+        if (StringUtils.isNotBlank(masterCouchDbHost))
+            couchDbCompactor.compactAllDatabases(masterCouchDbHost);
+        if (StringUtils.isNotBlank(slaveCouchDbHost))
+            couchDbCompactor.compactAllDatabases(slaveCouchDbHost);
         return RepeatStatus.FINISHED;
     }
 }

@@ -9,10 +9,10 @@ public class CouchDbLuceneMetaData extends CouchDbMetaData {
     }
 
     public String getOptimizationURL(String designDocName) {
-        return String.format("%s/%s/%s/%s//%s", couchDbBaseUrl(), "_fti", "_design", designDocName, "_optimize");
+        return String.format("%s%s/%s/%s//%s", couchDbBaseUrl(), "_fti", "_design", designDocName, "_optimize");
     }
 
     public String getExpungeURL(String designDocName) {
-        return String.format("%s/%s/%s/%s//%s", couchDbBaseUrl(), "_fti", "_design", designDocName, "_expunge");
+        return String.format("%s%s/%s/%s//%s", couchDbBaseUrl(), "_fti", "_design", designDocName, "_expunge");
     }
 }

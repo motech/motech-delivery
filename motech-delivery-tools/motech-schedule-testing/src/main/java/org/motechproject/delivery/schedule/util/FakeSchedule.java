@@ -114,7 +114,7 @@ public class FakeSchedule {
     }
 
     private void storeAlertTimes(Trigger trigger, JobDetail detail, LocalDate startDate) {
-        LocalDate endDate = startDate.plusYears(2);
+        LocalDate endDate = startDate.plusYears(3);
         List times = TriggerUtils.computeFireTimesBetween((OperableTrigger) trigger, new BaseCalendar(), startDate.toDate(), endDate.toDate());
 
         String windowName = String.valueOf(detail.getJobDataMap().get(WINDOW_NAME));

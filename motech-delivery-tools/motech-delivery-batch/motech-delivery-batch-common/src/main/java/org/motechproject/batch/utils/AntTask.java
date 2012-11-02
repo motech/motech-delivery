@@ -51,8 +51,8 @@ public class AntTask {
             helper.parse(project, source);
             project.setBasedir(source.getParent());
             project.addBuildListener(consoleLogger);
-            project.executeTarget(targetName);
             project.setProperty("env", environment);
+            project.executeTarget(targetName);
         }
         return 0;
     }

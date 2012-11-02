@@ -4,16 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.motechproject.batch</groupId>
+    <groupId>org.motechproject.batch-ananya-care</groupId>
     <artifactId>motech-delivery-batch-common</artifactId>
-    <version>0.12-SNAPSHOT</version>
+    <version>0.9-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>MoTech Batch Commons</name>
 
     <parent>
         <artifactId>motech-delivery-batch</artifactId>
-        <groupId>org.motechproject.batch</groupId>
-        <version>0.12-SNAPSHOT</version>
+        <groupId>org.motechproject.batch-ananya-care</groupId>
+        <version>0.9-SNAPSHOT</version>
     </parent>
 
     <dependencies>

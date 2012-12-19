@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="motech-common-test" basedir=".">
-	<typedef resource="org/motechproject/build/deployMacroDefs.xml"/>
-	
-	<target name="test.drop.couch.db">
-		<echo message="Trying to drop couchdb ${db.name} at ${couch.db.server}:${couch.db.port}"/>
-		<drop.couch.db couch.db.server="${couch.db.server}" couch.db.port="${couch.db.port}" db.name="${db.name}"/>
-	</target>
-</project>

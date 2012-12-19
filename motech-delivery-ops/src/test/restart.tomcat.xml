@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="motech-common-test" basedir=".">
-	<typedef resource="org/motechproject/build/deployMacroDefs.xml"/>
-	
-	<target name="test.restart.tomcat">
-		<echo message="Trying to restart tomcat at ${tomcat.home}"/>
-		<restart.tomcat tomcat.home="${tomcat.home}" tomcat.port="${tomcat.port}"/>
-	</target>
-</project>

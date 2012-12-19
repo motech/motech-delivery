@@ -3,14 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.motechproject</groupId>
+    <groupId>org.motechproject.delivery-ananya</groupId>
     <artifactId>motech-delivery</artifactId>
     <packaging>pom</packaging>
     <version>0.12-SNAPSHOT</version>
     <name>Motech Delivery</name>
     <modules>
-        <module>motech-delivery-ops</module>
-        <module>motech-delivery-tools</module>
+        <module>motech-seed</module>
     </modules>
 
     <properties>
@@ -128,82 +127,6 @@
             </plugin>
         </plugins>
     </build>
-
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-plugin-plugin</artifactId>
-                <version>2.7</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <xrefLocation>${project.reporting.outputDirectory}/../xref-test</xrefLocation>
-                    <aggregate>true</aggregate>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <aggregate>true</aggregate>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.7</version>
-                <configuration>
-                    <aggregate>true</aggregate>
-                </configuration>
-                <reportSets>
-                    <reportSet>
-                        <id>aggregate</id>
-                        <reports>
-                            <report>aggregate</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>2.5</version>
-                <configuration>
-                    <xrefLocation>${project.reporting.outputDirectory}/../xref</xrefLocation>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.3.1</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>index</report>
-                            <report>dependencies</report>
-                            <report>mailing-list</report>
-                            <report>cim</report>
-                            <report>issue-tracking</report>
-                            <report>license</report>
-                            <report>scm</report>
-                            <report>summary</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>taglist-maven-plugin</artifactId>
-                <version>2.4</version>
-            </plugin>
-        </plugins>
-    </reporting>
-
     <!-- License -->
     <licenses>
         <license>
@@ -211,21 +134,6 @@
             <url>license.txt</url>
         </license>
     </licenses>
-
-    <ciManagement>
-        <system>hudson</system>
-        <url>http://ci.motechproject.org/</url>
-    </ciManagement>
-
-    <mailingLists>
-        <mailingList>
-            <name>MOTECH Dev</name>
-            <subscribe>motech-dev+subscribe@googlegroups.com</subscribe>
-            <unsubscribe>motech-dev+unsubscribe@googlegroups.com</unsubscribe>
-            <post>motech-dev@googlegroups.com</post>
-            <archive>http://groups.google.com/group/motech-dev</archive>
-        </mailingList>
-    </mailingLists>
 
     <scm>
         <connection>scm:git:http://github.com/motech/motech-delivery-tools.git</connection>

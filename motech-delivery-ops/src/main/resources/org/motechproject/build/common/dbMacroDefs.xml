@@ -7,12 +7,14 @@
         <attribute name="dbJdbcUrl"/>
         <attribute name="user"/>
         <attribute name="password"/>
+        <attribute name="migrationsBaseDir" default="db/migration"/>
         <sequential>
             <property name="flyway.schemas" value="@{schemas}" />
             <property name="flyway.driver" value="@{dbDriver}"/>
             <property name="flyway.url" value="@{dbJdbcUrl}"/>
             <property name="flyway.user" value="@{user}"/>
             <property name="flyway.password" value="@{password}"/>
+            <property name="flyway.baseDir" value="@{migrationsBaseDir}"/>
 
             <flyway:migrate classpathref="@{classpathref}"/>
         </sequential>
@@ -24,15 +26,15 @@
         <attribute name="user"/>
         <attribute name="password"/>
         <attribute name="schemas"/>
+        <attribute name="migrationsBaseDir" default="db/migration"/>
         <sequential>
             <property name="flyway.schemas" value="@{schemas}" />
             <property name="flyway.driver" value="@{dbDriver}"/>
             <property name="flyway.url" value="@{dbJdbcUrl}"/>
             <property name="flyway.user" value="@{user}"/>
             <property name="flyway.password" value="@{password}"/>
+            <property name="flyway.baseDir" value="@{migrationsBaseDir}"/>
             <flyway:clean/>
         </sequential>
     </macrodef>
-
-
 </antlib>

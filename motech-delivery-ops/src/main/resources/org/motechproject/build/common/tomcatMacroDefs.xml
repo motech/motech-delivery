@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <antlib>
     <typedef file="org/motechproject/build/common/envMacroDefs.xml"/>
+    <taskdef name="start"     classname="org.apache.catalina.ant.StartTask"/>
+    <taskdef name="stop"      classname="org.apache.catalina.ant.StopTask"/>
+
+    <macrodef name="stop.webapp">
+        <attribute name="tomcat.url"/>
+        <attribute name="tomcat.username"/>
+        <attribute name="tomcat.password"/>
+        <attribute name="webapp.path"/>
+        <echo message="Undeploying application"/>
+        <stop url="${tomcat.url}" username="${tomcat.username}" password="${tomcat.password}"
+              path="${webapp.path}"/>
+        <echo message="Undeployed application successfully"/>
+    </macrodef>
+
+    <macrodef name="start.webapp">
+        <attribute name="tomcat.url"/>
+        <attribute name="tomcat.username"/>
+        <attribute name="tomcat.password"/>
+        <attribute name="webapp.path"/>
+        <echo message="Undeploying application"/>
+        <start url="${tomcat.url}" username="${tomcat.username}" password="${tomcat.password}"
+               path="${webapp.path}"/>
+        <echo message="Undeployed application successfully"/>
+    </macrodef>
 
     <macrodef name="stop.tomcat">
         <attribute name="tomcat.home"/>

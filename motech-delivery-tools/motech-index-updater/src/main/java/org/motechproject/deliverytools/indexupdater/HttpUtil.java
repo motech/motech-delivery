@@ -53,7 +53,7 @@ public class HttpUtil {
         try {
             response = httpclient.execute(httppost);
             statusCode = response.getStatusLine().getStatusCode();
-            if(statusCode == 200){
+            if(statusCode < 300){
                     return;
             }
         }

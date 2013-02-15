@@ -11,6 +11,6 @@
     <util:properties id="seedProperties" location="classpath:seed.properties"/>
     <context:annotation-config/>
     <context:spring-configured/>
-    <context:component-scan base-package="org.motechproject"/>
+    <context:component-scan base-package="org.motechproject.deliverytools.seed"/>
     <beans:import resource="classpath*:**/**/applicationContext*.xml"/>
 </beans>

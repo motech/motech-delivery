@@ -41,11 +41,52 @@
         <attribute name="app.name"/>
         <attribute name="download.dir"/>
         <sequential>
-            <echo message="Deploying to tomcat with tomcat home ${tomcat.home}"/>
+            <echo message="Deploying to tomcat with tomcat home @{tomcat.home}"/>
             <delete dir="@{tomcat.home}/webapps/@{app.name}"/>
             <copy file="@{download.dir}/@{app.name}.war" tofile="@{tomcat.home}/webapps/@{app.name}.war"
                   overwrite="true"/>
             <delete dir="@{tomcat.home}/work/Catalina/localhost/@{app.name}"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="deploy.app.war.to.tomcat">
+        <attribute name="tomcat.home"/>
+        <attribute name="app.name"/>
+        <attribute name="download.dir"/>
+        <sequential>
+            <echo message="Deploying to tomcat with tomcat home @{tomcat.home}"/>
+            <copy file="@{download.dir}/@{app.name}.war" tofile="@{tomcat.home}/webapps/@{app.name}.war"
+                  overwrite="true"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="rezip.app.war.with.new.properties">
+        <attribute name="app.name"/>
+        <attribute name="download.dir"/>
+        <attribute name="env"/>
+        <sequential>
+            <echo message="Unzipping war"/>
+            <unzip src="@{download.dir}/@{app.name}.war" dest="@{download.dir}/@{app.name}/"/>
+
+            <echo message="Copying over properties from ${basedir}/properties/@{env}"/>
+            <copy overwrite="true" todir="@{download.dir}/@{app.name}/WEB-INF/classes">
+                <fileset dir="${basedir}/properties/@{env}">
+                    <include name="*.properties"/>
+                    <exclude name="deploy.properties"/>
+                </fileset>
+            </copy>
+
+            <echo message="Copying over properties from ${basedir}/properties/default"/>
+            <copy failonerror="false" overwrite="true" todir="@{download.dir}/@{app.name}/WEB-INF/classes">
+                <fileset dir="${basedir}/properties/default"/>
+            </copy>
+
+            <echo message="Rezipping the war"/>
+            <zip destfile="@{download.dir}/@{app.name}.war"
+                 basedir="@{download.dir}/@{app.name}"
+                 update="true"
+                    />
+            <echo message="Rezipping the war completed"/>
         </sequential>
     </macrodef>
 

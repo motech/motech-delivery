@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>motech-delivery-batch</artifactId>
-        <groupId>org.motechproject.batch</groupId>
+        <groupId>org.motechproject.batch-whp</groupId>
         <version>0.12-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.motechproject.batch</groupId>
+    <groupId>org.motechproject.batch-whp</groupId>
     <version>0.12-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>MoTech Batch Replication Jobs</name>
@@ -17,7 +17,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.motechproject.batch</groupId>
+            <groupId>org.motechproject.batch-whp</groupId>
             <artifactId>motech-delivery-batch-common</artifactId>
             <version>${project.version}</version>
         </dependency>

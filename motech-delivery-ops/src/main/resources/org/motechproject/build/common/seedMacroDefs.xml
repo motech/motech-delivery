@@ -8,6 +8,7 @@
         <attribute name="app.name"/>
         <attribute name="couchdb.seed.main.class"/>
         <attribute name="db.name"/>
+        <attribute name="java.policy" default = "not-specified"/>
         <sequential>
             <echo message="Starting to load seed data into @{db.name} for @{app.name}..."/>
             <java fork="false" classname="@{couchdb.seed.main.class}" failonerror="true">
@@ -23,6 +24,15 @@
                         <include name="**/rt.jar"/>
                     </fileset>
                 </classpath>
+                <if>
+                    <equals arg1="@{java.policy}" arg2="not-specified"/>
+                    <then>
+                        <echo message="No java.policy specified"/>
+                    </then>
+                    <else>
+                        <sysproperty key="java.security.policy" value="@{java.policy}" />
+                    </else>
+                </if>
             </java>
             <echo message="seed data loaded into @{db.name} database"/>
         </sequential>

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.motechproject</groupId>
+        <groupId>org.motechproject.delivery-whp</groupId>
         <artifactId>motech-delivery-tools</artifactId>
         <version>0.12-SNAPSHOT</version>
     </parent>

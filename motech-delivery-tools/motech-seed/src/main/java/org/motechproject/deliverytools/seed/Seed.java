@@ -6,9 +6,13 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Seed {
+
     int priority();
 
     String version();
 
+    boolean test() default false;
+
     String comment() default "";
+
 }

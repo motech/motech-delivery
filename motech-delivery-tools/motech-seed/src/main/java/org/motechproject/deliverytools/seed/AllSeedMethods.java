@@ -19,6 +19,9 @@ public class AllSeedMethods implements BeanPostProcessor {
     @Value("#{seedProperties['versions']}")
     private String allVersions;
 
+    @Value("#{(null != seedProperties['load.test.data']) ? seedProperties['load.test.data'] : false}")
+    private boolean loadTestData;
+
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         return bean;
@@ -43,8 +46,9 @@ public class AllSeedMethods implements BeanPostProcessor {
     private void addValidSeedMethodsToRun(List<SeedMethod> allSeedMethods, List<Version> allVersionList) {
         for (Version version : allVersionList)
             for (SeedMethod method : allSeedMethods)
-                if (method.shouldRunFor(version))
+                if (method.shouldRunFor(version) && ((loadTestData) || !method.isTestData())) {
                     methods.add(method);
+                }
     }
 
     private List<Version> getAllVersionList() {
@@ -63,7 +67,7 @@ public class AllSeedMethods implements BeanPostProcessor {
                         new SeedMethod(bean,
                                 method,
                                 method.getAnnotation(Seed.class).priority(),
-                                method.getAnnotation(Seed.class).version()));
+                                method.getAnnotation(Seed.class).version(), method.getAnnotation(Seed.class).test()));
 
         return allSeedMethods;
     }

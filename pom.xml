@@ -6,7 +6,7 @@
     <groupId>org.motechproject</groupId>
     <artifactId>motech-delivery</artifactId>
     <packaging>pom</packaging>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.3.1-SNAPSHOT</version>
     <name>Motech Delivery</name>
     <modules>
         <module>motech-delivery-ops</module>
@@ -16,7 +16,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.0.5.RELEASE</spring.version>
-        <motech.version>0.10</motech.version>
+        <motech.version>0.10.5-SNAPSHOT</motech.version>
     </properties>
 
     <distributionManagement>

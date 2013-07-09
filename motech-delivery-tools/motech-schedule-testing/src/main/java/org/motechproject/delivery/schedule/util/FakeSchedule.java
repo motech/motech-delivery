@@ -45,11 +45,7 @@ public class FakeSchedule {
 
         nextFulfillmentDateToUse = referenceDateForEnrollment;
         setDateAction.setTheDateTo(referenceDateForEnrollment);
-        EnrollmentRequest enrollmentRequest = new EnrollmentRequest();
-        enrollmentRequest.setExternalId(externalId);
-        enrollmentRequest.setScheduleName(scheduleName);
-        enrollmentRequest.setPreferredAlertTime(preferredAlertTime);
-        enrollmentRequest.setReferenceDate(referenceDateForEnrollment);
+        EnrollmentRequest enrollmentRequest = new EnrollmentRequest(externalId, scheduleName, preferredAlertTime, referenceDateForEnrollment, null, null, null, null, null);
 
         trackingService.enroll(enrollmentRequest);
 
@@ -114,7 +110,7 @@ public class FakeSchedule {
     }
 
     private void storeAlertTimes(Trigger trigger, JobDetail detail, LocalDate startDate) {
-        LocalDate endDate = startDate.plusYears(2);
+        LocalDate endDate = startDate.plusYears(10);
         List times = TriggerUtils.computeFireTimesBetween((OperableTrigger) trigger, new BaseCalendar(), startDate.toDate(), endDate.toDate());
 
         String windowName = String.valueOf(detail.getJobDataMap().get(WINDOW_NAME));

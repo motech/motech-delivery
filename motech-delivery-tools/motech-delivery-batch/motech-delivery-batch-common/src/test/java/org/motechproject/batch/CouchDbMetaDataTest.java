@@ -18,8 +18,8 @@ public class CouchDbMetaDataTest {
 
     @Test
     public void shouldGetDesignDocs() throws Exception {
-
-        final List<String> designDocNames = metaData.getDesignDocNames("_users");
+        final List<String> dbList = metaData.getApplicationDatabases();
+        final List<String> designDocNames = metaData.getDesignDocNames(dbList.get(0));
         assertTrue(designDocNames.size() > 0);
     }
 

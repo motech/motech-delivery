@@ -12,6 +12,9 @@
     <name>Motech Schedule Testing</name>
     <version>0.10-SNAPSHOT</version>
     <artifactId>motech-schedule-testing</artifactId>
+    <properties>
+        <motech.version>0.21.1</motech.version>
+    </properties>
 
     <dependencies>
         <dependency>

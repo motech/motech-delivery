@@ -1,7 +1,7 @@
 package org.motechproject.delivery.schedule.util;
 
 import org.joda.time.LocalDate;
-import org.motechproject.model.Time;
+import org.motechproject.commons.date.model.Time;
 import org.motechproject.scheduletracking.api.domain.WindowName;
 
 import java.util.Date;

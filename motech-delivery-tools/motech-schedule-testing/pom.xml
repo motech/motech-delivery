@@ -7,10 +7,10 @@
     <parent>
         <artifactId>motech-delivery-tools</artifactId>
         <groupId>org.motechproject.delivery-ananya-care</groupId>
-        <version>0.9-SNAPSHOT</version>
+        <version>0.10-SNAPSHOT</version>
     </parent>
     <name>Motech Schedule Testing</name>
-    <version>0.9-SNAPSHOT</version>
+    <version>0.10-SNAPSHOT</version>
     <artifactId>motech-schedule-testing</artifactId>
 
     <dependencies>

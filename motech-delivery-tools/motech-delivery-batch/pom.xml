@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.motechproject.batch-ananya-care</groupId>
     <artifactId>motech-delivery-batch</artifactId>
-    <version>0.9-SNAPSHOT</version>
+    <version>0.10-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>MoTech Batch Jobs</name>
 
     <parent>
         <artifactId>motech-delivery-tools</artifactId>
         <groupId>org.motechproject.delivery-ananya-care</groupId>
-        <version>0.9-SNAPSHOT</version>
+        <version>0.10-SNAPSHOT</version>
     </parent>
 
     <modules>

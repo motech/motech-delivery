@@ -7,12 +7,12 @@
     <parent>
         <groupId>org.motechproject.delivery-ananya-care</groupId>
         <artifactId>motech-delivery-tools</artifactId>
-        <version>0.9-SNAPSHOT</version>
+        <version>0.10-SNAPSHOT</version>
     </parent>
     <name>Motech Index Updater</name>
     <groupId>groupId</groupId>
     <artifactId>motech-index-updater</artifactId>
-    <version>0.9-SNAPSHOT</version>
+    <version>0.10-SNAPSHOT</version>
 
     <dependencies>
         <dependency>

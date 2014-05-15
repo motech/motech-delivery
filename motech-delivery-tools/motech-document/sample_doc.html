@@ -618,7 +618,7 @@ fieldset{
 </li>
                     <li><div class="method-box">
     <fieldset>
-        <legend class="method-legend">getChars()</legend>
+        <legend class="method-legend">compare()</legend>
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
@@ -636,11 +636,6 @@ fieldset{
                         <td>int</td>
                         <td>@description@</td>
                     </tr>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>class [C</td>
-                        <td>@description@</td>
-                    </tr>
                             </table>
                 <div class="small-title">Returns:</div>
                     <table class="params-table">
@@ -649,7 +644,7 @@ fieldset{
                 <td style="width:60%">description</td>
                 </thead>
                 <tr>
-                    <td>void</td>
+                    <td>int</td>
                     <td>@description@</td>
                 </tr>
             </table>
@@ -688,7 +683,7 @@ fieldset{
 </li>
                     <li><div class="method-box">
     <fieldset>
-        <legend class="method-legend">compare()</legend>
+        <legend class="method-legend">getChars()</legend>
         <div class="small-title">Takes:</div>
                     <table class="params-table">
                 <thead>
@@ -706,6 +701,11 @@ fieldset{
                         <td>int</td>
                         <td>@description@</td>
                     </tr>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>class [C</td>
+                        <td>@description@</td>
+                    </tr>
                             </table>
                 <div class="small-title">Returns:</div>
                     <table class="params-table">
@@ -714,7 +714,7 @@ fieldset{
                 <td style="width:60%">description</td>
                 </thead>
                 <tr>
-                    <td>int</td>
+                    <td>void</td>
                     <td>@description@</td>
                 </tr>
             </table>
@@ -840,101 +840,6 @@ fieldset{
                 </thead>
                 <tr>
                     <td>int</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">toOctalString()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td style="width:20%">name</td>
-                <td style="width:30%">type</td>
-                <td style="width:50%">description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="params-table">
-                <thead>
-                <td style="width:40%">type</td>
-                <td style="width:60%">description</td>
-                </thead>
-                <tr>
-                    <td>class java.lang.String</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">toBinaryString()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td style="width:20%">name</td>
-                <td style="width:30%">type</td>
-                <td style="width:50%">description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="params-table">
-                <thead>
-                <td style="width:40%">type</td>
-                <td style="width:60%">description</td>
-                </thead>
-                <tr>
-                    <td>class java.lang.String</td>
-                    <td>@description@</td>
-                </tr>
-            </table>
-            </fieldset>
-</div>
-</li>
-                    <li><div class="method-box">
-    <fieldset>
-        <legend class="method-legend">toUnsignedString()</legend>
-        <div class="small-title">Takes:</div>
-                    <table class="params-table">
-                <thead>
-                <td style="width:20%">name</td>
-                <td style="width:30%">type</td>
-                <td style="width:50%">description</td>
-                </thead>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
-                                    <tr>
-                        <td>@name@</td>
-                        <td>int</td>
-                        <td>@description@</td>
-                    </tr>
-                            </table>
-                <div class="small-title">Returns:</div>
-                    <table class="params-table">
-                <thead>
-                <td style="width:40%">type</td>
-                <td style="width:60%">description</td>
-                </thead>
-                <tr>
-                    <td>class java.lang.String</td>
                     <td>@description@</td>
                 </tr>
             </table>
@@ -1195,6 +1100,101 @@ fieldset{
                 </thead>
                 <tr>
                     <td>int</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">toBinaryString()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>class java.lang.String</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">toOctalString()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>class java.lang.String</td>
+                    <td>@description@</td>
+                </tr>
+            </table>
+            </fieldset>
+</div>
+</li>
+                    <li><div class="method-box">
+    <fieldset>
+        <legend class="method-legend">toUnsignedString()</legend>
+        <div class="small-title">Takes:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:20%">name</td>
+                <td style="width:30%">type</td>
+                <td style="width:50%">description</td>
+                </thead>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                                    <tr>
+                        <td>@name@</td>
+                        <td>int</td>
+                        <td>@description@</td>
+                    </tr>
+                            </table>
+                <div class="small-title">Returns:</div>
+                    <table class="params-table">
+                <thead>
+                <td style="width:40%">type</td>
+                <td style="width:60%">description</td>
+                </thead>
+                <tr>
+                    <td>class java.lang.String</td>
                     <td>@description@</td>
                 </tr>
             </table>
